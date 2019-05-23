@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -28,6 +28,14 @@ psw:string ;
         localStorage.setItem('id',result.UserID); 
       localStorage.setItem('token',result.token);  
      this.router.navigate(['dashboard']); 
+      }else{
+
+        Swal.fire({
+          title: 'Error!',
+          text: 'Adress ou mot de passe incorrecte',
+          type: 'error',
+          confirmButtonText: 'Cool'
+        })
       }
       
     },err=>{

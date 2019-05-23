@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -38,6 +39,14 @@ export class InscriptionComponent implements OnInit {
      { localStorage.setItem('id',result.UserID); 
        localStorage.setItem('token',result.token);  
       this.router.navigate(['dashboard']); 
+     }else{
+
+      Swal.fire({
+        title: 'Error!',
+        text: 'Email deja existe ',
+        type: 'error',
+        confirmButtonText: 'Cool'
+      })
      } 
     },err=>{
       console.log(err); 
