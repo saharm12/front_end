@@ -1,0 +1,102 @@
+<div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                        <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>
+                        <div class="card card-plain">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title mt-0"> Liste des évenements disponibles</h4>
+                            </div>
+                            
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="">
+                                            <th>
+                                                Titre
+                                            </th>
+                                            <th>
+                                                Date début
+                                            </th>
+                                            <th>
+                                                date fin
+                                            </th>
+                                            <th>
+                                            </th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor ="let evn of events">
+                                                <td>
+                                                    {{evn.Titre}}
+                                                </td>
+                                                <td>
+                                                        {{evn.date_debut}}
+                                                </td>
+                                                <td>
+                                                        {{evn.date_fin}}
+                                                </td>
+                                                <td>
+                                                        <button class="btn btn-secondary">Réserver</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+      <ng-template #content let-modal>
+            <div class="modal-header">
+              <h4 class="modal-title" id="modal-basic-title">Ajouter Events</h4>
+              <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    
+                        <div class="row">
+                            <div class="col-md-auto">
+                                    <label for="title"> Titre </label>
+                                    <br>
+                                    <input type="text" id="title"> 
+                            </div>
+                           
+                    </div>
+                           
+                            <div class="row">
+                                <div class="col-md-auto">
+                                        <label > Description</label>
+                                        <br>
+                                        <textarea> </textarea>
+                                </div>
+                                         
+                            </div>
+                           <div class="row">
+                               <div class="col">
+                                    <label> Date Fin </label>
+                                    <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                    [(ngModel)]="model" required></my-date-picker>
+                               </div>
+                                
+                           </div>
+                            <div class="row">
+                                <div class="col">
+                                        <label> Date Fin </label>
+                                        <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                                        [(ngModel)]="model" required></my-date-picker>
+                                </div>
+                                     
+                            </div>
+                                 
+                      
+                   
+                    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+            </div>
+          </ng-template>
