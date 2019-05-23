@@ -16,27 +16,34 @@
                                                 Titre
                                             </th>
                                             <th>
+                                                Description
+                                            </th>
+                                            <th>
                                                 Date début
                                             </th>
                                             <th>
                                                 date fin
                                             </th>
                                             <th>
+                                                Action
                                             </th>
                                         </thead>
                                         <tbody>
-                                            <tr *ngFor ="let evn of events">
+                                            <tr *ngFor ="let evn of evnt">
                                                 <td>
                                                     {{evn.Titre}}
                                                 </td>
                                                 <td>
-                                                        {{evn.date_debut}}
+                                                        {{evn.description}}
                                                 </td>
                                                 <td>
-                                                        {{evn.date_fin}}
+                                                    {{evn.Date_debut}}
+                                            </td>
+                                                <td>
+                                                        {{evn.Date_fin}}
                                                 </td>
                                                 <td>
-                                                        <button class="btn btn-secondary">Réserver</button>
+                                                        <button class="btn btn-secondary" (click)="Reservation(evn.IdEvent)">Réserver</button>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -62,7 +69,7 @@
                             <div class="col-md-auto">
                                     <label for="title"> Titre </label>
                                     <br>
-                                    <input type="text" id="title"> 
+                                    <input type="text" id="title" [(ngModel)]="title"> 
                             </div>
                            
                     </div>
@@ -71,15 +78,15 @@
                                 <div class="col-md-auto">
                                         <label > Description</label>
                                         <br>
-                                        <textarea> </textarea>
+                                        <textarea [(ngModel)]="desc"> </textarea>
                                 </div>
                                          
                             </div>
                            <div class="row">
                                <div class="col">
-                                    <label> Date Fin </label>
+                                    <label> Date Debut </label>
                                     <my-date-picker name="mydate" [options]="myDatePickerOptions"
-                                    [(ngModel)]="model" required></my-date-picker>
+                                    [(ngModel)]="date_debut" required></my-date-picker>
                                </div>
                                 
                            </div>
@@ -87,7 +94,7 @@
                                 <div class="col">
                                         <label> Date Fin </label>
                                         <my-date-picker name="mydate" [options]="myDatePickerOptions"
-                                        [(ngModel)]="model" required></my-date-picker>
+                                        [(ngModel)]="date_fin" required></my-date-picker>
                                 </div>
                                      
                             </div>
@@ -97,6 +104,6 @@
                     
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+              <button type="button" class="btn btn-outline-dark" (click)="AddEvent()">Save</button>
             </div>
           </ng-template>

@@ -13,7 +13,7 @@ import { EvenementComponent } from './evenement/evenement.component';
 const routes: Routes =[
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full',
   }, {
     path: '',

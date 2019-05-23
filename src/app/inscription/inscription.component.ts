@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-inscription',
   templateUrl: './inscription.component.html',
@@ -14,14 +16,14 @@ export class InscriptionComponent implements OnInit {
  tel:number ; 
  mdp:string ;  
  inscr :FormGroup
-;   constructor(private http:Http , private formBuild:FormBuilder) { 
+;   constructor(private http:HttpClient , private formBuild:FormBuilder,private router:Router) { 
      
 }
 
   ngOnInit() {
   }
   register()
-  { /*console.log(this.mdp); 
+  {console.log(this.mdp); 
     this.http.post("http://localhost:3000/users/signup",{
       "name":this.nom,
       "firstname":this.prenom ,
@@ -31,15 +33,21 @@ export class InscriptionComponent implements OnInit {
       
     }).subscribe(data=>{
       console.log(data); 
+     let result:any=data; 
+     if(result.auth==true)
+     { localStorage.setItem('id',result.UserID); 
+       localStorage.setItem('token',result.token);  
+      this.router.navigate(['dashboard']); 
+     } 
     },err=>{
       console.log(err); 
-    }); */
-    this.authenticate().then(data=>{
+    }); 
+    /*this.authenticate().then(data=>{
       console.log(data); 
-    })
+    })*/
   }
 
-  authenticate() {
+  /*authenticate() {
     let body = new FormData();
     body.append('email', this.email);
     body.append('password', this.mdp);
@@ -56,5 +64,5 @@ export class InscriptionComponent implements OnInit {
           resolve(error.json());
         });
     });
-  }
+  }*/
 }

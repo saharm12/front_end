@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import * as Chartist from 'chartist';
 import { NgbModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,7 @@ import { NgbModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 })
 export class DashboardComponent implements OnInit {
   stringValue; 
+  evnt:any=[]; 
 events:any=[]=[{
 'Titre':'Event 1', 
 'date_debut':'demain',
@@ -24,7 +26,11 @@ events:any=[]=[{
     }]; 
     model:any ;
     dateOfBirth:string ;  
-  constructor( private modalService: NgbModal) { }
+    title:string ; 
+    desc:string ; 
+    date_debut:any ; 
+    date_fin:any;
+  constructor( private modalService: NgbModal , private htpp:HttpClient) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -83,7 +89,7 @@ events:any=[]=[{
   };
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
-
+      this.getEvents(); 
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],
           series: [
@@ -167,4 +173,57 @@ events:any=[]=[{
  {
  this.model= this.modalService.open(content, { size: 'lg' });
  }
+AddEvent()
+{ let user_id =localStorage.getItem('id'); 
+  let token = localStorage.getItem('token'); 
+  this.htpp.post('http://localhost:3000/event/ajouter',{
+
+  'title':this.title , 
+  'description':this.desc, 
+  'start_date':this.date_debut.formatted, 
+  'end_date':this.date_fin.formatted ,
+  'added_by':user_id
+  
+  },{headers:{
+    'x-access-token':token
+  }}).subscribe(data=>{
+    let result:any=data; 
+    console.log("data", result); 
+   this.model.close(); 
+    this.getEvents(); 
+  })
+
+
+}
+ getEvents()
+ { let token = localStorage.getItem('token'); 
+  this.htpp.get('http://localhost:3000/event',{headers:{
+    'x-access-token':token
+  }}).subscribe(data=>{
+    let result:any=data; 
+    console.log("data", result); 
+    this.evnt=result; 
+    console.log(this.evnt); 
+    
+  })
+ }
+Reservation(event)
+{
+  let token = localStorage.getItem('token'); 
+  let id = localStorage.getItem('id'); 
+  this.htpp.post('http://localhost:3000/reservation/affecter',{
+  'id_ev':event, 
+  'user':id, 
+  'accepted':0
+
+  },{headers:{
+    'x-access-token':token
+  }}).subscribe(data=>{
+    let result:any=data; 
+    console.log(result); 
+   
+    
+  })
+}
+
 }

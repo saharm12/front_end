@@ -22,6 +22,14 @@ psw:string ;
       'password':this.psw 
     }).subscribe(data=>{
       console.log(data); 
+      let result:any=data; 
+      if(result.auth==true)
+      {
+        localStorage.setItem('id',result.UserID); 
+      localStorage.setItem('token',result.token);  
+     this.router.navigate(['dashboard']); 
+      }
+      
     },err=>{
       console.log(err); 
     }); 
