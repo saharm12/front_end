@@ -1,192 +1,139 @@
 <div class="main-content">
-  <div class="container-fluid">
-      <div class="row">
-          <div class="col-md-12">
-              <!----<div class="card">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title ">Simple Table</h4>
-                      <p class="card-category"> Here is a subtitle for this table</p>
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table">
-                              <thead class=" text-primary">
-                                  <th>
-                                      ID
-                                  </th>
-                                  <th>
-                                      Name
-                                  </th>
-                                  <th>
-                                      Country
-                                  </th>
-                                  <th>
-                                      City
-                                  </th>
-                                  <th>
-                                      Salary
-                                  </th>
-                              </thead>
-                              <tbody>
-                                  <tr>
-                                      <td>
-                                          1
-                                      </td>
-                                      <td>
-                                          Dakota Rice
-                                      </td>
-                                      <td>
-                                          Niger
-                                      </td>
-                                      <td>
-                                          Oud-Turnhout
-                                      </td>
-                                      <td class="text-primary">
-                                          $36,738
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          2
-                                      </td>
-                                      <td>
-                                          Minerva Hooper
-                                      </td>
-                                      <td>
-                                          Curaçao
-                                      </td>
-                                      <td>
-                                          Sinaai-Waas
-                                      </td>
-                                      <td class="text-primary">
-                                          $23,789
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          3
-                                      </td>
-                                      <td>
-                                          Sage Rodriguez
-                                      </td>
-                                      <td>
-                                          Netherlands
-                                      </td>
-                                      <td>
-                                          Baileux
-                                      </td>
-                                      <td class="text-primary">
-                                          $56,142
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          4
-                                      </td>
-                                      <td>
-                                          Philip Chaney
-                                      </td>
-                                      <td>
-                                          Korea, South
-                                      </td>
-                                      <td>
-                                          Overland Park
-                                      </td>
-                                      <td class="text-primary">
-                                          $38,735
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          5
-                                      </td>
-                                      <td>
-                                          Doris Greene
-                                      </td>
-                                      <td>
-                                          Malawi
-                                      </td>
-                                      <td>
-                                          Feldkirchen in Kärnten
-                                      </td>
-                                      <td class="text-primary">
-                                          $63,542
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          6
-                                      </td>
-                                      <td>
-                                          Mason Porter
-                                      </td>
-                                      <td>
-                                          Chile
-                                      </td>
-                                      <td>
-                                          Gloucester
-                                      </td>
-                                      <td class="text-primary">
-                                          $78,615
-                                      </td>
-                                  </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>-->
-          </div>
-          <div class="col-md-12">
-              <div class="card card-plain">
-                  <div class="card-header card-header-danger">
-                      <h4 class="card-title mt-0"> Liste des Utilisateurs Disponible</h4>
-                     
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table table-hover">
-                              <thead class="">
-                                  <th>
-                                      ID
-                                  </th>
-                                  <th>
-                                     Nom
-                                  </th>
-                                  <th>
-                                      Prenom
-                                  </th>
-                                  <th>
-                                      Email
-                                  </th>
-                                  <th>
-                                     Tel
-                                  </th>
-                              </thead>
-                              <tbody>
-                                  <tr *ngFor =" let us of users">
-                                      <td>
-                                            {{us.IdUtilisateur}}
-                                      </td>
-                                      <td>
-                                            {{us.NomUtilisateur}}
-                                      </td>
-                                      <td>
-                                            {{us.PrenomUtilisateur}}
-                                      </td>
-                                      <td>
-                                            {{us.Mail}}
-                                      </td>
-                                      <td>
-                                         {{us.TelUtilisateur}}
-                                      </td>
-                                  </tr>
-                                  
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Liste des Participants disponibles</h4>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        Num participant
+                                    </th>
+                                    <th>
+                                        Nom
+                                    </th>
+                                    <th>
+                                        prenom
+                                    </th>
+                                    <th>
+                                        email
+                                    </th>
+                                    <th>
+                                        adresse
+                                    </th>
+                                    <th>
+                                        code_postale
+                                    </th>
+                                    <th>
+                                        raison_sociale
+                                    </th>
+                                    <th>
+                                        code_TVA
+                                    </th>
+                                    <th>
+                                        Ville
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let part of participants">
+                                        <td>
+                                            {{part.id_participant}}
+                                        </td>
+                                        <td>
+                                            {{part.nom_participant}}
+                                        </td>
+                                        <td>
+                                            {{part.prenom_participant}}
+                                        </td>
+                                        <td>
+                                            {{part.email_participant}}
+                                        </td>
+                                        <td>
+                                            {{part.adresse}}
+                                        </td>
+                                        <td>
+                                            {{part.code_postale}}
+                                        </td>
+                                        <td>
+                                            {{part.raison_sociale}}
+                                        </td>
+                                        <td>
+                                            {{part.code_TVA}}
+                                        </td>
+                                        <td>
+                                            {{part.Ville}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" (click)="Accepter(expo.id_exposant)">Accepter</button>
+                                            <button class="btn btn-danger" (click)="Refuser(expo.id_exposant)">Refuser</button>
+                                        </td>
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Ajouter Events</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+              </button>
+    </div>
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-auto">
+                <label for="title"> Titre </label>
+                <br>
+                <input type="text" id="title" [(ngModel)]="title">
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-auto">
+                <label> Description</label>
+                <br>
+                <textarea [(ngModel)]="desc"> </textarea>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label> Date Debut </label>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_debut" required></my-date-picker>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label> Date Fin </label>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_fin" required></my-date-picker>
+            </div>
+
+        </div>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="AddEvent()">Save</button>
+    </div>
+</ng-template>

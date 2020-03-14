@@ -29,6 +29,10 @@ import { EvenementComponent } from './evenement/evenement.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { MyDatePickerModule } from 'mydatepicker';
 import { MaterialModule } from './material.module';
+import { AuthService } from './services/auth.service';
+import { CandidatService } from './services/candidats.service';
+import { ExposantService } from './services/exposants.service';
+import { ParticipantService } from './services/participants.service';
 @NgModule({
   imports: [
    
@@ -52,7 +56,7 @@ import { MaterialModule } from './material.module';
     EvenementComponent,
 
   ],
-  providers: [],
+  providers: [AuthService,CandidatService,ExposantService,ParticipantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
