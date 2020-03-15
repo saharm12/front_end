@@ -22,6 +22,7 @@ import {
   MatSelectModule
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
+import { CandidatsComponent } from 'app/candidats/candidats.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -36,9 +37,11 @@ import { MaterialModule } from 'app/material.module';
     MaterialModule, 
     MyDatePickerModule, 
     FormsModule,
+    
     ReactiveFormsModule
   ],
   declarations: [
+    
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
@@ -47,6 +50,7 @@ import { MaterialModule } from 'app/material.module';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    CandidatsComponent
   ]
 })
 

@@ -21,8 +21,32 @@ export class TableListComponent implements OnInit {
     {
       this.partService.getparticipant().subscribe(data=>{
         let result:any = data; 
-        console.log(result.participant); 
-        this.participants= result.participant; 
+        console.log(result.particpant); 
+        this.participants= result.particpant; 
       })
   }
-} }
+} 
+Accepter(id)
+{
+  this.partService.acceptParticpants(id).subscribe(data=>{
+    let result : any = data ; 
+    if(result)
+    {
+      this.getparticipant() ; 
+    }
+  })
+}
+
+Refuser(id)
+{
+  this.partService.refuserParticpants(id).subscribe(data=>{
+    let result :any = data; 
+    if(result)
+    {
+      this.getparticipant() ; 
+    }
+  })
+}
+
+
+}

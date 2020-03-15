@@ -20,6 +20,20 @@ ville;
 })
 
 export class ParticipantService {
+  acceptParticpants(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/acceptparticipant/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
+
+
+  refuserParticpants(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/refuserparticipant/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
 BASE_URL='http://localhost:3000/participant' ; 
  constructor(private http:HttpClient) { }
 

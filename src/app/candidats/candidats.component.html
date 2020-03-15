@@ -5,7 +5,7 @@
                 <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
                 <div class="card card-plain">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0"> Liste des Participants disponibles</h4>
+                        <h4 class="card-title mt-0"> Liste des Candidats disponibles</h4>
                     </div>
 
                     <div class="card-body">
@@ -38,9 +38,6 @@
                                     </th>
                                     <th>
                                         Ville
-                                    </th>
-                                    <th>
-                                        Etats
                                     </th>
                                     <th>
                                         Action
@@ -76,11 +73,8 @@
                                             {{part.Ville}}
                                         </td>
                                         <td>
-                                            Accepter
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary" (click)="Accepter(part.id_participant)">Accepter</button>
-                                            <button class="btn btn-danger" (click)="Refuser(part.id_participant)">Refuser</button>
+                                            <button class="btn btn-primary" (click)="Accepter(expo.id_exposant)">Accepter</button>
+                                            <button class="btn btn-danger" (click)="Refuser(expo.id_exposant)">Refuser</button>
                                         </td>
 
 
@@ -98,8 +92,8 @@
     <div class="modal-header">
         <h4 class="modal-title" id="modal-basic-title">Ajouter Events</h4>
         <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                <span aria-hidden="true">&times;</span>
-              </button>
+              <span aria-hidden="true">&times;</span>
+            </button>
     </div>
     <div class="modal-body">
 
