@@ -7,10 +7,10 @@ export interface Candidat {
 nom_candidat;
 prenom_candidat;
 email_candidat;
-telephone;
 adresse;
 code_postale;
 ville;
+Etats;
   }
 
 
@@ -18,7 +18,20 @@ ville;
   providedIn: 'root' //La propriété providedIn: root du décorateur permet de dire que le service est accessible globalement.
 })
 
+
+
+
 export class CandidatService {
+  acceptCandidats(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/acceptcandidat/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+
+  }
+
+
+
 BASE_URL='http://localhost:3000/candidat' ; 
  constructor(private http:HttpClient) { }
 
@@ -26,6 +39,13 @@ BASE_URL='http://localhost:3000/candidat' ;
   getcandidat()
   { let token = localStorage.getItem('token'); 
     return this.http.get(this.BASE_URL+'/getcandidats',{headers:{
+      'x-access-token':token 
+    }}); 
+  }
+
+  deletcandidat(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.delete(this.BASE_URL+'/deletcandidat/'+id,{headers:{
       'x-access-token':token 
     }}); 
   }

@@ -34,6 +34,15 @@ export class ParticipantService {
       'x-access-token':token 
     }}); 
   }
+
+deletcandidat(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/deletcandidat/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
+
+
 BASE_URL='http://localhost:3000/participant' ; 
  constructor(private http:HttpClient) { }
 

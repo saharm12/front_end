@@ -5,7 +5,7 @@
                 <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
                 <div class="card card-plain">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0"> Liste des Candidats disponibles</h4>
+                        <h4 class="card-title mt-0"> Liste des candidats disponibles</h4>
                     </div>
 
                     <div class="card-body">
@@ -13,13 +13,16 @@
                             <table class="table table-hover">
                                 <thead class="">
                                     <th>
-                                        Num participant
+                                        Num candidat
                                     </th>
                                     <th>
                                         Nom
                                     </th>
                                     <th>
                                         prenom
+                                    </th>
+                                    <th>
+                                        telephone
                                     </th>
                                     <th>
                                         email
@@ -30,53 +33,53 @@
                                     <th>
                                         code_postale
                                     </th>
-                                    <th>
-                                        raison_sociale
-                                    </th>
-                                    <th>
-                                        code_TVA
-                                    </th>
+
                                     <th>
                                         Ville
+                                    </th>
+                                    <th>
+                                        Etats
                                     </th>
                                     <th>
                                         Action
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let part of participants">
+                                    <tr *ngFor="let candit of candidats">
                                         <td>
-                                            {{part.id_participant}}
+                                            {{candit.id_candidat}}
                                         </td>
                                         <td>
-                                            {{part.nom_participant}}
+                                            {{candit.nom_candidat}}
                                         </td>
                                         <td>
-                                            {{part.prenom_participant}}
+                                            {{candit.prenom_candidat}}
                                         </td>
                                         <td>
-                                            {{part.email_participant}}
+                                            {{candit.telephone}}
                                         </td>
                                         <td>
-                                            {{part.adresse}}
+                                            {{candit.email}}
                                         </td>
                                         <td>
-                                            {{part.code_postale}}
+                                            {{candit.adresse}}
                                         </td>
                                         <td>
-                                            {{part.raison_sociale}}
-                                        </td>
-                                        <td>
-                                            {{part.code_TVA}}
-                                        </td>
-                                        <td>
-                                            {{part.Ville}}
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-primary" (click)="Accepter(expo.id_exposant)">Accepter</button>
-                                            <button class="btn btn-danger" (click)="Refuser(expo.id_exposant)">Refuser</button>
+                                            {{candit.code_postale}}
                                         </td>
 
+                                        <td>
+                                            {{candit.Ville}}
+                                        </td>
+                                        <td>
+                                            {{candit.Etats}}
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-primary" (click)="Accepter(candit.id_candidat)">Accepter</button>
+                                            <button class="btn btn-danger" (click)="Refuser(candit.id_candidat)">Refuser</button>
+                                            <button class="btn btn-danger" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
+                                        </td>
+                                    </tr>
 
                                 </tbody>
                             </table>
