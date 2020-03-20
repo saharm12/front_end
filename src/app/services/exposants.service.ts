@@ -32,6 +32,13 @@ BASE_URL='http://localhost:3000/exposant' ;
       'x-access-token':token 
     }}); 
   }
+  
+  deletexposant(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.delete(this.BASE_URL+'/deletexpsants/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
 
   
 }

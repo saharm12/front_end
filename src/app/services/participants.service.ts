@@ -33,14 +33,13 @@ export class ParticipantService {
     return this.http.put(this.BASE_URL+'/refuserparticipant/'+id,{headers:{
       'x-access-token':token 
     }}); 
+
+    
   }
 
-deletcandidat(id) {
-    let token = localStorage.getItem('token'); 
-    return this.http.put(this.BASE_URL+'/deletcandidat/'+id,{headers:{
-      'x-access-token':token 
-    }}); 
-  }
+  
+
+
 
 
 BASE_URL='http://localhost:3000/participant' ; 
@@ -53,7 +52,13 @@ BASE_URL='http://localhost:3000/participant' ;
       'x-access-token':token 
     }}); 
   }
-
+  
+  deleteparticipant(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.delete(this.BASE_URL+'/deleteparticipant/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
   
 
   

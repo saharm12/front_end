@@ -20,6 +20,7 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule
+  
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
@@ -37,7 +38,6 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MaterialModule, 
     MyDatePickerModule, 
     FormsModule,
-    
     ReactiveFormsModule
   ],
   declarations: [
@@ -51,6 +51,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     NotificationsComponent,
     UpgradeComponent,
     CandidatsComponent
+    
   ]
 })
 

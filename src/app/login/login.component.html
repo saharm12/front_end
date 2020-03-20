@@ -4,15 +4,18 @@
         <img src="assets/img/iceberg.jpg" />
         <div class="form-group">
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Email" [(ngModel)]="mail" name="email">
+                <input matInput placeholder="Email" required [(ngModel)]="mail" name="email">
             </mat-form-field>
-            <!-- <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-            <div *ngIf="f.username.errors.required">Ce champ est obligatoir</div>
-        </div> -->
+
+
+            <div *ngIf="submitted && f.Email.errors" class="alert alert-danger alert-dismissible fade show">
+                <div *ngIf="f.Email.errors.required">Ce champ est obligatoire</div>
+            </div>
+
         </div>
         <div class="form-group">
             <mat-form-field class="example-full-width">
-                <input matInput placeholder="Mot de passe" [(ngModel)]="psw" name="mdp" type="password">
+                <input matInput placeholder="Mot de passe" required [(ngModel)]="psw" name="mdp" type="password">
             </mat-form-field>
             <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Ce champ est obligatoir</div>

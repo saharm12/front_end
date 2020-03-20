@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
-import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule } from '@angular/material';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule, MatFormFieldModule, MatNativeDateModule, MatInputModule, MatPaginatorModule ,MatTableModule} from '@angular/material';
+
 @NgModule({
   imports: [
     MatDatepickerModule,
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+    MatPaginatorModule,
+    MatPaginatorModule,
+
+    
    
   ],
   exports: [
@@ -14,6 +18,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatNativeDateModule,
     MatInputModule,
+    MatPaginatorModule,
+
    
   ],
   providers: [ MatDatepickerModule ],

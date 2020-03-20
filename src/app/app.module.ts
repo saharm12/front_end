@@ -33,9 +33,12 @@ import { AuthService } from './services/auth.service';
 import { CandidatService } from './services/candidats.service';
 import { ExposantService } from './services/exposants.service';
 import { ParticipantService } from './services/participants.service';
+import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 @NgModule({
   imports: [
-   
+   ConfirmationPopoverModule.forRoot({
+     confirmButtonType: 'danger'
+   }),
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,

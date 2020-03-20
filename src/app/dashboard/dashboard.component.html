@@ -45,11 +45,40 @@
                                         <td>
                                             <button class="btn btn-success" (click)="Accepter(expo.id_exposant)">Accepter</button>
                                             <button class="btn btn-warning" (click)="Refuser(expo.id_exposant)">Refuser</button>
-                                            <button class="btn btn-danger" (click)="Supprimer(expo.id_exposant)">Supprimer</button>
+                                            <!-- Button trigger modal -->
+
+
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(expo.id_exposant)">Suupprimer  </button>
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLongTitle">Suppression!??</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                  <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            Vous-voulez vraiment supprimer?
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                                            <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
                         </div>
                     </div>
                 </div>
@@ -57,53 +86,61 @@
         </div>
     </div>
 </div>
-
-<ng-template #content let-modal>
-    <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title">Ajouter Events</h4>
-        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Suppression!??</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <ng-template #content let-modal>
+                <div class="modal-header">
+                    <h4 class="modal-title" id="modal-basic-title">Ajouter Events</h4>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                 <span aria-hidden="true">&times;</span>
               </button>
-    </div>
-    <div class="modal-body">
+                </div>
+                <div class="modal-body">
 
-        <div class="row">
-            <div class="col-md-auto">
-                <label for="title"> Titre </label>
-                <br>
-                <input type="text" id="title" [(ngModel)]="title">
-            </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label for="title"> Titre </label>
+                            <br>
+                            <input type="text" id="title" [(ngModel)]="title">
+                        </div>
 
-        </div>
+                    </div>
 
-        <div class="row">
-            <div class="col-md-auto">
-                <label> Description</label>
-                <br>
-                <textarea [(ngModel)]="desc"> </textarea>
-            </div>
+                    <div class="row">
+                        <div class="col-md-auto">
+                            <label> Description</label>
+                            <br>
+                            <textarea [(ngModel)]="desc"> </textarea>
+                        </div>
 
-        </div>
-        <div class="row">
-            <div class="col">
-                <label> Date Debut </label>
-                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_debut" required></my-date-picker>
-            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label> Date Debut </label>
+                            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_debut" required></my-date-picker>
+                        </div>
 
-        </div>
-        <div class="row">
-            <div class="col">
-                <label> Date Fin </label>
-                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_fin" required></my-date-picker>
-            </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label> Date Fin </label>
+                            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="date_fin" required></my-date-picker>
+                        </div>
 
-        </div>
-
-
+                    </div>
 
 
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-outline-dark" (click)="AddEvent()">Save</button>
-    </div>
-</ng-template>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark" (click)="AddEvent()">Save</button>
+                </div>
+            </ng-template>

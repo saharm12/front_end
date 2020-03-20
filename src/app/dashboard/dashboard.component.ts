@@ -3,6 +3,8 @@ import * as Chartist from 'chartist';
 import { NgbModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { ExposantService } from 'app/services/exposants.service';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +15,8 @@ export class DashboardComponent implements OnInit {
   stringValue; 
   evnt:any=[]; 
   exposants= []; 
- 
+  dataSource = new MatTableDataSource(this.exposants);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
     model:any ;
     dateOfBirth:string ;  
     title:string ; 
@@ -80,7 +83,8 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
      
-      this.getExposants(); 
+      this.getExposants();
+      this.dataSource.paginator = this.paginator; 
 
    
   }
@@ -98,6 +102,7 @@ export class DashboardComponent implements OnInit {
      this.exposants= result.exposant; 
    })
  }
+ 
 AddEvent()
 { let user_id =localStorage.getItem('id'); 
   let token = localStorage.getItem('token'); 
@@ -151,4 +156,16 @@ Reservation(event)
   })
 }
 
+Supprimer(id) 
+{
+  console.log('id', id);
+  this.expoService.deletexposant(id).subscribe(data=>{
+    let result :any = data; 
+    if(result)
+    {
+      this.exposants = this.exposants.filter(c => c.id_exposant !== id );
+    }
+  })
 }
+}
+
