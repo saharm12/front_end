@@ -22,4 +22,5 @@ describe('CandidatsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  
 });

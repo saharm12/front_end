@@ -1,7 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CandidatService } from 'app/services/candidats.service';
-import { identifierModuleUrl } from '@angular/compiler';
+import { CandidatService,  } from 'app/services/candidats.service';
+  import {PageEvent} from '@angular/material/paginator';
+  import {MatTableModule, MatSort} from '@angular/material';
+
+
 
 @Component({
   selector: 'app-candidats',
@@ -10,15 +13,22 @@ import { identifierModuleUrl } from '@angular/compiler';
 })
 export class CandidatsComponent implements OnInit {
   candidats= []; //local
-  
+  p: number = 1;
 
-  constructor(private http:HttpClient ,private candiService:CandidatService ) { }
+
+  constructor(private http:HttpClient ,private candiService:CandidatService ) { 
+  
+ 
+  }
+  
+  @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
     this.getcandidat(); 
+
   
   }
-
+ 
   getcandidat()
   { 
     {
@@ -42,7 +52,17 @@ Accepter(id)
 }
  
 
-  
+Refuser (id){
+
+  this.candiService.refuserCandidat(id).subscribe(data=>{
+    let result :any = data; 
+    if(result)
+    {
+      this.getcandidat() ; 
+    }
+  })
+
+}
 
 
 

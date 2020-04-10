@@ -49,6 +49,12 @@ BASE_URL='http://localhost:3000/candidat' ;
       'x-access-token':token 
     }}); 
   }
-
   
-}
+  refuserCandidat(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/refusercandidat/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
+  
+  
+}}

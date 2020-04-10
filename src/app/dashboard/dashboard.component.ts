@@ -81,6 +81,8 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+
+    
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
      
       this.getExposants();
@@ -158,6 +160,7 @@ Reservation(event)
 
 Supprimer(id) 
 {
+  //this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?').then((confirmed) => console.log('User confirmed:', confirmed)).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   console.log('id', id);
   this.expoService.deletexposant(id).subscribe(data=>{
     let result :any = data; 
@@ -166,6 +169,29 @@ Supprimer(id)
       this.exposants = this.exposants.filter(c => c.id_exposant !== id );
     }
   })
+}
+
+Accepter(id)
+{
+  this.expoService.acceptExposant(id).subscribe(data=>{
+    let result : any = data ; 
+    if(result)
+    {
+      this.getExposants() ; 
+    }
+  })
+}
+Refuser (id){
+  
+
+  this.expoService.refuserExposant(id).subscribe(data=>{
+    let result :any = data; 
+    if(result)
+    {
+      this.getExposants() ; 
+    }
+  })
+
 }
 }
 

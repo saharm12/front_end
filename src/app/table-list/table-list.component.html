@@ -8,7 +8,9 @@
                         <h4 class="card-title mt-0"> Liste des Participants disponibles</h4>
                     </div>
 
-                    <div class="card-body">
+                    <input class="form-control form-control-sm mr-3 w-75" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" />
+
+                    <div class="example-container mat-elevation-z8">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="">
@@ -37,17 +39,15 @@
                                         code_TVA
                                     </th>
                                     <th>
-                                        Ville
+                                        ville
                                     </th>
-                                    <th>
-                                        Etats
-                                    </th>
+
                                     <th>
                                         Action
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let part of participants">
+                                    <tr *ngFor="let part of participants | filter:searchText">
                                         <td>
                                             {{part.id_participant}}
                                         </td>
@@ -73,17 +73,14 @@
                                             {{part.code_TVA}}
                                         </td>
                                         <td>
-                                            {{part.Ville}}
+                                            {{part.ville}}
                                         </td>
+
                                         <td>
-                                            Accepter
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-success" (click)="Accepter(part.id_participant)">Accepter</button>
-                                            <button class="btn btn-warning" (click)="Refuser(part.id_participant)">Refuser</button>
+
                                             <!-- Button trigger modal -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(condit.id_candidat)">
-                                                Suupprimer  </button>
+                                            <button mat-fab color="primary" type="button" class="" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(part.id_participant)">
+                                                <i class="material-icons">delete</i>  </button>
 
 
 
@@ -102,7 +99,7 @@
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                            <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
+                                                            <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(part.id_participant)">Supprimer</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -195,7 +192,7 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
+        <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(part.id_participant)">Supprimer</button>
         <button type="button" class="btn btn-outline-dark" (click)="AddEvent()">Save</button>
     </div>
 

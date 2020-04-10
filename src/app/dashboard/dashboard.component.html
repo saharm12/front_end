@@ -8,47 +8,99 @@
                         <h4 class="card-title mt-0"> Liste des Exposants disponibles</h4>
                     </div>
 
-                    <div class="card-body">
+                    <input class="form-control form-control-sm mr-3 w-75" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" />
+
+                    <div class="example-container mat-elevation-z8">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="">
                                     <th>
-                                        Num Expo
+                                        Num Exposant
                                     </th>
                                     <th>
                                         Nom
                                     </th>
                                     <th>
-                                        Date début
+                                        Prenom
                                     </th>
                                     <th>
-                                        date fin
+                                        email
                                     </th>
+                                    <th>
+                                        Telephone
+                                    </th>
+                                    <th>
+                                        raison_sociale
+                                    </th>
+                                    <th>
+                                        adresse
+                                    </th>
+                                    <th>
+                                        code_postale
+                                    </th>
+                                    <th>
+                                        ville
+                                    </th>
+                                    <th>
+                                        pays
+                                    </th>
+                                    <th>
+                                        Mobile
+                                    </th>
+                                    <th>
+                                        code_TVA
+                                    </th>
+
                                     <th>
                                         Action
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let expo of exposants">
+                                    <tr *ngFor="let expo of exposants | filter:searchText">
                                         <td>
                                             {{expo.id_exposant}}
                                         </td>
                                         <td>
                                             {{expo.nom_exposant}}
                                         </td>
+
                                         <td>
-                                            {{expo.id_exposant}}
+                                            {{expo.prenom_exposant}}
                                         </td>
                                         <td>
-                                            {{expo.id_exposant}}
+                                            {{expo.email_exposant}}
                                         </td>
                                         <td>
-                                            <button class="btn btn-success" (click)="Accepter(expo.id_exposant)">Accepter</button>
-                                            <button class="btn btn-warning" (click)="Refuser(expo.id_exposant)">Refuser</button>
+                                            {{expo.telephone}}
+                                        </td>
+                                        <td>
+                                            {{expo.raison_sociale}}
+                                        </td>
+                                        <td>
+                                            {{expo.adresse}}
+                                        </td>
+                                        <td>
+                                            {{expo.code_postale}}
+                                        </td>
+                                        <td>
+                                            {{expo.ville}}
+                                        </td>
+                                        <td>
+                                            {{expo.pays}}
+                                        </td>
+                                        <td>
+                                            {{expo.Mobile}}
+                                        </td>
+                                        <td>
+                                            {{expo.code_TVA}}
+                                        </td>
+
+                                        <td>
+
                                             <!-- Button trigger modal -->
 
 
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(expo.id_exposant)">Suupprimer  </button>
+                                            <button mat-fab color="primary" type="button" class="" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(expo.id_exposant)"> <i class="material-icons"> delete </i>  </button>
                                             <!-- Modal -->
                                             <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
@@ -65,7 +117,7 @@
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                            <button class="btn btn-danger " data-togle="modal" data-target="delete" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
+                                                            <button class="btn btn-raised btn-primary " data-togle="modal" data-target="delete" (click)="Supprimer(expo.id_exposant)">Supprimer</button>
                                                         </div>
                                                     </div>
                                                 </div>

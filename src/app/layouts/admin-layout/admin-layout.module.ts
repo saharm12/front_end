@@ -12,6 +12,15 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { MyDatePickerModule } from 'mydatepicker';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPaginationModule} from 'ngx-pagination';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
+import { MatSortModule  } from '@angular/material';
+
+
+
+
 
 import {
   MatButtonModule,
@@ -19,26 +28,32 @@ import {
   MatRippleModule,
   MatFormFieldModule,
   MatTooltipModule,
-  MatSelectModule
+  MatSelectModule,
   
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
 @NgModule({
   imports: [
+
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
     MatRippleModule,
     MatFormFieldModule,
+    MatSortModule,
     MatInputModule,
+    NgxPaginationModule,
     MatSelectModule,
+    MatPaginatorModule ,
+    MatTableModule,
     MatTooltipModule,
+    Ng2SearchPipeModule,
     MaterialModule, 
     MyDatePickerModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   declarations: [
     
@@ -50,7 +65,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
-    CandidatsComponent
+    CandidatsComponent,
     
   ]
 })

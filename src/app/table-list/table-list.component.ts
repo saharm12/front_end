@@ -10,6 +10,7 @@ import { ParticipantService } from 'app/services/participants.service';
 export class TableListComponent implements OnInit {
   participants= []; //local
   users:any=[]; 
+
   dataSource = new MatTableDataSource(this.participants);
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor( private http:HttpClient ,private partService:ParticipantService) { }
@@ -30,7 +31,7 @@ export class TableListComponent implements OnInit {
   }
 
 } 
-deleteparticipant(id) 
+Supprimer(id) 
 {
   console.log('id', id);
   this.partService.deleteparticipant(id).subscribe(data=>{

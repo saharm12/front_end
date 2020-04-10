@@ -1,10 +1,16 @@
 <div class="jumbotron d-flex justify-content-center">
     <form class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
-        <h2 class="mx-auto">Connexion</h2>
+        <div class="mx-auto" style="width: 200px;">
+            <h2 class="mx-auto">Connexion</h2>
+        </div>
+
         <img src="assets/img/iceberg.jpg" />
+
         <div class="form-group">
             <mat-form-field class="example-full-width">
+
                 <input matInput placeholder="Email" required [(ngModel)]="mail" name="email">
+                <i class="material-icons">email</i>
             </mat-form-field>
 
 
@@ -16,6 +22,7 @@
         <div class="form-group">
             <mat-form-field class="example-full-width">
                 <input matInput placeholder="Mot de passe" required [(ngModel)]="psw" name="mdp" type="password">
+                <i class="material-icons">lock</i>
             </mat-form-field>
             <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Ce champ est obligatoir</div>

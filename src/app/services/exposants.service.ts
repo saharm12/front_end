@@ -35,10 +35,31 @@ BASE_URL='http://localhost:3000/exposant' ;
   
   deletexposant(id) {
     let token = localStorage.getItem('token'); 
-    return this.http.delete(this.BASE_URL+'/deletexpsants/'+id,{headers:{
+    return this.http.delete(this.BASE_URL+'/deletexposants/'+id,{headers:{
       'x-access-token':token 
     }}); 
   }
 
+
+  acceptExposant(id) {
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/acceptexposant/'+id,{headers:{
+      'x-access-token':token 
+    }}); 
   
+}
+
+refuserExposant(id) {
+  let token = localStorage.getItem('token'); 
+  return this.http.put(this.BASE_URL+'/refuserexposant/'+id,{headers:{
+    'x-access-token':token 
+  }}); 
+
+
+
+
+
+
+
+}
 }

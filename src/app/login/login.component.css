@@ -1,0 +1,16 @@
+.col-lg-3 {
+    background-color: white;
+    padding: 3%;
+    margin-top: 3%;
+    border-radius: 1.5rem;
+    width: 300%;
+    height: 300%;
+}
+
+.jumbotron {
+    background: -webkit-linear-gradient(left, #0072ff, #00c6ff);
+}
+
+.btn-success {
+    border-radius: 100px;
+}
