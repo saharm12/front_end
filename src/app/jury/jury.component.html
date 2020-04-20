@@ -1,0 +1,116 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Liste des jurys disponibles
+
+                            <button mat-raised-button (click)="onCreate()">
+                      Ajouter
+                      <i class="fa fa-plus" aria-hidden="true"></i> 
+                         </button>
+                        </h4>
+
+                    </div>
+
+
+                    <div class="example-container mat-elevation-z8">
+                        <div class="table-responsive">
+
+
+
+
+                            <div class="table-responsive-xl">
+
+                                <table class="table table-hover">
+                                    <thead class="">
+                                        <tr>
+                                            <th>
+                                                Id
+                                            </th>
+                                            <th>
+                                                Nom
+                                            </th>
+                                            <th>
+                                                prenom
+                                            </th>
+
+                                            <th>
+                                                Profil
+                                            </th>
+
+                                            <th>
+                                                Pays
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let ju of jurys ">
+
+                                            <td>
+                                                {{ju.id_jury}}
+                                            </td>
+
+                                            <td>
+                                                {{ju.nom_jury}}
+                                            </td>
+                                            <td>
+                                                {{ju.prenom_jury}}
+                                            </td>
+                                            <td>
+                                                {{ju.profil_jury}}
+                                            </td>
+                                            <td>
+                                                {{ju.pays}}
+                                            </td>
+                                            <td>
+                                                <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
+                                                <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                </button>
+                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Voulez-vous vraiment supprimer?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                                                                <button class="btn btn-raised btn-primary " data-togle="modal" data-target="delete" (click)="Supp(ju.id_jury)">Oui</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </td>
+
+
+
+
+                                        </tr>
+
+                                    </tbody>
+
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -9,7 +9,10 @@ import { MapsComponent } from '../../maps/maps.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
-
+import { SpeakerComponent } from 'app/speaker/speaker.component';
+import { JuryComponent } from 'app/jury/jury.component';
+import { LaureatComponent } from 'app/laureat/laureat.component';
+import { JuryListComponent } from 'app/jury-list/jury-list.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -62,5 +65,12 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     {path:'candidats' ,component:CandidatsComponent},
+    {path:'speaker' , component:SpeakerComponent},
+ {path:'laureat' , component:LaureatComponent},
+   
+    {path:'jury' , component:JuryComponent},
+    {path:'jury-list' , component:JuryListComponent},
+   
+   
 
 ];

@@ -19,7 +19,10 @@ import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule  } from '@angular/material';
 
 
-
+import { SpeakerComponent } from '../../speaker/speaker.component';
+import { LaureatComponent } from '../../laureat/laureat.component';
+import { JuryComponent } from '../../jury/jury.component';
+import { JuryListComponent} from '../../jury-list/jury-list.component';
 
 
 import {
@@ -29,13 +32,13 @@ import {
   MatFormFieldModule,
   MatTooltipModule,
   MatSelectModule,
-  
+
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
+
 @NgModule({
   imports: [
-
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
@@ -54,6 +57,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
+    
   ],
   declarations: [
     
@@ -66,7 +70,11 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     NotificationsComponent,
     UpgradeComponent,
     CandidatsComponent,
-    
+    SpeakerComponent,
+    JuryComponent,
+    LaureatComponent,
+    JuryListComponent,
+
   ]
 })
 
