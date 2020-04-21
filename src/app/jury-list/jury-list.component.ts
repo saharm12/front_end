@@ -19,12 +19,14 @@ export class JuryListComponent implements OnInit {
   ngOnInit() {
   }
 
+
   resetForm(){
     
   }
 
   onClose(){
     this.dialogbox.close();
+  
   }
 
   onSubmit(){
@@ -32,11 +34,11 @@ export class JuryListComponent implements OnInit {
       let result :any = data; 
       if(result)
       {
-        
+        alert("jury Ajouter avec succes");
         console.log("ok");
       }
     })
    
   }
-
+  
 }

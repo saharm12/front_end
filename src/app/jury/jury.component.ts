@@ -3,6 +3,9 @@ import {MatDialog , MatDialogConfig,MatSort} from "@angular/material"
 import { LaureatComponent } from 'app/laureat/laureat.component';
 import { JuryListComponent } from 'app/jury-list/jury-list.component';
 import { JuryService  } from 'app/services/jury.service';
+import { EditjuryComponent } from 'app/editjury/editjury.component';
+import { Jury} from 'app/jury-list/jury-list.model';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 
 @Component({
@@ -12,11 +15,16 @@ import { JuryService  } from 'app/services/jury.service';
 })
 export class JuryComponent implements OnInit {
   jurys=[];
-  constructor(private juryService:JuryService ,private dialog: MatDialog ) { }
+  juryModel :Jury;
+
+  constructor( private juryService:JuryService ,private dialog: MatDialog ) { 
+    this.juryModel = new Jury();
+  
+  }
 
   ngOnInit() {
     this.getjury(); 
-
+    
   }
  onCreate(){
    
@@ -42,9 +50,21 @@ Supp(id){
   this.juryService.SuppJu(id).subscribe(data=>{
     let result :any = data; 
     if(result)
-    {
+    { 
       this.jurys = this.jurys.filter(c => c.id_jury !== id );
     }
   })
 }
+open(jury){
+  const dialogConfig = new MatDialogConfig();
+
+   
+   dialogConfig.disableClose =  true;
+   dialogConfig.autoFocus = true;
+   dialogConfig.width = "60%";
+   dialogConfig.data={info:jury}
+   this.dialog.open(EditjuryComponent, dialogConfig);
+   
+}
+
 }

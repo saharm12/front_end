@@ -44,5 +44,11 @@ export class JuryService {
       'x-access-token':token 
     }}); 
   }
+ ModifJu(id){
+  let token = localStorage.getItem('token'); 
+  return this.http.put(this.BASE_URL+'/Updatejuries/'+id,{headers:{
+    'x-access-token':token 
+  }}); 
 
+ }
 }

@@ -34,6 +34,7 @@ import { CandidatService } from './services/candidats.service';
 import { ExposantService } from './services/exposants.service';
 import { ParticipantService } from './services/participants.service';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+
 @NgModule({
   imports: [
    ConfirmationPopoverModule.forRoot({
@@ -42,6 +43,8 @@ import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
+    
+
     HttpClientModule,
     ComponentsModule,
     RouterModule,

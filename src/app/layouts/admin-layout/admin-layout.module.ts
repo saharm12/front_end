@@ -23,7 +23,7 @@ import { SpeakerComponent } from '../../speaker/speaker.component';
 import { LaureatComponent } from '../../laureat/laureat.component';
 import { JuryComponent } from '../../jury/jury.component';
 import { JuryListComponent} from '../../jury-list/jury-list.component';
-
+import {EditjuryComponent} from '../../editjury/editjury.component';
 
 import {
   MatButtonModule,
@@ -57,7 +57,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
-    
+   
   ],
   declarations: [
     
@@ -74,6 +74,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     JuryComponent,
     LaureatComponent,
     JuryListComponent,
+    EditjuryComponent,
 
   ]
 })
