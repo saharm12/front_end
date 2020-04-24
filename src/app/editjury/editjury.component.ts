@@ -13,8 +13,10 @@ export class EditjuryComponent implements OnInit {
 
   juryModel :Jury;
   jurys=[];
+  
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
-    this.juryModel = new Jury();
+    
   }
 
   ngOnInit() {
@@ -23,24 +25,45 @@ export class EditjuryComponent implements OnInit {
     console.log(user);
     this.juryModel = Object.assign({},user);
     console.log("form ",this.juryModel);
-   
-  
+    
+    //this.editForm = this.formBuilder.group({
+      //id: [''],
+     // username: ['', Validators.required],
+     // firstName: ['', Validators.required],
+     // lastName: ['', Validators.required],
+     // pays: ['', Validators.required],
+    //});
+  // this.getjury();
+
   }
   resetForm(){}
+  
   onClose(){
-    console.log("form en close ",this.juryModel);
+    //console.log("form en close ",this.juryModel);
     this.dialogbox.close();
+    //this.ngOnInit();
   
   }
-  onSubmit(id){
-    console.log('id', id);
-  this.juryService.ModifJu(id).subscribe(data=>{
-    let result :any = data; 
-    if(result)
-    {
-      console.log("OK");
-    }
-  })
-  }
+  getjury()
+  { 
+   {
+     this.juryService.getjury().subscribe(data=>{
+       let result:any = data; 
+       console.log(result.membre_jury); 
+       this.jurys= result.membre_jury; 
+     })
+ }
+ } 
 
+
+  Update(){
+    console.log('modified jury',this.juryModel)
+    this.juryService.ModifJury(this.juryModel).subscribe(data => {
+        let result : any = data; 
+        if(result)
+        { 
+          console.log("ok");
+        }
+      })
+  }
 }

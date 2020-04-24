@@ -5,8 +5,10 @@
 </button>
 </div>
 <div style="overflow: auto; height: 450px;">
-    <form #projectForm="ngForm" (ngSubmit)="onSubmit() " novalidate>
+    <form #projectForm="ngForm" (ngSubmit)="Update() " novalidate>
         <div class="mt-4 input-group">
+
+
             <div class="input-group-prepend">
                 <span class="input-group-text"> Nom jury</span>
             </div>
@@ -36,7 +38,7 @@
 
             <input required minlength="2" type="text" class="form-control" name="pays_jury" [(ngModel)]="juryModel.pays">
         </div>
-        <button (click)="onSubmit()" type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
         <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
        
     </button>

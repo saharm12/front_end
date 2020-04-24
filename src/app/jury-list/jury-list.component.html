@@ -1,5 +1,6 @@
 <div class="d-flex justify-content-between">
     <h4> Ajouter un nouveau jury</h4>
+    <i class="material-icons">close</i>
     <button mat-button (click)="onClose()"> 
       <i class="material-icons">close</i>
   </button>
@@ -36,7 +37,7 @@
 
             <input required minlength="2" type="text" class="form-control" name="pays_jury" [(ngModel)]="juryModel.pays">
         </div>
-        <button (click)="onSubmit()" type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
           <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
          
       </button>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http' ;
 import { Jury} from 'app/jury-list/jury-list.model'
-
+import {Subject, Observable}  from 'rxjs';
 
 
 export interface Jurie{
@@ -11,7 +11,7 @@ export interface Jurie{
   profil_jury;
   pays;
 }
- 
+
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export interface Jurie{
 export class JuryService {
   
   BASE_URL='http://localhost:3000/jurie' ; 
-
+  
   constructor(private http:HttpClient) { }
  
   getjury()
@@ -44,11 +44,11 @@ export class JuryService {
       'x-access-token':token 
     }}); 
   }
- ModifJu(id){
+  
+ ModifJury( j : Jury ){
   let token = localStorage.getItem('token'); 
-  return this.http.put(this.BASE_URL+'/Updatejuries/'+id,{headers:{
-    'x-access-token':token 
-  }}); 
+  return this.http.put(this.BASE_URL+'/UpdateMembre/'+ j.id_jury,j);
 
  }
+
 }

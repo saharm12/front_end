@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {MatDialog , MatDialogConfig,MatSort} from "@angular/material"
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {MatDialog , MatDialogConfig,MatSort, MatTableDataSource} from "@angular/material"
 import { LaureatComponent } from 'app/laureat/laureat.component';
 import { JuryListComponent } from 'app/jury-list/jury-list.component';
 import { JuryService  } from 'app/services/jury.service';
@@ -19,11 +19,15 @@ export class JuryComponent implements OnInit {
 
   constructor( private juryService:JuryService ,private dialog: MatDialog ) { 
     this.juryModel = new Jury();
+   
   
   }
+  
 
   ngOnInit() {
     this.getjury(); 
+
+    
     
   }
  onCreate(){
@@ -51,7 +55,7 @@ Supp(id){
     let result :any = data; 
     if(result)
     { 
-      this.jurys = this.jurys.filter(c => c.id_jury !== id );
+      this.jurys = this.jurys.filter(u => u.id_jury !== id );
     }
   })
 }

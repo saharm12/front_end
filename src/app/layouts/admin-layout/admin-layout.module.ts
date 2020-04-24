@@ -17,8 +17,6 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import { MatSortModule  } from '@angular/material';
-
-
 import { SpeakerComponent } from '../../speaker/speaker.component';
 import { LaureatComponent } from '../../laureat/laureat.component';
 import { JuryComponent } from '../../jury/jury.component';
@@ -57,7 +55,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
-   
+    
   ],
   declarations: [
     
@@ -75,6 +73,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     LaureatComponent,
     JuryListComponent,
     EditjuryComponent,
+
 
   ]
 })

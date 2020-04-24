@@ -5,6 +5,9 @@ import { JuryService  } from 'app/services/jury.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Jury} from './jury-list.model'
+import { Validators } from '@angular/forms';
+
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-jury-list',
@@ -13,30 +16,32 @@ import { Jury} from './jury-list.model'
 })
 export class JuryListComponent implements OnInit {
   juryModel :Jury;
+  jurys=[];
+
   constructor( private http:HttpClient ,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
 { this.juryModel = new Jury(); }
 
   ngOnInit() {
   }
 
-
-  resetForm(){
-    
-  }
+  
+  
 
   onClose(){
     this.dialogbox.close();
+    
   
   }
 
-  onSubmit(){
+  onSubmit(id){
     this.juryService.Postjury(this.juryModel.nom_jury, this.juryModel.prenom_jury, this.juryModel.profil_jury, this.juryModel.pays).subscribe(data=>{
       let result :any = data; 
       if(result)
       {
-        alert("jury Ajouter avec succes");
-        console.log("ok");
+        
+        alert("Jury Ajouter avec succees");
       }
+      
     })
    
   }
