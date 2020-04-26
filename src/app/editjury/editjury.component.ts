@@ -26,14 +26,7 @@ export class EditjuryComponent implements OnInit {
     this.juryModel = Object.assign({},user);
     console.log("form ",this.juryModel);
     
-    //this.editForm = this.formBuilder.group({
-      //id: [''],
-     // username: ['', Validators.required],
-     // firstName: ['', Validators.required],
-     // lastName: ['', Validators.required],
-     // pays: ['', Validators.required],
-    //});
-  // this.getjury();
+    
 
   }
   resetForm(){}

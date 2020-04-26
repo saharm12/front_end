@@ -22,7 +22,8 @@ import { LaureatComponent } from '../../laureat/laureat.component';
 import { JuryComponent } from '../../jury/jury.component';
 import { JuryListComponent} from '../../jury-list/jury-list.component';
 import {EditjuryComponent} from '../../editjury/editjury.component';
-
+import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.component';
+import {EditSpeakerComponent} from '../../edit-speaker/edit-speaker.component';
 import {
   MatButtonModule,
   MatInputModule,
@@ -34,10 +35,11 @@ import {
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
-
 @NgModule({
   imports: [
     CommonModule,
+  
+
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
@@ -55,7 +57,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
-    
+  
   ],
   declarations: [
     
@@ -73,7 +75,8 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     LaureatComponent,
     JuryListComponent,
     EditjuryComponent,
-
+    AddspeakerComponent,
+    EditSpeakerComponent,
 
   ]
 })

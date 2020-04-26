@@ -1,0 +1,55 @@
+<div class="d-flex justify-content-between">
+    <h4> Modifier les informations de speaker</h4>
+    <button mat-button (click)="onClose()"> 
+  <i class="material-icons">close</i>
+</button>
+</div>
+<div style="overflow: auto; height: 450px;">
+    <form #projectForm="ngForm" (ngSubmit)="UpdateNewSpeak() " novalidate>
+        <div class="mt-4 input-group">
+
+
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Nom speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="nom_speaker" [(ngModel)]="speakerModel.nom_speakers">
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Prenom speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="prenom_speaker" [(ngModel)]="speakerModel.prenom_speakers">
+        </div>
+
+
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Profil speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="profil_speaker" [(ngModel)]="speakerModel.profil_speakers">
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Pays speaker </span>
+            </div>
+
+            <input required minlength="2" type="text" class="form-control" name="pays_speaker " [(ngModel)]="speakerModel.pays">
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
+     
+  </button>
+
+
+        <button type="button" (click)="resetForm()"> Annuler</button>
+
+
+
+
+
+
+    </form>
+</div>

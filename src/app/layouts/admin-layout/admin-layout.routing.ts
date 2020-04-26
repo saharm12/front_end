@@ -13,6 +13,7 @@ import { SpeakerComponent } from 'app/speaker/speaker.component';
 import { JuryComponent } from 'app/jury/jury.component';
 import { LaureatComponent } from 'app/laureat/laureat.component';
 import { JuryListComponent } from 'app/jury-list/jury-list.component';
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',

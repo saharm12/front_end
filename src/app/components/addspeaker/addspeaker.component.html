@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-between">
+    <h4> Ajouter un nouveau Speaker</h4>
+    <button mat-button (click)="onClose()"> 
+    <i class="material-icons">close</i>
+</button>
+</div>
+<div style="overflow: auto; height: 450px;">
+    <form #projectForm="ngForm" (ngSubmit)="onSubmit() " novalidate>
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Nom Speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="nom_speakers" [(ngModel)]="speakermodel.nom_speakers">
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Prenom Speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="prenom_speakers" [(ngModel)]="speakermodel.prenom_speakers">
+        </div>
+
+
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> Profil Speaker</span>
+            </div>
+            <input required minlength="2" type="text" class="form-control" name="profil Speaker" [(ngModel)]="speakermodel.profil_speakers">
+        </div>
+
+        <div class="mt-4 input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"> pays</span>
+            </div>
+
+            <input required minlength="2" type="text" class="form-control" name="pays" [(ngModel)]="speakermodel.pays">
+        </div>
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
+           
+    </button>
