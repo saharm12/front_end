@@ -51,7 +51,7 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr *ngFor="let ju of jurys ">
+                                        <tr *ngFor="let ju of jurys | paginate: { itemsPerPage: 7, currentPage: p } ">
 
                                             <td>
                                                 {{ju.id_jury}}
@@ -107,7 +107,7 @@
 
 
                                 </table>
-
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
                             </div>
                         </div>
                     </div>

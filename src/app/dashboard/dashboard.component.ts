@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   stringValue; 
   evnt:any=[]; 
   exposants= []; 
+  p: number = 1;
   dataSource = new MatTableDataSource(this.exposants);
   @ViewChild(MatPaginator) paginator: MatPaginator;
     model:any ;

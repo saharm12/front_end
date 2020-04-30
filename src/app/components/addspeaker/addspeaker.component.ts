@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {Speaker} from './addspeaker.model'
 import { HttpClient } from '@angular/common/http';
 import { MatDialogRef} from '@angular/material';
 import {SpeakersService  } from 'app/services/speakers.service';
+import {MatSnackBar} from'@angular/material';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-addspeaker',
@@ -11,29 +13,55 @@ import {SpeakersService  } from 'app/services/speakers.service';
 })
 export class AddspeakerComponent implements OnInit {
 speakermodel : Speaker;
-  constructor(private http:HttpClient, private speakersservices:SpeakersService,public dialogbox: MatDialogRef<AddspeakerComponent>) {
+speake= []; 
+
+  constructor(private snackBar : MatSnackBar,private http:HttpClient, private speakersservices:SpeakersService,public dialogbox: MatDialogRef<AddspeakerComponent>) {
     this.speakermodel = new Speaker();
    }
 
+   @ViewChild(NgForm) ngForm: NgForm;
+
   ngOnInit() {
+    this.getSpeak();
   }
   onClose(){
     this.dialogbox.close();
-    
+
   
   }
-
-  onSubmit(id){
+  
+  onSubmit(){
     this.speakersservices.PostSpeaker(this.speakermodel.nom_speakers, this.speakermodel.prenom_speakers, this.speakermodel.profil_speakers, this.speakermodel.pays).subscribe(data=>{
       let result :any = data; 
       if(result)
       {
+        //.location.reload();
+        this.snackBar.open("Speaker Ajouter avec succées",'OK', {
+          duration: 3000,
+          panelClass: ['green-snackbar']
+        });    
+         
         
-        alert("Speaker Ajouter avec succees");
       }
       
     })
-   
+
+  
+
   }
+  
+  getSpeak()
+  { 
+    {
+      this.speakersservices.getSpeaker().subscribe(data=>{
+        let result:any = data; 
+        console.log(result.speakers); 
+        this.speake = result.speakers; 
+      })
+  }
+} 
+resetForm(){
+ this.ngForm.resetForm();
+}
 
 }

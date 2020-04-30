@@ -10,6 +10,7 @@ import { ParticipantService } from 'app/services/participants.service';
 export class TableListComponent implements OnInit {
   participants= []; //local
   users:any=[]; 
+  p: number = 1;
 
   dataSource = new MatTableDataSource(this.participants);
   @ViewChild(MatPaginator) paginator: MatPaginator;

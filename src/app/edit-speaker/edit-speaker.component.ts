@@ -1,5 +1,7 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject,ViewChild } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
+import {MatSnackBar} from'@angular/material';
+import { NgForm } from '@angular/forms'
 
 import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -14,8 +16,9 @@ export class EditSpeakerComponent implements OnInit {
 speakerModel: Speaker ;
 
 speake= []; 
-constructor(@Inject(MAT_DIALOG_DATA) public data: any ,public dialogbox: MatDialogRef<EditSpeakerComponent>, private speakersservices:SpeakersService) 
+constructor(@Inject(MAT_DIALOG_DATA) public data: any, private snackBar : MatSnackBar,public dialogbox: MatDialogRef<EditSpeakerComponent>, private speakersservices:SpeakersService) 
 { }
+@ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
     console.log(this.data)
@@ -25,7 +28,9 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: any ,public dialogbox: MatDial
     console.log("form ",this.speakerModel);
   }
 
-resetForm(){}
+resetForm(){
+  this.onClose();
+}
 
 onClose(){
   //console.log("form en close ",this.juryModel);
@@ -45,15 +50,19 @@ getSpeak()
 } 
 
 
-UpdateNewSpeak(){
+ModifierSpeak(){
   console.log('modified speaker',this.speakerModel)
-  this.speakersservices.ModifierSpeakers(this.speakerModel).subscribe(data => {
+  this.speakersservices.putspeak(this.speakerModel).subscribe(data => {
       let result : any = data; 
       if(result)
-      { 
-        console.log("ok");
+      {
+        this.snackBar.open("Modification bien enregistrer ",'OK', {
+          duration: 7000,
+          panelClass: ['green-snackbar']
+        });    
       }
     })
 }
+ 
 
 }

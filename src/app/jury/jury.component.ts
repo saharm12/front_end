@@ -16,6 +16,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 export class JuryComponent implements OnInit {
   jurys=[];
   juryModel :Jury;
+  p: number = 1;
 
   constructor( private juryService:JuryService ,private dialog: MatDialog ) { 
     this.juryModel = new Jury();

@@ -63,7 +63,7 @@
                                     </thead>
 
                                     <tbody>
-                                        <tr *ngFor="let candit of candidats | filter:searchText">
+                                        <tr *ngFor="let candit of candidats | filter:searchText | paginate: { itemsPerPage: 7, currentPage: p }">
 
                                             <td>
                                                 {{candit.id_candidat}}
@@ -128,6 +128,7 @@
                                     </tbody>
 
                                 </table>
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
                             </div>
                         </div>
                     </div>

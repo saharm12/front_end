@@ -56,7 +56,7 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let expo of exposants | filter:searchText">
+                                    <tr *ngFor="let expo of exposants | filter:searchText | paginate: { itemsPerPage: 7, currentPage: p }">
                                         <td>
                                             {{expo.id_exposant}}
                                         </td>
@@ -130,7 +130,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
                         </div>
                     </div>
                 </div>

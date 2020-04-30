@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog , MatDialogConfig,MatSort, MatTableDataSource} from "@angular/material"
+import {MatDialog , MatDialogConfig,MatSort, MatTableDataSource,MatDialogRef} from "@angular/material"
 import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.component';
 import {SpeakersService  } from 'app/services/speakers.service';
 import {EditSpeakerComponent} from '../edit-speaker/edit-speaker.component';
@@ -12,7 +12,7 @@ import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 })
 export class SpeakerComponent implements OnInit {
   speake= []; 
-
+  p: number = 1;
   constructor(private speakersservices:SpeakersService,private dialog: MatDialog ) {
 
    }
@@ -27,10 +27,11 @@ export class SpeakerComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     this.dialog.open(AddspeakerComponent, dialogConfig);
+    
   }
   getSpeak()
   { 
-    {
+    {   
       this.speakersservices.getSpeaker().subscribe(data=>{
         let result:any = data; 
         console.log(result.speakers); 

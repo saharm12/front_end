@@ -6,6 +6,8 @@ import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Jury} from './jury-list.model'
 import { Validators } from '@angular/forms';
+import {MatSnackBar} from'@angular/material';
+import {  ViewChild} from '@angular/core';
 
 import { Title } from '@angular/platform-browser';
 
@@ -18,8 +20,9 @@ export class JuryListComponent implements OnInit {
   juryModel :Jury;
   jurys=[];
 
-  constructor( private http:HttpClient ,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
+  constructor( private http:HttpClient ,private snackBar : MatSnackBar,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
 { this.juryModel = new Jury(); }
+@ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
   }
@@ -39,11 +42,16 @@ export class JuryListComponent implements OnInit {
       if(result)
       {
         
-        alert("Jury Ajouter avec succees");
+        this.snackBar.open("Jury ajouter avec succées",'OK', {
+          duration: 7000,
+          panelClass: ['green-snackbar']
+        }); 
       }
       
     })
    
   }
-  
+  resetForm(){
+    this.ngForm.resetForm();
+  }
 }

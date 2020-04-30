@@ -1,8 +1,10 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import { Component, OnInit,Inject,ViewChild } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
 import { JuryService  } from 'app/services/jury.service';
 import { Jury} from 'app/jury-list/jury-list.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatSnackBar} from'@angular/material';
+import { NgForm } from '@angular/forms'
 
 @Component({
   selector: 'app-editjury',
@@ -15,9 +17,10 @@ export class EditjuryComponent implements OnInit {
   jurys=[];
   
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private snackBar : MatSnackBar,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
     
   }
+  @ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
     console.log(this.data)
@@ -29,7 +32,10 @@ export class EditjuryComponent implements OnInit {
     
 
   }
-  resetForm(){}
+  resetForm(){
+    this.onClose();
+
+  }
   
   onClose(){
     //console.log("form en close ",this.juryModel);
@@ -55,7 +61,10 @@ export class EditjuryComponent implements OnInit {
         let result : any = data; 
         if(result)
         { 
-          console.log("ok");
+          this.snackBar.open("Modification bien enregistrer",'OK', {
+            duration: 7000,
+            panelClass: ['green-snackbar']
+          }); 
         }
       })
   }

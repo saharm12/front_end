@@ -24,6 +24,8 @@ import { JuryListComponent} from '../../jury-list/jury-list.component';
 import {EditjuryComponent} from '../../editjury/editjury.component';
 import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.component';
 import {EditSpeakerComponent} from '../../edit-speaker/edit-speaker.component';
+import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.component'
+
 import {
   MatButtonModule,
   MatInputModule,
@@ -39,7 +41,6 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
   imports: [
     CommonModule,
   
-
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
@@ -57,7 +58,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
-  
+   
   ],
   declarations: [
     
@@ -77,7 +78,8 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     EditjuryComponent,
     AddspeakerComponent,
     EditSpeakerComponent,
-
+    AddlaureatComponent,
+    
   ]
 })
 

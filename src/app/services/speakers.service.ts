@@ -39,8 +39,11 @@ export class SpeakersService {
       'x-access-token':token 
     }});
   }
-  ModifierSpeakers(sp:Speaker){
-     let token =localStorage.getItem('token');
-     return this.http.put(this.BASE_URL+'/GetNewUp/'+sp.id_speakers,sp); 
-   }
+
+  
+  putspeak( sp : Speaker){
+    let token = localStorage.getItem('token'); 
+    return this.http.put(this.BASE_URL+'/modifiers/'+ sp.id_speakers,sp);
+  
+  }
 }

@@ -47,7 +47,7 @@
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let part of participants | filter:searchText">
+                                    <tr *ngFor="let part of participants | filter:searchText | paginate: { itemsPerPage: 7, currentPage: p }">
                                         <td>
                                             {{part.id_participant}}
                                         </td>
@@ -112,7 +112,7 @@
 
                                 </tbody>
                             </table>
-                            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+                            <pagination-controls (pageChange)="p = $event"></pagination-controls>
                         </div>
                     </div>
                 </div>

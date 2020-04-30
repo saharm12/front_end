@@ -1,0 +1,14 @@
+<div class="d-flex justify-content-between">
+    <h4> Ajouter un nouveau Laureats</h4>
+    <button mat-button (click)="onClose()"> 
+    <i class="material-icons">close</i>
+</button>
+</div>
+
+<div>
+    <label> image</label>
+    <input type="file" id="image" (change)="onSelectedFile($event)" [(ngModel)]="laureatModel.image" />
+</div>
+<div>
+    <button type="submit" (click)="Ajouter()" class="btn btn-primary"> ajouter</button>
+</div>
