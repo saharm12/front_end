@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatDialog , MatDialogConfig,MatSort, MatTableDataSource} from "@angular/material"
 import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.component'
 import {LaureatService} from 'app/services/laureat.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-laureat',
@@ -11,8 +12,9 @@ import {LaureatService} from 'app/services/laureat.service';
 export class LaureatComponent implements OnInit {
  lauts= []; 
  p: number = 1;
+ imageUrl = null;
 
-  constructor(private laureatservice:LaureatService ,private dialog: MatDialog) { }
+  constructor(  public _DomSanitizationService: DomSanitizer,private laureatservice:LaureatService ,private dialog: MatDialog) { }
 
   ngOnInit() {
     this.getLaureat()
@@ -23,7 +25,9 @@ export class LaureatComponent implements OnInit {
     dialogConfig.disableClose =  true;
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
-    this.dialog.open(AddlaureatComponent, dialogConfig);
+    this.dialog.open(AddlaureatComponent, dialogConfig).afterClosed().subscribe(result => {
+      this.getLaureat();
+    });
   }
 
   getLaureat()
@@ -33,6 +37,8 @@ export class LaureatComponent implements OnInit {
         let result:any = data; 
         console.log(result.laureats); 
         this.lauts = result.laureats; 
+        
+
       })
   }
 } 

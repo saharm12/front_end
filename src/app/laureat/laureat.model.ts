@@ -1,3 +1,3 @@
 export class Laureat {
-    image : Blob;
+    image : string;
  }

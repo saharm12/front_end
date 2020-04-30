@@ -34,13 +34,13 @@ speake= [];
     this.speakersservices.PostSpeaker(this.speakermodel.nom_speakers, this.speakermodel.prenom_speakers, this.speakermodel.profil_speakers, this.speakermodel.pays).subscribe(data=>{
       let result :any = data; 
       if(result)
-      {
+      { 
+        
         //.location.reload();
         this.snackBar.open("Speaker Ajouter avec succées",'OK', {
           duration: 3000,
           panelClass: ['green-snackbar']
-        });    
-         
+        })
         
       }
       
@@ -62,6 +62,7 @@ speake= [];
 } 
 resetForm(){
  this.ngForm.resetForm();
+ 
 }
 
 }
