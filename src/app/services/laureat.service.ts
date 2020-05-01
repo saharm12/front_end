@@ -23,7 +23,7 @@ export class LaureatService {
   }
   getLaureat()
   { let token = localStorage.getItem('token'); 
-    return this.http.get(this.BASE_URL+'/GetLau',{headers:{
+    return this.http.get(this.BASE_URL+'/GetLaureat',{headers:{
       'x-access-token':token 
     }}); 
   }

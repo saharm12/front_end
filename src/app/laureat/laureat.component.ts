@@ -18,7 +18,7 @@ export class LaureatComponent implements OnInit {
 
   ngOnInit() {
     this.getLaureat()
-
+   
   }
   OpenNewLaureat(){
     const dialogConfig = new MatDialogConfig();
