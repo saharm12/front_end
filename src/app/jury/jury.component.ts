@@ -37,7 +37,9 @@ export class JuryComponent implements OnInit {
    dialogConfig.disableClose =  true;
    dialogConfig.autoFocus = true;
    dialogConfig.width = "60%";
-   this.dialog.open(JuryListComponent, dialogConfig);
+   this.dialog.open(JuryListComponent, dialogConfig).afterClosed().subscribe(result => {
+    this.getjury();
+  });
  }
  getjury()
  { 
@@ -68,7 +70,9 @@ open(jury){
    dialogConfig.autoFocus = true;
    dialogConfig.width = "60%";
    dialogConfig.data={info:jury}
-   this.dialog.open(EditjuryComponent, dialogConfig);
+   this.dialog.open(EditjuryComponent, dialogConfig).afterClosed().subscribe(result => {
+    this.getjury();
+  });
    
 }
 

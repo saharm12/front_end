@@ -34,6 +34,7 @@ import { CandidatService } from './services/candidats.service';
 import { ExposantService } from './services/exposants.service';
 import { ParticipantService } from './services/participants.service';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
+import {LaureatService} from './services/laureat.service';
 @NgModule({
   imports: [
    ConfirmationPopoverModule.forRoot({
@@ -42,7 +43,6 @@ import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    
     HttpClientModule,
     ComponentsModule,
     RouterModule,
@@ -61,7 +61,7 @@ import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
     EvenementComponent,
 
   ],
-  providers: [AuthService,CandidatService,ExposantService,ParticipantService],
+  providers: [LaureatService,AuthService,CandidatService,ExposantService,ParticipantService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

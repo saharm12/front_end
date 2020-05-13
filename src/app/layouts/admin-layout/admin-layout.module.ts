@@ -25,6 +25,9 @@ import {EditjuryComponent} from '../../editjury/editjury.component';
 import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.component';
 import {EditSpeakerComponent} from '../../edit-speaker/edit-speaker.component';
 import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.component'
+import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
+import {DetailsExpoComponent} from '../../details-expo/details-expo.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 import {
   MatButtonModule,
@@ -58,7 +61,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MyDatePickerModule, 
     FormsModule,
     ReactiveFormsModule,
-   
+    FileUploadModule
   ],
   declarations: [
     
@@ -79,7 +82,8 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     AddspeakerComponent,
     EditSpeakerComponent,
     AddlaureatComponent,
-    
+    AddlautComponent,
+    DetailsExpoComponent
   ]
 })
 

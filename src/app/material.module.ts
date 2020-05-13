@@ -6,7 +6,8 @@ import {JuryListComponent} from './jury-list/jury-list.component';
 import { EditjuryComponent } from './editjury/editjury.component';
 import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.component';
 import {EditSpeakerComponent} from './edit-speaker/edit-speaker.component';
-import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.component'
+import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
+import {DetailsExpoComponent} from './details-expo/details-expo.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.componen
    
   ],
   providers: [ MatDatepickerModule ],
-  entryComponents:[JuryListComponent,EditjuryComponent,AddspeakerComponent,EditSpeakerComponent,AddlaureatComponent ]
+  entryComponents:[DetailsExpoComponent,JuryListComponent,EditjuryComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent]
 })
 
 export class MaterialModule {}

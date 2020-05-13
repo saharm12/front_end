@@ -62,4 +62,10 @@ refuserExposant(id) {
 
 
 }
+getexposantBy()
+  { let id = localStorage.getItem('id'); 
+    let token = localStorage.getItem('token'); 
+   return  this.http.get(this.BASE_URL+'/'+id,{headers:{'x-access-token':token}}) 
+  }
+
 }

@@ -3,7 +3,9 @@ import * as Chartist from 'chartist';
 import { NgbModal, NgbDatepicker } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient } from '@angular/common/http';
 import { ExposantService } from 'app/services/exposants.service';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource ,MatDialogConfig} from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import {DetailsExpoComponent} from '../details-expo/details-expo.component';
 
 
 @Component({
@@ -17,14 +19,16 @@ export class DashboardComponent implements OnInit {
   exposants= []; 
   p: number = 1;
   dataSource = new MatTableDataSource(this.exposants);
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
     model:any ;
     dateOfBirth:string ;  
     title:string ; 
     desc:string ; 
     date_debut:any ; 
     date_fin:any;
-  constructor( private modalService: NgbModal , private htpp:HttpClient , private expoService:ExposantService) { }
+  constructor( private dialog: MatDialog,private modalService: NgbModal , private htpp:HttpClient , private expoService:ExposantService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -194,5 +198,23 @@ Refuser (id){
   })
 
 }
+
+
+openListExpo(idExposant){
+console.log("ok",idExposant);
+var exposantConsulted = this.exposants.filter(c => c.id_exposant == idExposant );
+console.log("exposantConsulted",exposantConsulted[0]);
+const dialogConfig = new MatDialogConfig();
+   dialogConfig.disableClose =  true;
+   dialogConfig.autoFocus = true;
+   dialogConfig.width = "20%";
+   dialogConfig.data={info:exposantConsulted[0]};
+   this.dialog.open(DetailsExpoComponent, dialogConfig);
+
+ }
+
+
+ 
+
 }
 

@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http' ;
 import {Laureat} from 'app/laureat/laureat.model';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 export interface Laureats{
     image;
@@ -14,18 +16,21 @@ export class LaureatService {
 
   constructor(private http:HttpClient) { }
 
-  PostLaureat(image)
-  { let token = localStorage.getItem('token'); 
+ PostLaureat(image)
+  { 
+    
+    let token = localStorage.getItem('token'); 
     return this.http.post(this.BASE_URL+'/ajouter',{
-      'image':image,
+     'image':image,
 
     }); 
   }
-  getLaureat()
+ getLaureat( )
   { let token = localStorage.getItem('token'); 
-    return this.http.get(this.BASE_URL+'/GetLaureat',{headers:{
-      'x-access-token':token 
+    return this.http.get(this.BASE_URL+'/GetLaureat',{headers: {   
+     'x-access-token':token 
     }}); 
   }
+
   
 }
