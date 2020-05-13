@@ -207,7 +207,8 @@ console.log("exposantConsulted",exposantConsulted[0]);
 const dialogConfig = new MatDialogConfig();
    dialogConfig.disableClose =  true;
    dialogConfig.autoFocus = true;
-   dialogConfig.width = "20%";
+   dialogConfig.width = "350px";
+   dialogConfig.height ="500px"
    dialogConfig.data={info:exposantConsulted[0]};
    this.dialog.open(DetailsExpoComponent, dialogConfig);
 

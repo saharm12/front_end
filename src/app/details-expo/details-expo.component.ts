@@ -20,7 +20,10 @@ export class DetailsExpoComponent implements OnInit {
   // this.exposants = Object.assign({},expo);
     
   }
+  onClose(){
+    this.dialogbox.close();
+  
+  }
 
 
- 
 }
