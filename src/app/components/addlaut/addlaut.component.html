@@ -10,10 +10,10 @@
         <div>
             <label>Image</label>
 
-            <input name="image" formControlName="image" type="file" (change)="uploadFile($event)">
+            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
         </div>
         <div class="form-group">
-            <button class="btn btn-danger btn-block btn-lg">Create</button>
+            <button class="btn btn-danger " [disabled]="!uploader.getNotUploadedItems().length">Create</button>
         </div>
     </form>
 </div>

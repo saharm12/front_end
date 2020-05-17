@@ -42,7 +42,7 @@
                                         <tr *ngFor="let lau of lauts | paginate: { itemsPerPage: 7, currentPage: p } ">
 
                                             <td>
-                                                {{lau.image}}
+                                                <img *ngIf="lau.image!=null" src="{{base_url}}{{lau.image}}" style="width: 80px;height: auto;">
                                             </td>
 
                                             <td>

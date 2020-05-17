@@ -12,6 +12,7 @@ import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
 export class LaureatComponent implements OnInit {
  lauts= []; 
  p: number = 1;
+ base_url="http://localhost:3000"
  imageUrl = null;
   constructor(  private http:HttpClient, private laureatservice:LaureatService ,private dialog: MatDialog) { }
 

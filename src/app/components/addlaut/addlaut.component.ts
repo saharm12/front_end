@@ -1,11 +1,11 @@
-import { Component, OnInit ,ViewChild} from '@angular/core';
+import { Component, OnInit, ElementRef,ViewChild} from '@angular/core';
 import { MatDialogRef} from '@angular/material';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import {LaureatService} from 'app/services/laureat.service';
 import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import{Laureat} from 'app/laureat/laureat.model';
-
+import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 @Component({
   selector: 'app-addlaut',
   templateUrl: './addlaut.component.html',
@@ -15,11 +15,29 @@ export class AddlautComponent implements OnInit {
   form: FormGroup;
   progress: number = 0;
 laureatModel : Laureat;
+public uploader:FileUploader ;
+imageURL="";
 
-  constructor(private laureatservice:LaureatService
+constructor(private laureatservice:LaureatService
 ,public dialogbox: MatDialogRef<AddlautComponent>, public fb: FormBuilder,) {
-  
-  
+  const authHeader: Array<{
+    name: string;
+    value: string;
+}> = [];
+
+const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+if (currentUser && currentUser.token) {
+  console.log("token",currentUser.token);
+    //authHeader.push({name: 'Authorization', value: 'Bearer ' + currentUser.token});
+}
+let token = localStorage.getItem('token');
+console.log("token",token);
+ authHeader.push({name: 'x-access-token', value: token});
+const uploadOptions = {headers : authHeader};
+
+this.uploader = new FileUploader({ url: 'http://localhost:3000/laureats/upload',itemAlias: 'photo'});
+this.uploader.setOptions(uploadOptions);
   
 
  }
@@ -29,7 +47,16 @@ laureatModel : Laureat;
 
 
  });
-  ngOnInit() { }
+  ngOnInit() { 
+    this.uploader.onAfterAddingFile = (file) => {
+      this.imageURL="/uploads/"+file.file.name;
+    
+      file.withCredentials = false; 
+     };
+     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      //console.log('ImageUpload:uploaded:', item, status, response);
+    };
+    }
 
 
   submitUser() {
@@ -39,7 +66,7 @@ laureatModel : Laureat;
   uploadFile(event) {
     if (event.target.files.length > 0) {
 
-      const file = event.target.files[0];
+     const file = event.target.files[0];
 
       this.myForm.patchValue({
 
@@ -47,10 +74,9 @@ laureatModel : Laureat;
 
       });
 
-    }
+  }}
   
-  }
- 
+  //}
 
   onClose(){
     this.dialogbox.close();
@@ -59,14 +85,16 @@ laureatModel : Laureat;
   addLaureat(){
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
-    this.laureatservice.PostLaureat(this.myForm.get('image').value).subscribe(data=>{
+   this.uploader.uploadAll();
+    this.laureatservice.PostLaureat(this.imageURL).subscribe(data=>{
       let result :any = data; 
       if(result)
       { 
-        
+        this.onClose();
         console.log("ok")
         
       }
     })
-  }
+   }
+   
 }

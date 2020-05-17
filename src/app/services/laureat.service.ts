@@ -16,12 +16,12 @@ export class LaureatService {
 
   constructor(private http:HttpClient) { }
 
- PostLaureat(image)
+ PostLaureat(imageURL)
   { 
     
     let token = localStorage.getItem('token'); 
     return this.http.post(this.BASE_URL+'/ajouter',{
-     'image':image,
+     'imageURL':imageURL,
 
     }); 
   }
@@ -31,6 +31,6 @@ export class LaureatService {
      'x-access-token':token 
     }}); 
   }
-
+  
   
 }
