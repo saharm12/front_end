@@ -17,13 +17,25 @@ export class AddlautComponent implements OnInit {
 laureatModel : Laureat;
 public uploader:FileUploader ;
 imageURL="";
+//listecategorie:any = ['best web site','best app mobile','best e-shop']
+//formm = new FormGroup({
+ // website: new FormControl('', Validators.required)
+//);
 
+//get f(){
+ // return this.form.controls;
+//}
+
+submit(){
+  console.log(this.form.value);
+}
 constructor(private laureatservice:LaureatService
 ,public dialogbox: MatDialogRef<AddlautComponent>, public fb: FormBuilder,) {
   const authHeader: Array<{
     name: string;
     value: string;
 }> = [];
+
 
 const currentUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -44,6 +56,7 @@ this.uploader.setOptions(uploadOptions);
 
  myForm = new FormGroup({  
   image: new FormControl('', [Validators.required]),
+  categorie: new FormControl('', [Validators.required]),
 
 
  });
@@ -86,7 +99,7 @@ this.uploader.setOptions(uploadOptions);
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
    this.uploader.uploadAll();
-    this.laureatservice.PostLaureat(this.imageURL).subscribe(data=>{
+    this.laureatservice.PostLaureat(this.imageURL ).subscribe(data=>{
       let result :any = data; 
       if(result)
       { 

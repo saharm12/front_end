@@ -22,6 +22,7 @@ export class LaureatService {
     let token = localStorage.getItem('token'); 
     return this.http.post(this.BASE_URL+'/ajouter',{
      'imageURL':imageURL,
+     
 
     }); 
   }

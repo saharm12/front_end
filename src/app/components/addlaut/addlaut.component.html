@@ -12,8 +12,25 @@
 
             <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
         </div>
-        <div class="form-group">
-            <button class="btn btn-danger " [disabled]="!uploader.getNotUploadedItems().length">Create</button>
+        <div>
+            <select class="form-control" formControlName="categorie">
+            <option disabled>Choisir catégorie</option>
+            <option> Best web site </option>
+            <option> Best  mobile app/advergame </option>
+            <option> Best  e-shop </option>
+            <option> Best digital compaign </option>
+            <option> Best   digital satrt up </option>
+            <option> Best  social media influencer</option>
+            <option> Best   SEO/SEA of the year </option>
+            <option> Jury awards </option>
+           <!-- <option *ngFor="let categorie of listecategorie ">{{categorie}}</option>-->
+        </select>
+        </div>
+        <!--  <div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
+            <div *ngIf="f.categorie.errors.required ">Name is required.</div>
+        </div>-->
+        <div class="form-group ">
+            <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
         </div>
     </form>
 </div>
