@@ -17,6 +17,8 @@ export class JuryComponent implements OnInit {
   jurys=[];
   juryModel :Jury;
   p: number = 1;
+  base_url="http://localhost:3000"
+ imageUrl = null;
 
   constructor( private juryService:JuryService ,private dialog: MatDialog ) { 
     this.juryModel = new Jury();

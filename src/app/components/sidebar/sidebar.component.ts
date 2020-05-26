@@ -14,6 +14,7 @@ export const ROUTES: RouteInfo[] = [
     {path: '/jury', title: 'Jurys', icon:'group' , class:''},
     {path: '/speaker', title: 'Speakers', icon:'record_voice_over' , class:''},
    {path: '/laureat', title: 'Lauréats', icon:'grade' , class:''},
+   { path: '/programme', title: 'Programme',  icon:'grade', class: '' },
     { path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
    
 

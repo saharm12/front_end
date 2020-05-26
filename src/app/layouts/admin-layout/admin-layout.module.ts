@@ -28,6 +28,10 @@ import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.componen
 import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
 import {DetailsExpoComponent} from '../../details-expo/details-expo.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import {ProgrammeComponent} from '../../programme/programme.component';
+import { CKEditorModule } from 'ng2-ckeditor';
+
+
 
 import {
   MatButtonModule,
@@ -43,7 +47,6 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
 @NgModule({
   imports: [
     CommonModule,
-  
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     MatButtonModule,
@@ -58,10 +61,11 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     MatTooltipModule,
     Ng2SearchPipeModule,
     MaterialModule, 
-    MyDatePickerModule, 
+    MyDatePickerModule,
+    CKEditorModule, 
     FormsModule,
     ReactiveFormsModule,
-    FileUploadModule
+    FileUploadModule,
   ],
   declarations: [
     
@@ -71,6 +75,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     TypographyComponent,
     IconsComponent,
     MapsComponent,
+    ProgrammeComponent,
     NotificationsComponent,
     UpgradeComponent,
     CandidatsComponent,

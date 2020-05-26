@@ -31,6 +31,9 @@
                                                 Id
                                             </th>
                                             <th>
+                                                image
+                                            </th>
+                                            <th>
                                                 Nom
                                             </th>
                                             <th>
@@ -56,7 +59,9 @@
                                             <td>
                                                 {{ju.id_jury}}
                                             </td>
-
+                                            <td>
+                                                <img *ngIf="ju.image!=null" src="{{base_url}}{{ju.image}}" style="width: 150px;height: 150px;">
+                                            </td>
                                             <td>
                                                 {{ju.nom_jury}}
                                             </td>

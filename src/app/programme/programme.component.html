@@ -1,0 +1,22 @@
+<div class="main-content">
+
+
+
+    <form role="form" #myForm="ngForm" (ngSubmit)="Ajouter()">
+
+
+        <input type="text" [(ngModel)]="progModel.dateretenir" placeholder="Enter Title" name="date " [(ngModel)]="date" />
+
+
+
+        <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
+            <ckeditor [(ngModel)]="progModel.detail" [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
+            </ckeditor>
+            <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.</div>
+        </div>
+        <button [disabled]="myForm.invalid" class="btn btn-primary">Enregistrer</button>
+
+    </form>
+
+
+</div>

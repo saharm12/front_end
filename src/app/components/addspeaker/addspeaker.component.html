@@ -4,39 +4,52 @@
     <i class="material-icons">close</i>
 </button>
 </div>
-<div style="overflow: auto; height: 450px;">
-    <form #projectForm="ngForm" (ngSubmit)="onSubmit() " novalidate>
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Nom Speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="nom_speakers" [(ngModel)]="speakermodel.nom_speakers">
-        </div>
 
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Prenom Speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="prenom_speakers" [(ngModel)]="speakermodel.prenom_speakers">
+<!--<div class="card">
+    <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addspeaker()">
+        <p class="h4 text-center py-4">Ajouter Speakers</p>
+
+        <div>
+            <label>Image</label>
+
+            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
         </div>
 
 
 
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Profil Speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="profil Speaker" [(ngModel)]="speakermodel.profil_speakers">
+
+        <div>
+            <label>Nom</label>
+
+            <input name="nom_speakers" formControlName="nom_speakers" type="text">
+
+        </div>
+        <div class="form-group col-md-6">
+            <label>Prenom</label>
+
+            <input name="prenom_speakers" formControlName="prenom_speakers" type="text">
         </div>
 
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> pays</span>
-            </div>
+        <div>
+            <label>Profil</label>
 
-            <input required minlength="2" type="text" class="form-control" name="pays" [(ngModel)]="speakermodel.pays">
+            <input name="profil_speakers" formControlName="profil_speakers" type="url" pattern="https?://.+">
         </div>
-        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
-        <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer </button>
+        <div>
+            <label>Pays</label>
 
-        <button type="button" (click)="resetForm()"> Annuler</button>
+            <input name="pays_speakers" formControlName="pays_speakers" type="text">
+        </div>
+
+
+        <div class="form-group ">
+            <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
+        </div>
+    </form>
+
+
+
+
+
+
+</div>-->

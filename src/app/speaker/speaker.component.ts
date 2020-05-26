@@ -13,6 +13,8 @@ import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 export class SpeakerComponent implements OnInit {
   speake= []; 
   p: number = 1;
+  base_url="http://localhost:3000"
+ imageUrl = null;
   constructor(private speakersservices:SpeakersService,private dialog: MatDialog ) {
 
    }

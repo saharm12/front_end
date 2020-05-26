@@ -15,6 +15,7 @@ export class AddlautComponent implements OnInit {
   form: FormGroup;
   progress: number = 0;
 laureatModel : Laureat;
+//creation du uploader
 public uploader:FileUploader ;
 imageURL="";
 //listecategorie:any = ['best web site','best app mobile','best e-shop']
@@ -36,18 +37,10 @@ constructor(private laureatservice:LaureatService
     value: string;
 }> = [];
 
-
-const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-
-if (currentUser && currentUser.token) {
-  console.log("token",currentUser.token);
-    //authHeader.push({name: 'Authorization', value: 'Bearer ' + currentUser.token});
-}
 let token = localStorage.getItem('token');
-console.log("token",token);
- authHeader.push({name: 'x-access-token', value: token});
+authHeader.push({name: 'x-access-token', value: token});
 const uploadOptions = {headers : authHeader};
-
+//adding uploader service url
 this.uploader = new FileUploader({ url: 'http://localhost:3000/laureats/upload',itemAlias: 'photo'});
 this.uploader.setOptions(uploadOptions);
   
@@ -63,12 +56,10 @@ this.uploader.setOptions(uploadOptions);
   ngOnInit() { 
     this.uploader.onAfterAddingFile = (file) => {
       this.imageURL="/uploads/"+file.file.name;
-    
       file.withCredentials = false; 
      };
-     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
-      //console.log('ImageUpload:uploaded:', item, status, response);
-    };
+     /*this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+    };*/
     }
 
 
@@ -99,7 +90,7 @@ this.uploader.setOptions(uploadOptions);
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
    this.uploader.uploadAll();
-    this.laureatservice.PostLaureat(this.imageURL ).subscribe(data=>{
+    this.laureatservice.PostLaureat(this.imageURL, this.myForm.controls['categorie'].value ).subscribe(data=>{
       let result :any = data; 
       if(result)
       { 

@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
-import { FormBuilder } from '@angular/forms';
 import { JuryService  } from 'app/services/jury.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Jury} from './jury-list.model'
-import { Validators } from '@angular/forms';
+
 import {MatSnackBar} from'@angular/material';
 import {  ViewChild} from '@angular/core';
-
+import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
+import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -19,16 +19,59 @@ import { Title } from '@angular/platform-browser';
 export class JuryListComponent implements OnInit {
   juryModel :Jury;
   jurys=[];
-
+  public uploader:FileUploader ;
+imageURL="";
   constructor( private http:HttpClient ,private snackBar : MatSnackBar,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
-{ this.juryModel = new Jury(); }
+{ this.juryModel = new Jury();
+  const authHeader: Array<{
+    name: string;
+    value: string;
+}> = [];
+
+let token = localStorage.getItem('token');
+authHeader.push({name: 'x-access-token', value: token});
+const uploadOptions = {headers : authHeader};
+//adding uploader service url
+this.uploader = new FileUploader({ url: 'http://localhost:3000/jurie/upload',itemAlias: 'photo'});
+this.uploader.setOptions(uploadOptions);
+  
+
+ }
+
+ myForm = new FormGroup({  
+  image: new FormControl('', [Validators.required]),
+  nom_jury: new FormControl('', [Validators.required]),
+  prenom_jury: new FormControl('', [Validators.required]),
+  profil_jury: new FormControl('', [Validators.required]),
+  pays_jury: new FormControl('', [Validators.required]),
+
+
+
+
+
+
+ }); 
 @ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
-  }
+    this.uploader.onAfterAddingFile = (file) => {
+      this.imageURL="/uploads/"+file.file.name;
+      file.withCredentials = false; 
+     };}
+  
+  submitUser(){}
+  uploadFile(event) {
+    if (event.target.files.length > 0) {
 
-  
-  
+     const file = event.target.files[0];
+
+      this.myForm.patchValue({
+
+        fileSource: file
+
+      });
+
+  }}
 
   onClose(){
     this.dialogbox.close();
@@ -36,21 +79,24 @@ export class JuryListComponent implements OnInit {
   
   }
 
-  onSubmit(id){
-    this.juryService.Postjury(this.juryModel.nom_jury, this.juryModel.prenom_jury, this.juryModel.profil_jury, this.juryModel.pays).subscribe(data=>{
-      let result :any = data; 
-      if(result)
-      {
-        
-        this.snackBar.open("Jury ajouter avec succées",'OK', {
-          duration: 7000,
-          panelClass: ['green-snackbar']
-        }); 
-      }
+  
       
-    })
+    
+    addjury(){
+      this.uploader.uploadAll();
+      this.juryService.Postjury(this.imageURL,this.myForm.controls['nom_jury'].value , this.myForm.controls['prenom_jury'].value , this.myForm.controls['profil_jury'].value , this.myForm.controls['pays_jury'].value , ).subscribe(data=>{
+        let result :any = data; 
+        if(result)
+        { 
+          this.onClose();
+          console.log("ok")
+          
+        }
+      })
+     }
+    
    
-  }
+  
   resetForm(){
     this.ngForm.resetForm();
   }

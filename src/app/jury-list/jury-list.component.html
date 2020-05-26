@@ -5,50 +5,95 @@
       <i class="material-icons">close</i>
   </button>
 </div>
-<div style="overflow: auto; height: 450px;">
-    <form #projectForm="ngForm" (ngSubmit)="onSubmit() " novalidate>
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Nom jury</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="nom_jury" [(ngModel)]="juryModel.nom_jury">
+
+<!--<div style="overflow: auto; height: 450px;">
+<form #projectForm="ngForm" novalidate>
+
+
+    <div class="mt-4 input-group ">
+        <div class="input-group-prepend ">
+            <span class="input-group-text "> Nom jury</span>
+        </div>
+        <input required minlength="2 " type="text " class="form-control " name="nom_jury " [(ngModel)]="juryModel.nom_jury ">
+    </div>
+
+    <div class="mt-4 input-group ">
+        <div class="input-group-prepend ">
+            <span class="input-group-text "> Prenom jury</span>
+        </div>
+        <input required minlength="2 " type="text " class="form-control " name="prenom_jury " [(ngModel)]="juryModel.prenom_jury ">
+    </div>
+
+
+
+    <div class="mt-4 input-group ">
+        <div class="input-group-prepend ">
+            <span class="input-group-text "> Profil jury</span>
+        </div>
+        <input required minlength="2 " type="text " class="form-control " name="profil_jury " [(ngModel)]="juryModel.profil_jury ">
+    </div>
+
+    <div class="mt-4 input-group ">
+        <div class="input-group-prepend ">
+            <span class="input-group-text "> Pays jury</span>
         </div>
 
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Prenom jury</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="prenom_jury" [(ngModel)]="juryModel.prenom_jury">
-        </div>
-
-
-
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Profil jury</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="profil_jury" [(ngModel)]="juryModel.profil_jury">
-        </div>
-
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Pays jury</span>
-            </div>
-
-            <input required minlength="2" type="text" class="form-control" name="pays_jury" [(ngModel)]="juryModel.pays">
-        </div>
-        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
-          <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
+        <input required minlength="2 " type="text " class="form-control " name="pays_jury " [(ngModel)]="juryModel.pays ">
+    </div>
+    <button type="submit " class="btn btn-success " [disabled]="!projectForm.form.valid ">
+          <i class="fa fa-floppy-o " aria-hidden="true "></i> Enregistrer
          
       </button>
 
 
-        <button type="button" (click)="resetForm()"> Annuler</button>
+    <button type="button " (click)="resetForm() "> Annuler</button>
 
 
 
 
 
 
+</form>!-->
+<div class="container">
+    <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addjury()">
+        <div>
+            <label>Image</label>
+
+            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+        </div>
+        <div>
+
+            <!-- <option *ngFor="let categorie of listecategorie ">{{categorie}}</option>-->
+
+        </div>
+        <!--  <div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
+            <div *ngIf="f.categorie.errors.required ">Name is required.</div>
+        </div>-->
+        <div>
+            <label>Nom</label>
+
+
+            <input name="nom_jury" formControlName="nom_jury" type="text">
+        </div>
+        <div>
+            <label>Prenom</label>
+
+            <input name="prenom_jury" formControlName="prenom_jury" type="text">
+        </div>
+        <div>
+            <label>Profil</label>
+
+            <input name="profil_jury" formControlName="profil_jury" type="url" pattern="https?://.+">
+        </div>
+        <div>
+            <label>Pays</label>
+
+            <input name="pays_jury" formControlName="pays_jury" type="text">
+        </div>
+
+
+        <div class="form-group ">
+            <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
+        </div>
     </form>
 </div>

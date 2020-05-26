@@ -29,9 +29,10 @@ export class JuryService {
     }}); 
   }
  
-  Postjury(nom_jury, prenom_jury, profil_jury, pays)
+  Postjury( imageURL,nom_jury, prenom_jury, profil_jury, pays)
   { let token = localStorage.getItem('token'); 
     return this.http.post(this.BASE_URL+'/Addjurie',{
+      'imageURL':imageURL,
       'nom_jury':nom_jury,
       'prenom_jury': prenom_jury,
       'profil_jury': profil_jury,

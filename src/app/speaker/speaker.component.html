@@ -31,6 +31,9 @@
                                                 Id
                                             </th>
                                             <th>
+                                                image
+                                            </th>
+                                            <th>
                                                 Nom
                                             </th>
                                             <th>
@@ -55,6 +58,9 @@
 
                                             <td>
                                                 {{speak.id_speakers}}
+                                            </td>
+                                            <td>
+                                                <img *ngIf="speak.image!=null" src="{{base_url}}{{speak.image}}" style="width: 150px;height: 150px;">
                                             </td>
                                             <td>
                                                 {{speak.nom_speakers}}

@@ -29,6 +29,9 @@
                                             <th>
                                                 image
                                             </th>
+                                            <th>
+                                                categorie
+                                            </th>
 
 
 
@@ -42,7 +45,11 @@
                                         <tr *ngFor="let lau of lauts | paginate: { itemsPerPage: 7, currentPage: p } ">
 
                                             <td>
-                                                <img *ngIf="lau.image!=null" src="{{base_url}}{{lau.image}}" style="width: 80px;height: auto;">
+                                                <img *ngIf="lau.image!=null" src="{{base_url}}{{lau.image}}" style="width: 150px;height: 150px;">
+                                            </td>
+                                            <td>
+                                                {{lau.categorie}}
+
                                             </td>
 
                                             <td>
@@ -53,7 +60,7 @@
                                                     <div class="modal-dialog" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                   <span aria-hidden="true">&times;</span>
                                                               </button>
@@ -63,14 +70,12 @@
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                                                                <button class="btn btn-raised btn-primary " data-togle="modal" data-target="delete" (click)="Supp(speak.id_speakers)">Oui</button>
+                                                                <button class="btn btn-raised btn-primary " data-dismiss="modal" data-target="delete" (click)="Supp(lau.id_laureats)">Oui</button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button type="button" color="primary" class="" (click)="openEdit(speak)">
-                                              <i class="fa fa-pencil-square-o" aria-hidden="true" color="primary"></i>
-                                              </button>
+
                                             </td>
 
 

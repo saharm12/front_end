@@ -22,10 +22,11 @@ export class SpeakersService {
       'x-access-token':token 
     }}); 
   }
-  PostSpeaker(nom_speakers, prenom_speakers, profil_speakers, pays)
+  PostSpeaker( imageURL,nom_speakers, prenom_speakers, profil_speakers, pays)
 
   { let token = localStorage.getItem('token'); 
-    return this.http.post(this.BASE_URL+'/addspeaker',{
+    return this.http.post(this.BASE_URL+'/ajouter',{
+      'imageURL':imageURL,
       'nom_speakers':nom_speakers,
       'prenom_speakers': prenom_speakers,
       'profil_speakers': profil_speakers,

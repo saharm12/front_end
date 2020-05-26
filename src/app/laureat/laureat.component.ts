@@ -48,6 +48,18 @@ export class LaureatComponent implements OnInit {
       })
   }
 } 
+Supp(id){
+  console.log('id', id);
+  this.laureatservice.SuppLaut(id).subscribe(data=>{
+    let result :any = data; 
+    if(result)
+    { 
+      this.lauts = this.lauts.filter(c => c.id_laureats !== id );
+    }
+  })
+}
+
+
 
 
  

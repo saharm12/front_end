@@ -35,6 +35,7 @@ import { ExposantService } from './services/exposants.service';
 import { ParticipantService } from './services/participants.service';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {LaureatService} from './services/laureat.service';
+
 @NgModule({
   imports: [
    ConfirmationPopoverModule.forRoot({
@@ -46,6 +47,7 @@ import {LaureatService} from './services/laureat.service';
     HttpClientModule,
     ComponentsModule,
     RouterModule,
+    
     AppRoutingModule,
     AgmCoreModule.forRoot({
       apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
