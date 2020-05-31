@@ -1,0 +1,25 @@
+<div class="main-content">
+
+
+    <div>
+
+        <div *ngFor="let prog of programmes">
+
+            <h5 style="color:orange;text-align: center">{{prog.date_retenir}}</h5>
+
+            <hr style="color: blue;">
+
+            <span>     
+   
+                  <div style="color:hsl(0, 0%, 0%)" [innerHTML]="prog.details_programme"></div>    
+   
+                  </span>
+
+        </div>
+
+    </div>
+    <div>
+        <button class="btn btn-raised btn-primary " (click)="update(programmes)">Modifier</button>
+    </div>
+
+</div>

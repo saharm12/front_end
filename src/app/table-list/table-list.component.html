@@ -6,27 +6,40 @@
                 <div class="card card-plain">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title mt-0"> Liste des Participants disponibles</h4>
+
+
+
+
+
                     </div>
 
+
+
                     <input class="form-control form-control-sm mr-3 w-75" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="searchText" />
+
+
+
 
                     <div class="example-container mat-elevation-z8">
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead class="">
                                     <th>
-                                        Num participant
+                                        Identifiant
                                     </th>
                                     <th>
                                         Nom
                                     </th>
                                     <th>
-                                        prenom
+                                        Prénom
                                     </th>
                                     <th>
-                                        email
+                                        E-mail
                                     </th>
                                     <th>
+                                        Nombre de place réserver
+                                    </th>
+                                    <!-- <th>
                                         adresse
                                     </th>
                                     <th>
@@ -40,7 +53,7 @@
                                     </th>
                                     <th>
                                         ville
-                                    </th>
+                                    </th>-->
 
                                     <th>
                                         Action
@@ -60,7 +73,7 @@
                                         <td>
                                             {{part.email_participant}}
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             {{part.adresse}}
                                         </td>
                                         <td>
@@ -74,14 +87,19 @@
                                         </td>
                                         <td>
                                             {{part.ville}}
+                                        </td>-->
+
+
+                                        <td>
+                                            {{part.nbr_place_reserver}}
                                         </td>
 
                                         <td>
 
                                             <!-- Button trigger modal -->
-                                            <button mat-fab color="primary" type="button" class="" data-toggle="modal" data-target="#exampleModalLong">
-                                                <i class="material-icons">delete</i>  </button>
-
+                                            <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
+                                                <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                </button>
 
 
                                             <!-- Modal -->
@@ -104,6 +122,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <button type="button" color="primary" class="" (click)="openlistpart(part.id_participant)">
+                                                <i class=" fa fa-list-alt" aria-hidden="true" color="primary"></i>
+                                                </button>
 
                                         </td>
 

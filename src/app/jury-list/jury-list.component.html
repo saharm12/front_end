@@ -57,9 +57,11 @@
 <div class="container">
     <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addjury()">
         <div>
-            <label>Image</label>
+            <label class="col-sm-2 col-form-label">Image</label>
+            <div class="col-sm-10">
 
-            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+                <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+            </div>
         </div>
         <div>
 
@@ -69,26 +71,36 @@
         <!--  <div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
             <div *ngIf="f.categorie.errors.required ">Name is required.</div>
         </div>-->
-        <div>
-            <label>Nom</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Nom :</label>
+            <div class="col-sm-10">
 
-
-            <input name="nom_jury" formControlName="nom_jury" type="text">
+                <input name="nom_jury" formControlName="nom_jury" type="text">
+            </div>
         </div>
-        <div>
-            <label>Prenom</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Prenom :</label>
+            <div class="col-sm-10">
 
-            <input name="prenom_jury" formControlName="prenom_jury" type="text">
+                <input name="prenom_jury" formControlName="prenom_jury" type="text">
+            </div>
+
+
         </div>
-        <div>
-            <label>Profil</label>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Profil :</label>
+            <div class="col-sm-10">
 
-            <input name="profil_jury" formControlName="profil_jury" type="url" pattern="https?://.+">
+                <input name="profil_jury" formControlName="profil_jury" type="url" pattern="https?://.+">
+            </div>
         </div>
-        <div>
-            <label>Pays</label>
 
-            <input name="pays_jury" formControlName="pays_jury" type="text">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Pays :</label>
+            <div class="col-sm-10">
+
+                <input name="pays_jury" formControlName="pays_jury" type="text">
+            </div>
         </div>
 
 

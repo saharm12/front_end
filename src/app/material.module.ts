@@ -8,6 +8,10 @@ import {AddspeakerComponent } from 'app/components/addspeaker/addspeaker.compone
 import {EditSpeakerComponent} from './edit-speaker/edit-speaker.component';
 import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
 import {DetailsExpoComponent} from './details-expo/details-expo.component';
+import { DetailprogComponent } from './detailprog/detailprog.component';
+import {  EditprogComponent } from './editprog/editprog.component';
+import { DetaicanditComponent } from './detaicandit/detaicandit.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   imports: [
@@ -30,7 +34,7 @@ import {DetailsExpoComponent} from './details-expo/details-expo.component';
    
   ],
   providers: [ MatDatepickerModule ],
-  entryComponents:[DetailsExpoComponent,JuryListComponent,EditjuryComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent]
+  entryComponents:[EditprogComponent, DetailComponent,DetaicanditComponent,DetailsExpoComponent,JuryListComponent,EditjuryComponent,DetailprogComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent]
 })
 
 export class MaterialModule {}

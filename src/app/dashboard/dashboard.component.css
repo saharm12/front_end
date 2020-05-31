@@ -7,5 +7,9 @@
 }
 
 .fa-trash-o {
-    color: red;
+    color: #ff0000;
+}
+
+.fa-list-alt {
+    color: rgb(89, 89, 255);
 }

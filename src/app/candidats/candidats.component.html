@@ -27,24 +27,24 @@
                                     <thead class="">
                                         <tr>
                                             <th>
-                                                Num candidat
+                                                Identifiant
                                             </th>
                                             <th>
                                                 Nom
                                             </th>
                                             <th>
-                                                prenom
+                                                Prénom
                                             </th>
 
-                                            <th>
-                                                telephone
-                                            </th>
+                                            <!-- <th>
+                                                Télèphone
+                                            </th>-->
 
                                             <th>
-                                                email
+                                                E-mail
                                             </th>
 
-                                            <th>
+                                            <!--  <th>
                                                 adresse
                                             </th>
 
@@ -55,6 +55,19 @@
                                             <th>
                                                 Ville
                                             </th>
+                                            <th>
+                                                Nom société/agence
+                                            </th>
+                                            <th>
+                                                Site Web
+                                            </th>
+                                            <th>
+                                                Client/Fournisseur
+                                            </th>-->
+                                            <th>
+                                                Dossier de candidature
+                                            </th>
+
 
                                             <th>
                                                 Action
@@ -75,13 +88,13 @@
                                             <td>
                                                 {{candit.prenom_candidat}}
                                             </td>
-                                            <td>
+                                            <!--  <td>
                                                 {{candit.telephone}}
-                                            </td>
+                                            </td>-->
                                             <td>
                                                 {{candit.email}}
                                             </td>
-                                            <td>
+                                            <!--- <td>
                                                 {{candit.adresse}}
                                             </td>
                                             <td>
@@ -91,14 +104,26 @@
                                             <td>
                                                 {{candit.ville}}
                                             </td>
+                                            <td>
+                                                {{candit.nom-societe-agence}}
+                                            </td>
+                                            <td>
+                                                {{candit.site-web}}
+                                            </td>
+                                            <td>
+                                                {{candit.client-fournisseur}}
+                                            </td>-->
+                                            <td>
+                                                {{candit.dossier_candidature}}
+                                            </td>
 
                                             <td>
 
 
                                                 <!-- Button trigger modal -->
-                                                <button mat-fab color="primary" type="button" class="" data-toggle="modal" data-target="#exampleModalLong" (click)="Supprimer(condit.id_candidat)">
-                                                    <i class="material-icons">delete</i>
-                                                </button>
+                                                <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
+                                                    <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                    </button>
 
                                                 <!-- Modal -->
                                                 <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -126,7 +151,9 @@
                                                     </div>
 
                                                 </div>
-
+                                                <button type="button" color="primary" class="" (click)="openlistcan(candit.id_candidat)">
+                                                    <i class=" fa fa-list-alt" aria-hidden="true" color="primary"></i>
+                                                    </button>
 
                                             </td>
                                         </tr>

@@ -2,7 +2,13 @@ import { Component, OnInit , ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import { NgForm } from '@angular/forms';
 import { Programme} from './prog.model'
+
 import { ProgrammeService   } from 'app/services/programme.service';
+
+import { Router } from '@angular/router';
+
+
+
 
 @Component({
   selector: 'app-programme',
@@ -16,15 +22,19 @@ export class ProgrammeComponent implements OnInit {
   log: string = '';
   value : any;
  progModel :Programme;
+ programmes=[];  
 
   @ViewChild("myckeditor") ckeditor: any;
-  constructor(private progService:ProgrammeService  ) { 
+  constructor(private progService:ProgrammeService ,private router: Router ) { 
     this.mycontent = `<p>My html content</p>`;
     this.progModel = new Programme();
 
   }
   
   ngOnInit() {
+    this.Getcontent(),
+
+
     this.ckeConfig = {
       allowedContent: false,
       forcePasteAsPlainText: true,
@@ -61,14 +71,53 @@ export class ProgrammeComponent implements OnInit {
     let result :any = data; 
     if(result)
     { 
-     
+       this.Getcontent();
       console.log("ok")
       
     }
-  })
-  
+  })}
+  Getcontent(){
+    this.progService.Getcontent().subscribe(data=>{
+      let result:any = data; 
+      console.log(result.programme); 
+      this.programmes= result.programme; 
+    })
   }
 
+
+
+  
+  GetcontentById(id_programme:number)  
+
+  {  //this.progService.GetprogByid(id).subscribe(data=>{
+    //let result:any = data;
+    //console.log(result.programme); 
+
+  //})
+
+    this.router.navigate(['/Details'], { queryParams: { Id: id_programme } });  
+
+  }  
+
+
+
+
+
+
+  Supp(id){
+    console.log('id', id);
+    this.progService.supprog(id).subscribe(data=>{
+      let result :any = data; 
+      if(result)
+      {
+        this.programmes = this.programmes.filter(u => u.id_programme !== id );
+      }
+    })
   }
+     
+}   
+
+
+  
   
 

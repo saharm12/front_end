@@ -30,6 +30,10 @@ import {DetailsExpoComponent} from '../../details-expo/details-expo.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import {ProgrammeComponent} from '../../programme/programme.component';
 import { CKEditorModule } from 'ng2-ckeditor';
+import {DetailprogComponent} from '../../detailprog/detailprog.component';
+import {  EditprogComponent } from '../../editprog/editprog.component';
+import { DetailComponent } from '../../detail/detail.component';
+import { DetaicanditComponent } from '../../detaicandit/detaicandit.component';
 
 
 
@@ -68,7 +72,9 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     FileUploadModule,
   ],
   declarations: [
-    
+    EditprogComponent ,
+    DetailComponent ,
+    DetailprogComponent,
     DashboardComponent,
     UserProfileComponent,
     TableListComponent,
@@ -88,6 +94,7 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     EditSpeakerComponent,
     AddlaureatComponent,
     AddlautComponent,
+    DetaicanditComponent ,
     DetailsExpoComponent
   ]
 })

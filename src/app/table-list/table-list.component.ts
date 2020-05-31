@@ -1,7 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource ,MatDialogConfig} from '@angular/material';
 import { HttpClient } from '@angular/common/http';
 import { ParticipantService } from 'app/services/participants.service';
+import { MatDialog } from '@angular/material/dialog';
+import { DetailComponent } from 'app/detail/detail.component';
+
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
@@ -14,7 +17,7 @@ export class TableListComponent implements OnInit {
 
   dataSource = new MatTableDataSource(this.participants);
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor( private http:HttpClient ,private partService:ParticipantService) { }
+  constructor( private http:HttpClient ,private dialog: MatDialog,private partService:ParticipantService) { }
 
   ngOnInit() {
     this.getparticipant(); 
@@ -64,6 +67,19 @@ Refuser(id)
     }
   })
 }
+openlistpart(idparticipant){
+  console.log("ok",idparticipant);
+  var exposantConsulted = this.participants.filter(c => c.id_participant == idparticipant );
+  console.log("exposantConsulted",exposantConsulted[0]);
+  const dialogConfig = new MatDialogConfig();
+     dialogConfig.disableClose =  true;
+     dialogConfig.autoFocus = true;
+     dialogConfig.width = "350px";
+     dialogConfig.height ="600px"
+     dialogConfig.data={info:exposantConsulted[0]};
+     this.dialog.open(DetailComponent, dialogConfig);
+  
+   }
 
 
 

@@ -14,7 +14,7 @@ import { JuryComponent } from 'app/jury/jury.component';
 import { LaureatComponent } from 'app/laureat/laureat.component';
 import { JuryListComponent } from 'app/jury-list/jury-list.component';
 import {ProgrammeComponent} from '../../programme/programme.component';
-
+import {DetailprogComponent} from '../../detailprog/detailprog.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -73,6 +73,7 @@ export const AdminLayoutRoutes: Routes = [
     {path:'jury' , component:JuryComponent},
     {path:'jury-list' , component:JuryListComponent},
     {path: 'programme', component:ProgrammeComponent},
+    {path:'Details', component:DetailprogComponent},
    
    
 

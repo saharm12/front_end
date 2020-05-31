@@ -2,8 +2,9 @@ import { Component, OnInit , ViewChild} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CandidatService,  } from 'app/services/candidats.service';
   import {PageEvent} from '@angular/material/paginator';
-  import {MatTableModule, MatSort} from '@angular/material';
-
+  import {MatTableModule,MatDialogConfig, MatSort} from '@angular/material';
+  import { MatDialog } from '@angular/material/dialog';
+import { DetaicanditComponent } from 'app/detaicandit/detaicandit.component';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class CandidatsComponent implements OnInit {
   p: number = 1;
 
 
-  constructor(private http:HttpClient ,private candiService:CandidatService ) { 
+  constructor(private http:HttpClient,private dialog: MatDialog ,private candiService:CandidatService ) { 
   
  
   }
@@ -79,6 +80,17 @@ Supprimer(id)
     }
   })
 }
+openlistcan(idcandidat){
+  console.log("ok",idcandidat);
+  var candidatConsulted = this.candidats.filter(c => c.id_candidat == idcandidat );
+  console.log("candidatConsulted",candidatConsulted[0]);
+  const dialogConfig = new MatDialogConfig();
+     dialogConfig.disableClose =  true;
+     dialogConfig.autoFocus = true;
+     dialogConfig.width = "350px";
+     dialogConfig.height ="600px"
+     dialogConfig.data={info:candidatConsulted[0]};
+     this.dialog.open(DetaicanditComponent, dialogConfig);
 
-
+}
 }
