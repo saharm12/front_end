@@ -7,6 +7,7 @@ import { MatPaginator, MatTableDataSource ,MatDialogConfig} from '@angular/mater
 import { MatDialog } from '@angular/material/dialog';
 import {DetailsExpoComponent} from '../details-expo/details-expo.component';
 
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -167,13 +168,30 @@ Supprimer(id)
 {
   //this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?').then((confirmed) => console.log('User confirmed:', confirmed)).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   console.log('id', id);
-  this.expoService.deletexposant(id).subscribe(data=>{
+  
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet exposant ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.expoService.deletexposant(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
     if(result)
     {
-      this.exposants = this.exposants.filter(c => c.id_exposant !== id );
+     this.getExposants(); 
     }
   })
+    }
+  })
+
 }
 
 Accepter(id)

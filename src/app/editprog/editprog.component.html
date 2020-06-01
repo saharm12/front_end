@@ -3,12 +3,12 @@
     <form role="form" #myForm="ngForm">
 
 
-        <input type="text" [(ngModel)]="progModel.dateretenir" placeholder="Enter Title" name="date " [(ngModel)]="date" />
+        <input type="text" [(ngModel)]="dateProg" placeholder="Enter Title" name="date " [(ngModel)]="date" />
 
 
 
         <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
-            <ckeditor [(ngModel)]="progModel.detail" [(ngModel)]="mycontent" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
+            <ckeditor [(ngModel)]="progModel" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
             </ckeditor>
             <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.
 

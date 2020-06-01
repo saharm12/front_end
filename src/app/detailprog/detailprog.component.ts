@@ -8,7 +8,7 @@ import {  EditprogComponent } from '../editprog/editprog.component';
 @Component({
   selector: 'app-detailprog',
   templateUrl: './detailprog.component.html',
-  styleUrls: ['./detailprog.component.scss']
+  styleUrls: ['./detailprog.component.scss'],
 })
 
 export class DetailprogComponent implements OnInit {

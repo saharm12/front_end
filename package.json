@@ -55,6 +55,7 @@
     "ng2-search-filter": "^0.5.1",
     "ngx-bootstrap": "^4.2.0",
     "ngx-pagination": "^5.0.0",
+    "ngx-qrcode3": "^0.3.0",
     "ngx-toastr": "^12.0.1",
     "perfect-scrollbar": "1.1.0",
     "popper.js": "1.14.3",

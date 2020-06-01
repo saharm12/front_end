@@ -10,7 +10,8 @@ import { ProgrammeService   } from 'app/services/programme.service';
   styleUrls: ['./editprog.component.scss']
 })
 export class EditprogComponent implements OnInit {
-  progModel :Programme;
+  progModel :any;
+  dateProg:any;
   name = 'ng2-ckeditor';
   ckeConfig: any;
   mycontent: string;
@@ -20,8 +21,9 @@ export class EditprogComponent implements OnInit {
   res: any;  
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
-    this.progModel = new Programme();
+    
     this.mycontent = `<p>My html content</p>`;
+
    }
    @ViewChild("myckeditor") ckeditor: any;
   ngOnInit() {
@@ -53,7 +55,8 @@ export class EditprogComponent implements OnInit {
     let user = this.data.info ;
     console.log(user);
    // this.progModel = Object.assign({},user);
-       this.progModel = Object.assign({},user);
+       this.progModel = user[0].details_programme; 
+       this.dateProg=user[0].date_retenir; 
     console.log("form ",this.progModel);
    
 

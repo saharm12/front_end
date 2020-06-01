@@ -48,6 +48,7 @@ import {
 } from '@angular/material';
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
+import { HtmlPipe } from './html.pipe';
 @NgModule({
   imports: [
     CommonModule,
@@ -95,7 +96,8 @@ import { CandidatsComponent } from 'app/candidats/candidats.component';
     AddlaureatComponent,
     AddlautComponent,
     DetaicanditComponent ,
-    DetailsExpoComponent
+    DetailsExpoComponent,
+    HtmlPipe
   ]
 })
 

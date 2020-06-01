@@ -14,3 +14,10 @@
 .btn-success {
     border-radius: 100px;
 }
+
+.img {
+    height: 50%;
+    width: 50%;
+    align-self: center;
+    margin-left: 25%;
+}

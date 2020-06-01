@@ -112,7 +112,7 @@
                                             <!-- Button trigger modal -->
 
 
-                                            <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
+                                            <button type="button" color="danger" class="" (click)="Supprimer(expo.id_exposant)">
                                                 <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
                                                 </button>
                                             <!-- Modal -->
@@ -131,7 +131,7 @@
 
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-                                                            <button class="btn btn-raised btn-primary " data-dismiss="modal" data-target="delete" (click)="Supprimer(expo.id_exposant)">Supprimer</button>
+                                                            <button class="btn btn-raised btn-primary " data-dismiss="modal" data-target="delete">Supprimer</button>
                                                         </div>
                                                     </div>
                                                 </div>
