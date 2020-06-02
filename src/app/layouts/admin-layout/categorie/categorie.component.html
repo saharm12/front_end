@@ -1,0 +1,56 @@
+<div class="main-content">
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Liste des Catégories disponibles</h4>
+
+
+                    </div>
+                    <div class="example-container mat-elevation-z8">
+                        <div class="table-responsive">
+
+                            <div class="table-responsive-xl">
+
+                                <table class="table table-hover">
+                                    <thead class="">
+                                        <tr>
+                                            <th>
+                                                #
+                                            </th>
+                                            <th>
+                                                Catégorie
+                                            </th>
+                                            <th>
+                                                Critéres de sélections
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let categ of categorie  ">
+                                            <td>
+                                                {{categ.id_categorie}}
+                                            </td>
+
+                                            <td>
+                                                {{categ.nom_categorie}}
+                                            </td>
+                                            <td>
+                                                {{categ.critere_selection}}
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -15,11 +15,12 @@ import { DetaicanditComponent } from 'app/detaicandit/detaicandit.component';
 export class CandidatsComponent implements OnInit {
   candidats= []; //local
   p: number = 1;
+  base_url="http://localhost:3000"
 
 
   constructor(private http:HttpClient,private dialog: MatDialog ,private candiService:CandidatService ) { 
   
- 
+   
   }
   
   @ViewChild(MatSort) sort: MatSort;

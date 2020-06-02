@@ -34,6 +34,7 @@ import {DetailprogComponent} from '../../detailprog/detailprog.component';
 import {  EditprogComponent } from '../../editprog/editprog.component';
 import { DetailComponent } from '../../detail/detail.component';
 import { DetaicanditComponent } from '../../detaicandit/detaicandit.component';
+import { EnqueteComponent } from './enquete/enquete.component';
 
 
 
@@ -49,6 +50,8 @@ import {
 import { MaterialModule } from 'app/material.module';
 import { CandidatsComponent } from 'app/candidats/candidats.component';
 import { HtmlPipe } from './html.pipe';
+import { DocumentComponent } from './document/document.component';
+import { CategorieComponent } from './categorie/categorie.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -87,6 +90,10 @@ import { HtmlPipe } from './html.pipe';
     UpgradeComponent,
     CandidatsComponent,
     SpeakerComponent,
+    DocumentComponent,
+    EnqueteComponent,
+    CategorieComponent,
+    
     JuryComponent,
     LaureatComponent,
     JuryListComponent,
@@ -97,6 +104,7 @@ import { HtmlPipe } from './html.pipe';
     AddlautComponent,
     DetaicanditComponent ,
     DetailsExpoComponent,
+
     HtmlPipe
   ]
 })

@@ -15,6 +15,9 @@ import { LaureatComponent } from 'app/laureat/laureat.component';
 import { JuryListComponent } from 'app/jury-list/jury-list.component';
 import {ProgrammeComponent} from '../../programme/programme.component';
 import {DetailprogComponent} from '../../detailprog/detailprog.component';
+import { DocumentComponent } from './document/document.component';
+import { EnqueteComponent } from './enquete/enquete.component';
+import { CategorieComponent } from './categorie/categorie.component';
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -74,7 +77,9 @@ export const AdminLayoutRoutes: Routes = [
     {path:'jury-list' , component:JuryListComponent},
     {path: 'programme', component:ProgrammeComponent},
     {path:'Details', component:DetailprogComponent},
-   
+    {path:'Document', component:DocumentComponent},
+    {path:'enquete' , component:EnqueteComponent},
+    {path:'categorie',component:CategorieComponent},
    
 
 ];

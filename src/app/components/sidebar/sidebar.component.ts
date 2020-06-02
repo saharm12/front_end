@@ -15,7 +15,12 @@ export const ROUTES: RouteInfo[] = [
     {path: '/speaker', title: 'Speakers', icon:'record_voice_over' , class:''},
    {path: '/laureat', title: 'Lauréats', icon:'grade' , class:''},
    { path: '/programme', title: 'Programme',  icon:'grade', class: '' },
+   {path: '/Document', title: 'document',  icon:'grade', class: '' },
+   {path: '/enquete', title: 'enquete',  icon:'grade', class: '' },
+      {path: '/categorie', title: 'categorie',  icon:'grade', class: '' },
+
     { path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
+
    
 
 /*     { path: '/typography', title: 'Typography',  icon:'library_books', class: '' },
