@@ -35,7 +35,7 @@ import { ExposantService } from './services/exposants.service';
 import { ParticipantService } from './services/participants.service';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {LaureatService} from './services/laureat.service';
-
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   imports: [
    ConfirmationPopoverModule.forRoot({
@@ -50,10 +50,9 @@ import {LaureatService} from './services/laureat.service';
     
     AppRoutingModule,
     NgxQRCodeModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-
-    }),
+   
+    ToastrModule.forRoot()
+   
     
   ],
   declarations: [
@@ -64,7 +63,7 @@ import {LaureatService} from './services/laureat.service';
     EvenementComponent,
 
   ],
-  providers: [LaureatService,AuthService,CandidatService,ExposantService,ParticipantService],
+  providers: [LaureatService,AuthService,CandidatService,ExposantService,ParticipantService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

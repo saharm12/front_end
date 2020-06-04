@@ -23,10 +23,22 @@ psw:string ;
 let result:any =data ; 
 console.log(result); 
 if(result.user==true)
-{
-localStorage.setItem('id',result.UserID); 
+{console.log(result.user.role)
+  if(result.role==1)
+  {
+    localStorage.setItem('id',result.UserID); 
 localStorage.setItem('token',result.token);  
 this.router.navigate(['dashboard']); 
+  }else 
+  {
+    Swal.fire({
+      title: 'Error!',
+      text: 'vous etes pas autorisé ! ',
+      type: 'error',
+      confirmButtonText: 'Cool'
+    })
+  }
+
 }else{
 
   Swal.fire({

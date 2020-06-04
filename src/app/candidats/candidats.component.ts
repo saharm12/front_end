@@ -94,4 +94,16 @@ openlistcan(idcandidat){
      this.dialog.open(DetaicanditComponent, dialogConfig);
 
 }
+
+Enoyer_QRcode(id_candidat,email,nom,prenom){
+  this.http.post('http://localhost:3000/candidat/sendqr',{
+    id:id_candidat, 
+    candidatEmail:email, 
+    info: nom+'/'+prenom+'/'+email
+  }).subscribe(data=>{
+ let result:any =data; 
+    console.log(result);
+ }) 
+ 
+}
 }

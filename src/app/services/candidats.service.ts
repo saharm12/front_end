@@ -34,7 +34,7 @@ export class CandidatService {
 
 BASE_URL='http://localhost:3000/candidat' ; 
  constructor(private http:HttpClient) { }
-
+ 
   
   getcandidat()
   { let token = localStorage.getItem('token'); 

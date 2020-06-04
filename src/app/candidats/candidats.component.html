@@ -83,7 +83,7 @@
                                             </td>
 
                                             <td>
-                                                {{candit.nom_candidat}}
+                                                {{candit.nom_societe_agence}}
                                             </td>
                                             <td>
                                                 {{candit.prenom_candidat}}
@@ -93,6 +93,9 @@
                                             </td>-->
                                             <td>
                                                 {{candit.email}}
+                                                <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.prenom_candidat)"> Envoyer QR_code
+                                                    </button>
+
                                             </td>
                                             <!--- <td>
                                                 {{candit.adresse}}

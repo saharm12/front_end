@@ -2,7 +2,8 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
+import Pusher from 'pusher-js';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -14,13 +15,31 @@ export class NavbarComponent implements OnInit {
       mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
+    pusher: any
 
-    constructor(location: Location,  private element: ElementRef, private router: Router) {
+    constructor(location: Location,  private element: ElementRef, private router: Router,private toastr: ToastrService) {
       this.location = location;
           this.sidebarVisible = false;
+          this.pusher = new Pusher("ed4a857e8e6c3f7716b0", {
+            cluster:"eu",
+            forceTLS: true
+          });
+          var channel = this.pusher.subscribe('candidat');
+          channel.bind('inscription',(data)=>{
+              let result :any = data ; 
+              console.log("message",result.message); 
+              setTimeout(()=>{
+                this.toastr.success(result.message, '', {
+                    //timeOut: 3000
+                  });
+              })
+           
+            console.log(data); 
+          })
     }
 
     ngOnInit(){
+      
       this.listTitles = ROUTES.filter(listTitle => listTitle);
       const navbar: HTMLElement = this.element.nativeElement;
       this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
