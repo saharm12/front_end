@@ -30,10 +30,10 @@
                                                 Identifiant
                                             </th>
                                             <th>
-                                                Nom
+                                                Nom_ste_agence
                                             </th>
                                             <th>
-                                                Prénom
+                                                Personne_resp_candidature
                                             </th>
 
                                             <!-- <th>
@@ -67,6 +67,10 @@
                                             <th>
                                                 Dossier de candidature
                                             </th>
+                                            <th>
+                                                Autre pieces
+                                            </th>
+
 
 
                                             <th>
@@ -86,15 +90,17 @@
                                                 {{candit.nom_societe_agence}}
                                             </td>
                                             <td>
-                                                {{candit.prenom_candidat}}
+                                                {{candit.personne_responsable_candidature}}
                                             </td>
                                             <!--  <td>
                                                 {{candit.telephone}}
                                             </td>-->
                                             <td>
                                                 {{candit.email}}
-                                                <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.prenom_candidat)"> Envoyer QR_code
+                                                <div>
+                                                    <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> Envoyer QR_code
                                                     </button>
+                                                </div>
 
                                             </td>
                                             <!--- <td>
@@ -121,41 +127,22 @@
                                                 <a download href="{{base_url}}/{{candit.dossier_candidature}}"> Cliquer ici pour télècharger le dossier</a>
 
                                             </td>
+                                            <td>
 
+                                                <a download href="{{base_url}}/{{candit.autre_pieces}}"> Cliquer ici pour télècharger le dossier</a>
+
+                                            </td>
                                             <td>
 
 
-                                                <!-- Button trigger modal -->
-                                                <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
+
+
+                                                <button type="button" color="danger" class="" (click)="Supprimer(candit.id_candidat)">
                                                     <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
                                                     </button>
 
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                          <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Voulez-vous vraiment supprimer?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-
-                                                                <button class="btn btn-raised btn-primary " data-dismiss="modal" data-target="delete" (click)="Supprimer(candit.id_candidat)">Supprimer</button>
 
 
-
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                </div>
                                                 <button type="button" color="primary" class="" (click)="openlistcan(candit.id_candidat)">
                                                     <i class=" fa fa-list-alt" aria-hidden="true" color="primary"></i>
                                                     </button>

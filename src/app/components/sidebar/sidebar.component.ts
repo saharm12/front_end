@@ -17,7 +17,7 @@ export const ROUTES: RouteInfo[] = [
    { path: '/programme', title: 'Programme',  icon:'grade', class: '' },
    {path: '/Document', title: 'document',  icon:'grade', class: '' },
    {path: '/enquete', title: 'enquete',  icon:'grade', class: '' },
-      {path: '/categorie', title: 'categorie',  icon:'grade', class: '' },
+      {path: '/categorie', title: 'Sponsors et partenaires',  icon:'grade', class: '' },
 
     { path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
 

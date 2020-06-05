@@ -16,4 +16,11 @@ export class DocumentService {
      'x-access-token':token 
     }}); 
   }
+  suppdoc(id_fichier) {
+    let token = localStorage.getItem('token'); 
+    return this.http.delete(this.BASE_URL+'/deletedoc/'+id_fichier,{headers:{
+      'x-access-token':token 
+    }}); 
+  }
+  
 }

@@ -81,6 +81,18 @@ openlistpart(idparticipant){
   
    }
 
+   Enoyer_QRcode(id_participant,nom_participant,prenom_participant,email_participant){
+    this.http.post('http://localhost:3000/participant/sendqr',{
+      id:id_participant, 
+      email:email_participant, 
+      info: nom_participant+'/'+prenom_participant+'/'+email_participant
+    }).subscribe(data=>{
+   let result:any =data; 
+      console.log(result);
+   }) 
+   
+  }
 
-
-}
+  
+  }
+    

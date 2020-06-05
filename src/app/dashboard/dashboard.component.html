@@ -75,6 +75,10 @@
                                         </td>
                                         <td>
                                             {{expo.email_exposant}}
+                                            <div>
+                                                <button type="button" color="danger" (click)="Enoyer_QRcode(expo.id_exposant,expo.nom_exposant,expo.prenom_exposant,expo.email_exposant)"> Envoyer QR_code
+                                                </button>
+                                            </div>
                                         </td>
                                         <td>
                                             {{expo.telephone}}

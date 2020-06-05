@@ -6,7 +6,7 @@ import { CandidatService,  } from 'app/services/candidats.service';
   import { MatDialog } from '@angular/material/dialog';
 import { DetaicanditComponent } from 'app/detaicandit/detaicandit.component';
 
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-candidats',
   templateUrl: './candidats.component.html',
@@ -71,16 +71,32 @@ Refuser (id){
 
 Supprimer(id) 
 {
-  //this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?').then((confirmed) => console.log('User confirmed:', confirmed)).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
-  console.log('id', id);
-  this.candiService.deletcandidat(id).subscribe(data=>{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet exposant ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.candiService.deletcandidat(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
     if(result)
     {
-      this.candidats = this.candidats.filter(c => c.id_candidat !== id );
+     this.getcandidat(); 
     }
   })
+    }
+  })
+
+  
 }
+
 openlistcan(idcandidat){
   console.log("ok",idcandidat);
   var candidatConsulted = this.candidats.filter(c => c.id_candidat == idcandidat );
@@ -95,11 +111,11 @@ openlistcan(idcandidat){
 
 }
 
-Enoyer_QRcode(id_candidat,email,nom,prenom){
+Enoyer_QRcode(id_candidat,email,nom_societe_agence,personne_responsable_candidature){
   this.http.post('http://localhost:3000/candidat/sendqr',{
     id:id_candidat, 
     candidatEmail:email, 
-    info: nom+'/'+prenom+'/'+email
+    info: nom_societe_agence+'/'+personne_responsable_candidature+'/'+email
   }).subscribe(data=>{
  let result:any =data; 
     console.log(result);

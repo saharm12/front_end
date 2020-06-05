@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {  FileUploader  } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import {DocumentService} from 'app/services/document.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-document',
@@ -59,4 +60,35 @@ data.append('nom_fichier',this.nom_fichier);
 
 
  }
+ Supprimer(id_fichier) 
+{
+  //this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to ... ?').then((confirmed) => console.log('User confirmed:', confirmed)).catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+  console.log('id', id_fichier);
+  
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet exposant ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.docService.suppdoc(id_fichier).subscribe(data=>{
+    let result :any = data; 
+    console.log(result); 
+    if(result)
+    {
+     this.getDocument(); 
+    }
+  })
+    }
+  })
+
+}
+
+ 
 }

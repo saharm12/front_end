@@ -193,6 +193,15 @@ Supprimer(id)
   })
 
 }
+Enoyer_QRcode(id_exposant,nom_exposant,prenom_exposant,email_exposant){
+  this.htpp.post('http://localhost:3000/exposant/sendqr',{
+    id:id_exposant, 
+    Email:email_exposant, 
+    info:id_exposant +'/'+nom_exposant+'/'+prenom_exposant+'/'+email_exposant
+  }).subscribe(data=>{
+ let result:any =data; 
+    console.log(result);
+ }) }
 
 Accepter(id)
 {

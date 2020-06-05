@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit {
             forceTLS: true
           });
           var channel = this.pusher.subscribe('candidat');
+
           channel.bind('inscription',(data)=>{
               let result :any = data ; 
               console.log("message",result.message); 
@@ -36,6 +37,41 @@ export class NavbarComponent implements OnInit {
            
             console.log(data); 
           })
+          this.pusher = new Pusher("ed4a857e8e6c3f7716b0", {
+            cluster:"eu",
+            forceTLS: true
+          });
+          var channel = this.pusher.subscribe('exposant');
+
+          channel.bind('inscription',(data)=>{
+              let result :any = data ; 
+              console.log("message",result.message); 
+              setTimeout(()=>{
+                this.toastr.success(result.message, '', {
+                    //timeOut: 3000
+                  });
+              })
+           
+            console.log(data); 
+          })
+          this.pusher = new Pusher("ed4a857e8e6c3f7716b0", {
+            cluster:"eu",
+            forceTLS: true
+          });
+          var channel = this.pusher.subscribe('participant');
+
+          channel.bind('inscription',(data)=>{
+              let result :any = data ; 
+              console.log("message",result.message); 
+              setTimeout(()=>{
+                this.toastr.success(result.message, '', {
+                    //timeOut: 3000
+                  });
+              })
+           
+            console.log(data); 
+          })
+          
     }
 
     ngOnInit(){
