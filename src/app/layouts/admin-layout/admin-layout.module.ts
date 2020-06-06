@@ -35,6 +35,7 @@ import {  EditprogComponent } from '../../editprog/editprog.component';
 import { DetailComponent } from '../../detail/detail.component';
 import { DetaicanditComponent } from '../../detaicandit/detaicandit.component';
 import { EnqueteComponent } from './enquete/enquete.component';
+import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
 
 
 
@@ -93,7 +94,7 @@ import { CategorieComponent } from './categorie/categorie.component';
     DocumentComponent,
     EnqueteComponent,
     CategorieComponent,
-    
+    AddsposnsComponent,
     JuryComponent,
     LaureatComponent,
     JuryListComponent,

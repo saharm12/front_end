@@ -1,2 +1,83 @@
 <div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
+                <div class="card card-plain">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title mt-0"> Liste des Enquetes
+
+
+                        </h4>
+
+                    </div>
+
+
+                    <div class="example-container mat-elevation-z8">
+                        <div class="table-responsive">
+
+
+
+
+                            <div class="table-responsive-xl">
+
+                                <table class="table table-hover">
+                                    <thead class="">
+                                        <tr>
+                                            <th>
+                                                Id
+                                            </th>
+
+
+                                            <th>
+                                                Question
+                                            </th>
+                                            <th>
+                                                Reponse
+                                            </th>
+                                            <th>
+                                                id user
+                                            </th>
+                                            <th>
+                                                Action
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let enq of enquetes ">
+
+                                            <td>
+                                                {{enq.id_enquete}}
+
+                                            </td>
+
+                                            <td>
+                                                {{enq.numQuestion}}
+
+                                            </td>
+                                            <td>
+                                                {{enq.Rep}}
+
+                                            </td>
+                                            <td>
+                                                {{enq.id_user}}
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+
+
+
+
+                                </table>
+                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>

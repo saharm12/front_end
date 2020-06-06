@@ -7,6 +7,7 @@ import { CandidatService,  } from 'app/services/candidats.service';
 import { DetaicanditComponent } from 'app/detaicandit/detaicandit.component';
 
 import Swal from 'sweetalert2';
+
 @Component({
   selector: 'app-candidats',
   templateUrl: './candidats.component.html',

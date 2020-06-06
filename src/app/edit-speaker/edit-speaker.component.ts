@@ -2,6 +2,7 @@ import { Component, OnInit, Inject,ViewChild } from '@angular/core';
 import { MatDialogRef} from '@angular/material';
 import {MatSnackBar} from'@angular/material';
 import { NgForm } from '@angular/forms'
+import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 
 import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -16,6 +17,7 @@ export class EditSpeakerComponent implements OnInit {
 speakerModel: Speaker ;
 
 speake= []; 
+
 constructor(@Inject(MAT_DIALOG_DATA) public data: any, private snackBar : MatSnackBar,public dialogbox: MatDialogRef<EditSpeakerComponent>, private speakersservices:SpeakersService) 
 { }
 @ViewChild(NgForm) ngForm: NgForm;
@@ -26,6 +28,7 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: any, private snackBar : MatSna
     console.log(user);
     this.speakerModel = Object.assign({},user);
     console.log("form ",this.speakerModel);
+   
   }
 
 resetForm(){

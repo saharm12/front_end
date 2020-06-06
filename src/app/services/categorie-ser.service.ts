@@ -5,20 +5,28 @@ import {HttpClient} from '@angular/common/http' ;
   providedIn: 'root'
 })
 export class CategorieSerService {
-  BASE_URL='http://localhost:3000/categorie' ;
+  BASE_URL='http://localhost:3000/sponsors' ;
   constructor(private http:HttpClient) { }
 
-  getcategorie()
+  getsponsors()
    { let token = localStorage.getItem('token'); 
-    return this.http.get(this.BASE_URL+'/getcategorie',{headers:{
+    return this.http.get(this.BASE_URL+'/getspons',{headers:{
       'x-access-token':token 
     }});}
   
-    addcategorie( nom_categorie)
+    Postspons( imageURL)
 
     { let token = localStorage.getItem('token'); 
       return this.http.post(this.BASE_URL+'/ajouter',{
-       // 'imageURL':imageURL,
-        //'nom_speakers':nom_speakers,
+        'imageURL':imageURL,
+        
+      }); 
+    }
+
+    deletspons(id) {
+      let token = localStorage.getItem('token'); 
+      return this.http.delete(this.BASE_URL+'/deletesponsors/'+id,{headers:{
+        'x-access-token':token 
+      }}); 
+    }
 }
-      )}}

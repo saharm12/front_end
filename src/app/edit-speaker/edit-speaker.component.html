@@ -5,8 +5,16 @@
 </button>
 </div>
 <div style="overflow: auto; height: 450px;">
-    <form #projectForm="ngForm" (ngSubmit)="ModifierSpeak() " novalidate>
-        <div class="mt-4 input-group">
+    <form #projectForm="ngForm" (ngSubmit)="ModifierSpeak() " novalidate enctype="multipart/form-data">
+
+        <div>
+            <label>Image</label>
+
+            <input name="image" [(ngModel)]="speakerModel.imageURL" type="file" ng2FileSelect [uploader]="uploader">
+        </div>
+
+        <div class="input-group-prepend">
+
 
             <div class="input-group-prepend">
                 <span class="input-group-text"> Nom speaker</span>

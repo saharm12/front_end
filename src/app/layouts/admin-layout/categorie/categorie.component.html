@@ -3,12 +3,17 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
+
                 <div class="card card-plain">
 
+
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0"> Liste des Catégories disponibles</h4>
+                        <h4 class="card-title mt-0"> Liste des Sponsors disponibles</h4>
 
-
+                        <button mat-raised-button (click)="OpenNewSponsors()">
+                            Ajouter
+                            <i class="fa fa-plus" aria-hidden="true"></i> 
+                               </button>
                     </div>
                     <div class="example-container mat-elevation-z8">
                         <div class="table-responsive">
@@ -22,26 +27,32 @@
                                                 #
                                             </th>
                                             <th>
-                                                Catégorie
+                                                Logo
                                             </th>
                                             <th>
-                                                Critéres de sélections
+                                                Action
                                             </th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let categ of categorie  ">
+                                        <tr *ngFor="let spons of sponsors ">
                                             <td>
-                                                {{categ.id_categorie}}
+                                                {{spons.id_sponsors}}
+                                            </td>
+
+
+                                            <td>
+                                                <img *ngIf="spons.image!=null" src="{{base_url}}{{spons.image}}" style="width: 150px;height: 150px;">
                                             </td>
 
                                             <td>
-                                                {{categ.nom_categorie}}
-                                            </td>
-                                            <td>
-                                                {{categ.critere_selection}}
+                                                <button type="button" color="danger" class="" (click)="Supprimer(spons.id_sponsors)">
+                                                <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                </button>
 
                                             </td>
+
                                         </tr>
                                     </tbody>
                                 </table>

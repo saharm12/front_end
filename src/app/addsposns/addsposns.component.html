@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-between">
+    <h4> Ajouter un nouveau sponsors&partenaires</h4>
+    <button mat-button (click)="onClose()"> 
+<i class="material-icons">close</i>
+</button>
+</div>
+<div class="container">
+    <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)="addsponsors()">
+        <div>
+            <label>Image</label>
+
+            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+        </div>
+
+        <div class="form-group ">
+            <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
+        </div>
+    </form>
+
+</div>
