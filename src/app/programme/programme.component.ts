@@ -6,6 +6,7 @@ import { Programme} from './prog.model'
 import { ProgrammeService   } from 'app/services/programme.service';
 
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 
@@ -67,7 +68,7 @@ export class ProgrammeComponent implements OnInit {
     //console.log('myckeditor:' + myForm.controls['myckeditor'].value);
    // console.log('date:' + myForm.controls['date'].value);
   
-   this.progService.Ajouterprog(this.progModel.dateretenir, this.progModel.detail  ).subscribe(data=>{
+   this.progService.Ajouterprog( this.progModel.detail  ).subscribe(data=>{
     let result :any = data; 
     if(result)
     { 
@@ -104,16 +105,33 @@ export class ProgrammeComponent implements OnInit {
 
 
 
-  Supp(id){
-    console.log('id', id);
-    this.progService.supprog(id).subscribe(data=>{
-      let result :any = data; 
-      if(result)
-      {
-        this.programmes = this.programmes.filter(u => u.id_programme !== id );
-      }
-    })
-  }
+  supprog(id)
+{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet exposant ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.progService.supprog(id).subscribe(data=>{
+    let result :any = data; 
+    console.log(result); 
+    if(result)
+    {
+     this.Getcontent(); 
+    }
+  })
+    }
+  })
+
+  
+}
      
 }   
 

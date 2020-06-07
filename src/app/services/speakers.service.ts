@@ -20,8 +20,8 @@ export class SpeakersService {
   { let token = localStorage.getItem('token'); 
     return this.http.get(this.BASE_URL+'/Getsp',{headers:{
       'x-access-token':token 
-    }}); 
-  }
+    }}); }
+   
   PostSpeaker( imageURL,nom_speakers, prenom_speakers, profil_speakers, pays)
 
   { let token = localStorage.getItem('token'); 
@@ -47,4 +47,6 @@ export class SpeakersService {
     return this.http.put(this.BASE_URL+'/modifiers/'+ sp.id_speakers,sp);
   
   }
+
+  
 }

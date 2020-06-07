@@ -42,7 +42,9 @@ export class SpeakerComponent implements OnInit {
         this.speake = result.speakers; 
       })
   }
+  
 } 
+
 Supp(id){
   console.log('id', id);
   this.speakersservices.SuppSpeakers(id).subscribe(data=>{

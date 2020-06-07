@@ -3,6 +3,7 @@ import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialogRef} from '@angular/material';
 import { Programme} from '../programme/prog.model';
 import { ProgrammeService   } from 'app/services/programme.service';
+import {HttpClient} from '@angular/common/http' ;
 
 @Component({
   selector: 'app-editprog',
@@ -11,19 +12,15 @@ import { ProgrammeService   } from 'app/services/programme.service';
 })
 export class EditprogComponent implements OnInit {
   progModel :any;
-  dateProg:any;
   name = 'ng2-ckeditor';
   ckeConfig: any;
   mycontent: string;
   log: string = '';
   Id:number;
- 
   res: any;  
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http:HttpClient,private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
     
     this.mycontent = `<p>My html content</p>`;
-
    }
    @ViewChild("myckeditor") ckeditor: any;
   ngOnInit() {
@@ -54,9 +51,7 @@ export class EditprogComponent implements OnInit {
     console.log(this.data)
     let user = this.data.info ;
     console.log(user);
-   // this.progModel = Object.assign({},user);
        this.progModel = user[0].details_programme; 
-       this.dateProg=user[0].date_retenir; 
     console.log("form ",this.progModel);
    
 
@@ -72,6 +67,15 @@ export class EditprogComponent implements OnInit {
     //this.ngOnInit();
   
   }
-
-  
+prog:Programme;
+  updateprog(p : Programme){
+    console.log('modified speaker',this.progModel)
+ this.progService.putprog(p).subscribe(data => {
+      let result : any = data; 
+      if(result)
+      {
+        console.log("ok");
+      }
+    })
+  }
     }

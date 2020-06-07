@@ -11,10 +11,9 @@ export class ProgrammeService {
 
   constructor(private http:HttpClient) { }
 
- Ajouterprog(date_retenir,details_programme){ 
+ Ajouterprog(details_programme){ 
     let token = localStorage.getItem('token'); 
     return this.http.post(this.BASE_URL+'/ajouterProg',{
-     'date_retenir':date_retenir,
      'details_programme':details_programme,
 
     }); 
@@ -41,7 +40,12 @@ supprog(id) {
     'x-access-token':token 
   }}); 
 }
-putprog( prog  :Programme){
+
+putprog( prog: Programme  ){
   let token = localStorage.getItem('token'); 
-  return this.http.put(this.BASE_URL+'/modif/'+ prog.id_programme,prog);
-}}
+  return this.http.put(this.BASE_URL+'/updateprog/'+ prog.id_programme,prog);
+
+ }
+
+}
+ 
