@@ -3,7 +3,7 @@ import {  FileUploader  } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
 import {DocumentService} from 'app/services/document.service';
 import Swal from 'sweetalert2';
-
+import {Router} from '@angular/router'
 @Component({
   selector: 'app-document',
   templateUrl: './document.component.html',

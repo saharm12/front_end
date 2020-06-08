@@ -61,10 +61,14 @@ fileChange(element) {
 ModifierSpeak(){
   let data = new FormData();
 data.append('userfile',this.uploadedFile);
+data.append('nom_speakers',this.speakerModel.nom_speakers);
+data.append('prenom_speakers',this.speakerModel.prenom_speakers);
+data.append('profil_speakers',this.speakerModel.profil_speakers);
+data.append('pays',this.speakerModel.pays);
+console.log("file name",this.uploadedFile.name)
+data.append('imageURL',"/uploads/"+this.uploadedFile.name);
 
-//data.append('nom_fichier',this.speakerModel.imageURL);
-
-  this.http.put('http://localhost:3000/speaker/modifiers/:id_speakers',data ).subscribe(data=>{
+  this.http.put('http://localhost:3000/speaker/modifiers/'+this.speakerModel.id_speakers,data ).subscribe(data=>{
   let result:any =data; 
     console.log(result);
     if(result)

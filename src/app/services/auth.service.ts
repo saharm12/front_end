@@ -27,4 +27,10 @@ BASE_URL='http://localhost:3000/users' ;
     let token = localStorage.getItem('token'); 
     return  this.http.delete(this.BASE_URL+'/'+id,{headers:{'x-access-token':token}}) 
   }
+
+
+  logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('token'); 
+}
 }

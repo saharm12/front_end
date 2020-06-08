@@ -97,6 +97,8 @@ export class ProgrammeComponent implements OnInit {
   //})
 
     this.router.navigate(['/Details'], { queryParams: { Id: id_programme } });  
+   // this.router.navigate(['/login'])
+
 
   }  
 

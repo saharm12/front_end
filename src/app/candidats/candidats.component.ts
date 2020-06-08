@@ -5,7 +5,7 @@ import { CandidatService,  } from 'app/services/candidats.service';
   import {MatTableModule,MatDialogConfig, MatSort} from '@angular/material';
   import { MatDialog } from '@angular/material/dialog';
 import { DetaicanditComponent } from 'app/detaicandit/detaicandit.component';
-
+import {  AuthService} from '../services/auth.service'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -123,4 +123,6 @@ Enoyer_QRcode(id_candidat,email,nom_societe_agence,personne_responsable_candidat
  }) 
  
 }
+
+
 }

@@ -3,6 +3,7 @@ import { ROUTES } from '../sidebar/sidebar.component';
 import {Location, LocationStrategy, PathLocationStrategy} from '@angular/common';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {AuthService} from 'app/services/auth.service';
 import Pusher from 'pusher-js';
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     pusher: any
 
-    constructor(location: Location,  private element: ElementRef, private router: Router,private toastr: ToastrService) {
+    constructor(private auhServ: AuthService,location: Location,  private element: ElementRef, private router: Router,private toastr: ToastrService) {
       this.location = location;
           this.sidebarVisible = false;
           this.pusher = new Pusher("ed4a857e8e6c3f7716b0", {
@@ -178,4 +179,12 @@ export class NavbarComponent implements OnInit {
       }
       return 'Acceuil';
     }
+
+    Deconx(){
+      
+      this.auhServ.logout();
+
+this.router.navigate(['/login']);
+    }
+
 }
