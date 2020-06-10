@@ -6,6 +6,11 @@
 </div>
 <div style="overflow: auto; height: 450px;">
     <form #projectForm="ngForm" (ngSubmit)="Update() " novalidate>
+        <div>
+            <label>Image</label>
+
+            <input name="userfile" (change)="fileChange($event)" type="file">
+        </div>
         <div class="mt-4 input-group">
 
 

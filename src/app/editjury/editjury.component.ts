@@ -5,8 +5,8 @@ import { Jury} from 'app/jury-list/jury-list.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from'@angular/material';
 import { NgForm } from '@angular/forms';
-import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
+import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-editjury',
@@ -14,12 +14,12 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./editjury.component.scss']
 })
 export class EditjuryComponent implements OnInit {
-
+  public uploader:FileUploader ;
+  imageURL="";
+  uploadedFile:File ;
   juryModel :Jury;
   jurys=[];
-  public uploader:FileUploader ;
-imageURL="";
-uploadedFile:File ;
+
   
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,private snackBar : MatSnackBar,private http:HttpClient,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
@@ -58,7 +58,9 @@ uploadedFile:File ;
      })
  }
  } 
-
+ fileChange(element) {
+  this.uploadedFile = element.target.files[0];
+}
 
   Update(){
     //console.log('modified jury',this.juryModel)
@@ -94,7 +96,7 @@ uploadedFile:File ;
      console.log("image", this.imageURL)
      
      
-       this.http.put('http://localhost:3000/jury/UpdateMembre/'+this.juryModel.id_jury,data ).subscribe(data=>{
+       this.http.put('http://localhost:3000/jurie/modifiersjur/'+this.juryModel.id_jury,data ).subscribe(data=>{
        let result:any =data; 
          console.log(result);
          if(result)
@@ -104,6 +106,8 @@ uploadedFile:File ;
            
          }
        })
+
+       
      
   }
 }
