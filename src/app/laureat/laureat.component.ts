@@ -4,6 +4,7 @@ import {AddlaureatComponent} from 'app/components/addlaureat/addlaureat.componen
 import {LaureatService} from 'app/services/laureat.service';
 import { HttpClient } from '@angular/common/http';
 import {AddlautComponent} from 'app/components/addlaut/addlaut.component';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-laureat',
   templateUrl: './laureat.component.html',
@@ -25,7 +26,10 @@ export class LaureatComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose =  true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "50%";
+   
+
+
     this.dialog.open(AddlautComponent, dialogConfig).afterClosed().subscribe(result => {
       this.getLaureat();
     });
@@ -48,19 +52,39 @@ export class LaureatComponent implements OnInit {
       })
   }
 } 
-Supp(id){
-  console.log('id', id);
-  this.laureatservice.SuppLaut(id).subscribe(data=>{
+
+
+Supp(id)
+{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet exposant ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.laureatservice.SuppLaut(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
+
+    Swal.fire(
+      'Supprimé!',
+      'Candidat a été supprimé avec succée',
+      'success'
+    )
     if(result)
-    { 
-      this.lauts = this.lauts.filter(c => c.id_laureats !== id );
+    {
+     this.getLaureat(); 
     }
   })
+    }
+  })
+
 }
-
-
-
-
  
 }

@@ -2,10 +2,6 @@
 
     <form role="form" #myForm="ngForm" (ngSubmit)="updateprog()">
 
-
-
-
-
         <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
             <ckeditor [(ngModel)]="progModel" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
             </ckeditor>
@@ -13,6 +9,7 @@
 
             </div>
         </div>
+
         <button [disabled]="myForm.invalid" class="btn btn-primary">Modifier</button>
         <button class="btn btn-info" (click)="onClose()">Fermer</button>
 

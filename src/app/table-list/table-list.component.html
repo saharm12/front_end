@@ -101,31 +101,14 @@
                                         <td>
 
                                             <!-- Button trigger modal -->
-                                            <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
-                                                <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
-                                                </button>
+
+                                            <button type="button" color="danger" class="" (click)="Supprimer(part.id_participant)">
+                                                    <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                    </button>
 
 
                                             <!-- Modal -->
-                                            <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            Are you Sure you wante to delete
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                                                            <button class="btn btn-danger " data-dismiss="modal" data-target="delete" (click)="Supprimer(part.id_participant)">Oui</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+
                                             <button type="button" color="primary" class="" (click)="openlistpart(part.id_participant)">
                                                 <i class=" fa fa-list-alt" aria-hidden="true" color="primary"></i>
                                                 </button>

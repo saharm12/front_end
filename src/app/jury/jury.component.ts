@@ -6,7 +6,7 @@ import { JuryService  } from 'app/services/jury.service';
 import { EditjuryComponent } from 'app/editjury/editjury.component';
 import { Jury} from 'app/jury-list/jury-list.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-jury',
@@ -54,15 +54,41 @@ export class JuryComponent implements OnInit {
 }
 } 
 
-Supp(id){
-  console.log('id', id);
-  this.juryService.SuppJu(id).subscribe(data=>{
+
+
+
+Supp(id)
+{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet jury ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.juryService.SuppJu(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
+
+    Swal.fire(
+      'Supprimé!',
+      'Jury a été supprimé avec succée',
+      'success'
+    )
     if(result)
-    { 
-      this.jurys = this.jurys.filter(u => u.id_jury !== id );
+    {
+     this.getjury(); 
     }
   })
+    }
+  })
+
+  
 }
 open(jury){
   const dialogConfig = new MatDialogConfig();

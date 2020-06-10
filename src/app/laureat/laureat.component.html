@@ -7,7 +7,7 @@
                     <div class="card-header card-header-danger">
                         <h4 class="card-title mt-0"> Liste des Laureats disponibles
 
-                            <button mat-raised-button (click)="OpenNewLaureat()">
+                            <button mat-raised-button (click)="OpenNewLaureat()" style="left: 70%;">
                     Ajouter
                     <i class="fa fa-plus" aria-hidden="true"></i> 
                        </button>
@@ -53,28 +53,11 @@
                                             </td>
 
                                             <td>
-                                                <button type="button" color="danger" class="" data-toggle="modal" data-target="#exampleModalLong">
-                                              <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
-                                              </button>
-                                                <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-                                                    <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLongTitle"></h5>
-                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                  <span aria-hidden="true">&times;</span>
-                                                              </button>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                Voulez-vous vraiment supprimer?
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
-                                                                <button class="btn btn-raised btn-primary " data-dismiss="modal" data-target="delete" (click)="Supp(lau.id_laureats)">Oui</button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+
+                                                <button type="button" color="danger" class="" (click)="Supp(lau.id_laureats)">
+                                                <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                                </button>
+
 
                                             </td>
 

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ParticipantService } from 'app/services/participants.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailComponent } from 'app/detail/detail.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-table-list',
@@ -35,17 +36,39 @@ export class TableListComponent implements OnInit {
   }
 
 } 
+
+
+
 Supprimer(id) 
 {
-  console.log('id', id);
-  this.partService.deleteparticipant(id).subscribe(data=>{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet participant?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.partService.deleteparticipant(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
+
+    Swal.fire(
+      'Supprimé!',
+      'Particiapnt a été supprimé avec succée',
+      'success'
+    )
     if(result)
     {
-      this.participants = this.participants.filter(p => p.id_participant !== id );
+     this.getparticipant(); 
     }
   })
-}
+    }
+  })}
 Accepter(id)
 {
   this.partService.acceptParticpants(id).subscribe(data=>{

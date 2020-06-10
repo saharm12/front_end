@@ -4,7 +4,9 @@ import { JuryService  } from 'app/services/jury.service';
 import { Jury} from 'app/jury-list/jury-list.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {MatSnackBar} from'@angular/material';
-import { NgForm } from '@angular/forms'
+import { NgForm } from '@angular/forms';
+import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-editjury',
@@ -15,9 +17,12 @@ export class EditjuryComponent implements OnInit {
 
   juryModel :Jury;
   jurys=[];
+  public uploader:FileUploader ;
+imageURL="";
+uploadedFile:File ;
   
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private snackBar : MatSnackBar,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private snackBar : MatSnackBar,private http:HttpClient,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
     
   }
   @ViewChild(NgForm) ngForm: NgForm;
@@ -56,16 +61,49 @@ export class EditjuryComponent implements OnInit {
 
 
   Update(){
-    console.log('modified jury',this.juryModel)
-    this.juryService.ModifJury(this.juryModel).subscribe(data => {
-        let result : any = data; 
-        if(result)
-        { 
-          this.snackBar.open("Modification bien enregistrer",'OK', {
-            duration: 7000,
-            panelClass: ['green-snackbar']
-          }); 
-        }
-      })
+    //console.log('modified jury',this.juryModel)
+    //this.juryService.ModifJury(this.juryModel).subscribe(data => {
+      //  let result : any = data; 
+        //if(result)
+        //{ 
+         // this.snackBar.open("Modification bien enregistrer",'OK', {
+           // duration: 7000,
+           // panelClass: ['green-snackbar']
+         // }); 
+       // }
+     // })
+     let data = new FormData();
+
+     data.append('nom_jury',this.juryModel.nom_jury);
+     data.append('prenom_jury',this.juryModel.prenom_jury);
+     data.append('profil_jury',this.juryModel.profil_jury);
+     data.append('pays',this.juryModel.pays);
+     console.log("file name",this.uploadedFile)
+     
+     if (this.uploadedFile){
+       console.log("file")
+       data.append('userfile',this.uploadedFile);
+       this.imageURL=this.uploadedFile.name;
+       data.append('imageURL',"/uploads/"+this.imageURL);
+     
+     }else{
+       console.log("no file",this.juryModel)
+       this.imageURL=this.juryModel.image;
+       data.append('imageURL',this.imageURL);
+     }
+     console.log("image", this.imageURL)
+     
+     
+       this.http.put('http://localhost:3000/jury/UpdateMembre/'+this.juryModel.id_jury,data ).subscribe(data=>{
+       let result:any =data; 
+         console.log(result);
+         if(result)
+         { 
+            
+           console.log("ok")
+           
+         }
+       })
+     
   }
 }

@@ -4,6 +4,7 @@ import { JuryService  } from 'app/services/jury.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Jury} from './jury-list.model'
+import Swal from 'sweetalert2';
 
 import {MatSnackBar} from'@angular/material';
 import {  ViewChild} from '@angular/core';
@@ -88,12 +89,14 @@ this.uploader.setOptions(uploadOptions);
         let result :any = data; 
         if(result)
         { 
+         
           this.onClose();
           console.log("ok")
           
         }
       })
-
+      
+      
      }
 
     

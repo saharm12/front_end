@@ -5,6 +5,7 @@ import {SpeakersService  } from 'app/services/speakers.service';
 import {EditSpeakerComponent} from '../edit-speaker/edit-speaker.component';
 import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-speaker',
   templateUrl: './speaker.component.html',
@@ -45,15 +46,40 @@ export class SpeakerComponent implements OnInit {
   
 } 
 
-Supp(id){
-  console.log('id', id);
-  this.speakersservices.SuppSpeakers(id).subscribe(data=>{
+
+
+Supp(id)
+{
+  Swal.fire({
+    title:'Supprimer',
+    text:'Voulez vous supprimer cet speakers ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+    
+    
+  }).then(result=>{
+    if(result.value)
+    {
+        this.speakersservices.SuppSpeakers(id).subscribe(data=>{
     let result :any = data; 
+    console.log(result); 
+
+    Swal.fire(
+      'Supprimé!',
+      'Speakers  a été supprimé avec succée',
+      'success'
+    )
     if(result)
-    { 
-      this.speake = this.speake.filter(c => c.id_speakers !== id );
+    {
+     this.getSpeak(); 
     }
   })
+    }
+  })
+
+  
 }
 
 openEdit(speaker){

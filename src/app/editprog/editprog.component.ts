@@ -67,10 +67,9 @@ export class EditprogComponent implements OnInit {
     //this.ngOnInit();
   
   }
-prog:Programme;
-  updateprog(p : Programme){
-    console.log('modified speaker',this.progModel)
- this.progService.putprog(p).subscribe(data => {
+  updateprog(){
+    
+ this.progService.putprog(this.progModel).subscribe(data => {
       let result : any = data; 
       if(result)
       {

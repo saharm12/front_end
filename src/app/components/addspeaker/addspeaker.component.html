@@ -1,53 +1,140 @@
 <div class="d-flex justify-content-between">
-    <h4> Ajouter un nouveau Speaker</h4>
-    <button mat-button (click)="onClose()"> 
-    <i class="material-icons">close</i>
-</button>
-</div>
+    <div class="card">
+        <div class="card-header" class="card-header card-header-danger        ">
 
-<form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addspeaker()">
-    <p class="h4 text-center py-4">Ajouter Speakers</p>
+            <h4 class="card-title mt-0" style="text-align: center;"> Ajouter Speakers
+                <button mat-button (click)="onClose()" style="left: 40%;"> 
+            <i class="material-icons">close</i>
+            </button> </h4>
 
-    <div>
-        <label class="col-sm-2 col-form-label">Image</label>
-        <div class="col-sm-10">
-            <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+        </div>
+
+
+        <div class="card-body">
+            <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addspeaker()">
+
+                <div>
+                    <label class="col-sm-2 col-form-label">Image</label>
+                    <div class="col-sm-10">
+                        <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-row">
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nom</mat-label>
+                            <textarea matInput placeholder=" " matInput formControlName="nom_speakers" required></textarea>
+                            <div *ngIf="nom_speakers.touched && nom_speakers.invalid">
+                                <small *ngIf="nom_speakers.errors.required" class="text-danger"> Champ nom est vide</small>
+                                <small *ngIf="nom_speakers.errors.pattern" class="text-danger"> Champs nom doit contenir seulement des caractéres</small>
+                                <small *ngIf="nom_speakers.errors.minlength" class="text-danger"> Champs nom doit  être  de taille minimale 3 lettre</small>
+                            </div>
+
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Prénom</mat-label>
+                            <textarea matInput placeholder="" matInput formControlName="prenom_speakers" required></textarea>
+                            <div *ngIf="prenom_speakers.touched && prenom_speakers.invalid">
+                                <small *ngIf="prenom_speakers.errors.required" class="text-danger"> Champ prénom est vide</small>
+                                <small *ngIf="prenom_speakers.errors.pattern" class="text-danger"> Champs prénom  doit contenir seulement des caractéres</small>
+                                <small *ngIf="prenom_speakers.errors.minlength" class="text-danger"> Champs prénom  doit  être  de taille minimale 3 lettre</small>
+                            </div>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lien Linkedin </mat-label>
+                        <textarea matInput placeholder="" name="profil_speakers" formControlName="profil_speakers" type="url" required></textarea>
+                        <div *ngIf="profil_speakers.touched && profil_speakers.invalid">
+                            <small *ngIf="profil_speakers.errors.required" class="text-danger"> Champ lien Linkedin est vide</small>
+                            <small *ngIf="profil_speakers.errors.pattern" class="text-danger"> Champs lien Linkedin doit contenir un lien(https://..)</small>
+
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Pays</mat-label>
+                        <textarea matInput placeholder=" " name="pays_speakers" formControlName="pays_speakers" type="text" required></textarea>
+                        <div *ngIf="pays_speakers.touched && pays_speakers.invalid">
+                            <small *ngIf="pays_speakers.errors.required" class="text-danger"> Champ pays est vide</small>
+                            <small *ngIf="pays_speakers.pattern" class="text-danger"> Champs pays  doit contenir seulement des caractéres</small>
+                            <small *ngIf="pays_speakers.errors.minlength" class="text-danger"> Champs pays  doit  être  de taille minimale 3 lettre</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="form-group ">
+                    <button class="btn btn-success" [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
+                    <button type="button" class="btn btn-dark" style="color:white; " (click)="Annuler()">Annuler</button>
+                </div>
+
+
+
+            </form>
+
         </div>
     </div>
+</div>
 
 
 
 
-    <div class="form-group row">
+
+<!-- <div class="form-group row">
         <label class="col-sm-2 col-form-label">Nom</label>
         <div class="col-sm-10">
-            <input name="nom_speakers" formControlName="nom_speakers" type="text">
+            <input name="nom_speakers" class="form-control" formControlName="nom_speakers" type="text">
+
         </div>
+
     </div>
 
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Prenom</label>
         <div class="col-sm-10">
-            <input name="prenom_speakers" formControlName="prenom_speakers" type="text">
-        </div>
-    </div>
+            <input name="prenom_speakers" formControlName="prenom_speakers" type="text" #prenom_speaker required>
+             <div *ngIf="shouldShowTitleRequiredError()">Title is required.</div>-->
+<!--- <mat-error *ngFor="let validation of account_validation_messages.prenom_speakers">
+                <mat-error class="error-message" *ngIf="myForm.get('prenom_speakers').hasError(validation.type) && (accountDetailsForm.get('prenom_speakers').dirty || accountDetailsForm.get('prenom_speakers').touched)">{{validation.message}}</mat-error>
+            </mat-error>-->
 
-    <div class="form-group row">
+<!--  </div>
+
+</div>-->
+
+
+
+
+<!--<mat-form-field class="full-width">
+        <input matInput placeholder="prenom_speakers" formControlName="prenom_speakers" required>
+       
+    </mat-form-field>-->
+
+<!-- <div class="form-group row">
         <label class="col-sm-2 col-form-label">Profil</label>
         <div class="col-sm-10">
             <input name="profil_speakers" formControlName="profil_speakers" type="url" pattern="https?://.+">
         </div>
     </div>
 
+
     <div class="form-group row">
         <label class="col-sm-2 col-form-label">Pays</label>
         <div class="col-sm-10">
-            <input name="pays_speakers" formControlName="pays_speakers" type="text">
+            <input type="text">
         </div>
-    </div>
-
-
-    <div class="form-group ">
-        <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
-    </div>
-</form>
+    </div>-->

@@ -87,6 +87,12 @@ Supprimer(id)
         this.candiService.deletcandidat(id).subscribe(data=>{
     let result :any = data; 
     console.log(result); 
+
+    Swal.fire(
+      'Supprimé!',
+      'Candidat a été supprimé avec succée',
+      'success'
+    )
     if(result)
     {
      this.getcandidat(); 

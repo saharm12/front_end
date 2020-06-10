@@ -34,6 +34,7 @@ data.append('nom_fichier',this.nom_fichier);
   this.http.post('http://localhost:3000/document/addfile',data ).subscribe(data=>{
   let result:any =data; 
     console.log(result);
+    
     if(result)
     { 
        this.getDocument();
@@ -67,7 +68,7 @@ data.append('nom_fichier',this.nom_fichier);
   
   Swal.fire({
     title:'Supprimer',
-    text:'Voulez vous supprimer cet exposant ?', 
+    text:'Voulez vous supprimer cet Document ?', 
     confirmButtonText:'Oui',
     cancelButtonText:'Non',
     showCancelButton:true, 
@@ -80,6 +81,11 @@ data.append('nom_fichier',this.nom_fichier);
         this.docService.suppdoc(id_fichier).subscribe(data=>{
     let result :any = data; 
     console.log(result); 
+    Swal.fire(
+      'Supprimé!',
+      'Document a été supprimé avec succée',
+      'success'
+    )
     if(result)
     {
      this.getDocument(); 

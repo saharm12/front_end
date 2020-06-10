@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
    {path: '/enquete', title: 'enquete',  icon:'grade', class: '' },
       {path: '/categorie', title: 'Sponsors et partenaires',  icon:'grade', class: '' },
 
-    { path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
+    //{ path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
 
    
 

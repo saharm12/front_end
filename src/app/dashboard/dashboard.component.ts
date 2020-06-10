@@ -184,6 +184,11 @@ Supprimer(id)
         this.expoService.deletexposant(id).subscribe(data=>{
     let result :any = data; 
     console.log(result); 
+    Swal.fire(
+      'Supprimé!',
+      'Exposant a été supprimé avec succée',
+      'success'
+    )
     if(result)
     {
      this.getExposants(); 

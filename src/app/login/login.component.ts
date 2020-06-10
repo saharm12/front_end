@@ -43,9 +43,9 @@ this.router.navigate(['dashboard']);
 
   Swal.fire({
     title: 'Error!',
-    text: 'Adress ou mot de passe incorrecte',
+    text: 'Adresse ou mot de passe incorrecte',
     type: 'error',
-    confirmButtonText: 'Cool'
+    confirmButtonText: 'OK'
   })
 }
 

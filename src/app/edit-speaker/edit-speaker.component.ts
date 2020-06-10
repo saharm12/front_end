@@ -4,7 +4,7 @@ import {MatSnackBar} from'@angular/material';
 import { NgForm } from '@angular/forms'
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
-
+import {  FormGroup ,FormControl, Validators} from "@angular/forms";
 import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {SpeakersService  } from 'app/services/speakers.service';
@@ -33,7 +33,8 @@ constructor(@Inject(MAT_DIALOG_DATA) public data: any,private http:HttpClient, p
     console.log("form ",this.speakerModel);
 
   }
-
+  
+    
 resetForm(){
   this.onClose();
 }
@@ -60,13 +61,26 @@ fileChange(element) {
 }
 ModifierSpeak(){
   let data = new FormData();
-data.append('userfile',this.uploadedFile);
+
 data.append('nom_speakers',this.speakerModel.nom_speakers);
 data.append('prenom_speakers',this.speakerModel.prenom_speakers);
 data.append('profil_speakers',this.speakerModel.profil_speakers);
 data.append('pays',this.speakerModel.pays);
-console.log("file name",this.uploadedFile.name)
-data.append('imageURL',"/uploads/"+this.uploadedFile.name);
+console.log("file name",this.uploadedFile)
+
+if (this.uploadedFile){
+  console.log("file")
+  data.append('userfile',this.uploadedFile);
+  this.imageURL=this.uploadedFile.name;
+  data.append('imageURL',"/uploads/"+this.imageURL);
+
+}else{
+  console.log("no file",this.speakerModel)
+  this.imageURL=this.speakerModel.image;
+  data.append('imageURL',this.imageURL);
+}
+console.log("image", this.imageURL)
+
 
   this.http.put('http://localhost:3000/speaker/modifiers/'+this.speakerModel.id_speakers,data ).subscribe(data=>{
   let result:any =data; 

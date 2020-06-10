@@ -1,5 +1,5 @@
 export class Programme { 
-    id_programme: number; 
+    id_prog: number; 
     detail: string;
     
 

@@ -35,20 +35,37 @@ this.uploader.setOptions(uploadOptions);
   
 
  }
-   myForm = new FormGroup({  
-    image: new FormControl('', [Validators.required]),
-    nom_speakers: new FormControl('', [Validators.required]),
-    prenom_speakers: new FormControl('', [Validators.required]),
-    profil_speakers: new FormControl('', [Validators.required]),
-    pays_speakers: new FormControl('', [Validators.required]),
+myForm = new FormGroup({  
+   image: new FormControl('', [Validators.required]),
+    nom_speakers: new FormControl('', [Validators.required, Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+    prenom_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+    profil_speakers: new FormControl('', [Validators.required,Validators.pattern("https?://.+")]),
+    pays_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
   
   
-  
-  
-  
-  
+ 
+    
+   
    }); 
+   
    @ViewChild(NgForm) ngForm: NgForm;
+  
+
+get nom_speakers(){
+return this.myForm.get('nom_speakers');
+}
+get prenom_speakers(){
+  return  this.myForm.get('prenom_speakers');
+}
+get profil_speakers(){
+  return  this.myForm.get('profil_speakers');
+}
+get pays_speakers(){
+  return  this.myForm.get('pays_speakers');
+}
+
+
+
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file) => {
@@ -65,7 +82,9 @@ this.uploader.setOptions(uploadOptions);
   
   
 
-  
+  Annuler(){
+    this.onClose();
+  }
 
   
   

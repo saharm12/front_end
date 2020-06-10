@@ -13,14 +13,24 @@
             <input name="userfile" (change)="fileChange($event)" type="file">
         </div>
 
-        <div class="input-group-prepend">
+        <div class="form-group">
+            <mat-form-field class="example-full-width">
+
+                <input matInput placeholder="nom" required [(ngModel)]="speakerModel.nom_speakers" name="nom_speakers">
+                <!--<i class="material-icons">nom_speakers</i>-->
+
+                <div *ngIf="submitted && nom_speakers.errors" class="alert alert-danger alert-dismissible fade show">
+                    <div *ngIf="nom_speakers.errors.required">Ce champ est obligatoire</div>
+                    <div *ngIf="nom_speakers.errors.pattern">Ce champ est obligatoire</div>
+                </div>
+            </mat-form-field>
 
 
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Nom speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="nom_speaker" [(ngModel)]="speakerModel.nom_speakers">
+
+
         </div>
+
+
 
         <div class="mt-4 input-group">
             <div class="input-group-prepend">
