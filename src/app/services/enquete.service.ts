@@ -16,6 +16,11 @@ export class EnqueteService {
      'x-access-token':token 
     }}); 
   }
+
+
+
+
+  
   getResponse1A(){
     let token = localStorage.getItem('token'); 
     return this.http.get(this.BASE_URL+'/reviews1A/:qst/:rep',{headers: {   
