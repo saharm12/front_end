@@ -7,6 +7,7 @@ import {MatSnackBar} from'@angular/material';
 import {NgForm} from '@angular/forms';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
+import {ToastrService} from 'ngx-toastr'
 @Component({
   selector: 'app-addspeaker',
   templateUrl: './addspeaker.component.html',
@@ -19,7 +20,7 @@ public uploader:FileUploader ;
 imageURL="";
 
 
-  constructor(private snackBar : MatSnackBar,private http:HttpClient, private speakersservices:SpeakersService,public dialogbox: MatDialogRef<AddspeakerComponent>) {
+  constructor(private toastr: ToastrService,private snackBar : MatSnackBar,private http:HttpClient, private speakersservices:SpeakersService,public dialogbox: MatDialogRef<AddspeakerComponent>) {
     this.speakermodel = new Speaker();
     const authHeader: Array<{
       name: string;
@@ -66,6 +67,8 @@ get pays_speakers(){
 
 
 
+showSucess(){
+  this.toastr.success('Ajout effectué avec succés')}
 
   ngOnInit() {
     this.uploader.onAfterAddingFile = (file) => {
@@ -104,13 +107,10 @@ addspeaker(){
   this.speakersservices.PostSpeaker(this.imageURL,this.myForm.controls['nom_speakers'].value,this.myForm.controls['prenom_speakers'].value,this.myForm.controls['profil_speakers'].value,this.myForm.controls['pays_speakers'].value ).subscribe(data=>{
     let result :any = data; 
     if(result)
-    { 
+    { this.showSucess();
       this.onClose();
       console.log("ok")
-      this.snackBar.open("Speaker Ajouter avec succées",'OK', {
-        duration: 3000,
-        panelClass: ['green-snackbar']
-      })
+      
       
       
     }

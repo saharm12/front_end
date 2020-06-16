@@ -1,72 +1,131 @@
 <div class="d-flex justify-content-between">
-    <h4> Modifier les informations de speaker</h4>
-    <button mat-button (click)="onClose()"> 
-  <i class="material-icons">close</i>
-</button>
+
+    <div class="card">
+        <div class="card-header" class="card-header card-header-danger        ">
+
+            <h4 class="card-title mt-0" style="text-align: center;"> Modifier les informations de speakers
+                <button mat-button (click)="onClose()" style="left: 20%;"> 
+        <i class="material-icons">close</i>
+        </button> </h4>
+
+        </div>
+
+        <div class="card-body">
+            <div style="overflow: auto; height: 450px;">
+                <form #projectForm="ngForm" (ngSubmit)="ModifierSpeak() ">
+
+                    <div>
+                        <label>Image</label>
+
+                        <input name="userfile" (change)="fileChange($event)" type="file">
+                    </div>
+
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+
+                            <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="15" [ngClass]="{ 'is-invalid':  nom_speakers.invalid }" placeholder="nom" #nom_speakers="ngModel" required [(ngModel)]="speakerModel.nom_speakers" name="nom_speakers">
+
+                            <div *ngIf="nom_speakers.touched && !nom_speakers.valid">
+
+                                <small class="text-danger" *ngIf="nom_speakers.errors.required">le champ nom est vide </small>
+                                <small *ngIf="nom_speakers.errors.pattern" class="text-danger"> Champs nom  doit contenir seulement des caractéres</small>
+                                <small class="text-danger" *ngIf="nom_speakers.errors.minlength">First Name is minimum {{nom_speakers.errors.minlength.requiredLength }} character.</small>
+
+                                <small class="text-danger" *ngIf="nom_speakers.errors.maxlength">First Name is maximum {{nom_speakers.errors.maxlength.requiredLength }} 10 character.</small>
+
+                            </div>
+                        </mat-form-field>
+
+
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+
+                            <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="15" [ngClass]="{ 'is-invalid':  prenom_speakers.invalid }" placeholder="prenom" #prenom_speakers="ngModel" required [(ngModel)]="speakerModel.prenom_speakers" name="prenom_speakers">
+
+                            <div *ngIf="prenom_speakers.touched && !prenom_speakers.valid">
+
+                                <small class="text-danger" *ngIf="prenom_speakers.errors.required">le champ prenomnom est vide </small>
+                                <small *ngIf="prenom_speakers.errors.pattern" class="text-danger"> Champs prenom  doit contenir seulement des caractéres</small>
+                                <small class="text-danger" *ngIf="prenom_speakers.errors.minlength"> firstName is minimum {{prenom_speakers.errors.minlength.requiredLength }} character.</small>
+
+                                <small class="text-danger" *ngIf="prenom_speakers.errors.maxlength"> firstName is maximum {{prenom_speakers.errors.maxlength.requiredLength }}  character.</small>
+
+                            </div>
+                        </mat-form-field>
+
+
+
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+
+                            <input matInput [ngClass]="{ 'is-invalid':  profil_speakers.invalid }" placeholder="Linkedin" #profil_speakers="ngModel" required [(ngModel)]="speakerModel.profil_speakers" name="profil_speakers">
+
+                            <div *ngIf="profil_speakers.touched && !profil_speakers.valid">
+
+                                <small class="text-danger" *ngIf="profil_speakers.errors.required">le champ profil est vide </small>
+
+
+                            </div>
+                        </mat-form-field>
+
+
+
+
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <mat-form-field class="example-full-width">
+
+                            <input type="text" minlength="3" matInput pattern="([a-z.'-]+)" [ngClass]="{ 'is-invalid':  pays_speakers.invalid }" placeholder="pays" #pays_speakers="ngModel" required [(ngModel)]="speakerModel.pays" name="pays_speakers">
+
+                            <div *ngIf="pays_speakers.touched && !pays_speakers.valid">
+
+                                <small class="text-danger" *ngIf="pays_speakers.errors.required">le champ profil est vide </small>
+                                <small class="text-danger" *ngIf="pays_speakers.errors.pattern"> Champs pays  doit contenir seulement des caractéres</small>
+                                <small class="text-danger" *ngIf="pays_speakers.errors.minlength"> pays is minimum {{pays_speakers.errors.minlength.requiredLength }} character.</small>
+
+                            </div>
+                        </mat-form-field>
+
+
+
+
+                    </div>
+
+                    <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
+                         <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
+     
+                         </button>
+
+
+                    <button type="button" (click)="resetForm()"> Annuler</button>
+
+
+
+
+
+
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-<div style="overflow: auto; height: 450px;">
-    <form #projectForm="ngForm" (ngSubmit)="ModifierSpeak() ">
 
-        <div>
-            <label>Image</label>
-
-            <input name="userfile" (change)="fileChange($event)" type="file">
-        </div>
-
-        <div class="form-group">
-            <mat-form-field class="example-full-width">
-
-                <input matInput placeholder="nom" required [(ngModel)]="speakerModel.nom_speakers" name="nom_speakers">
-                <!--<i class="material-icons">nom_speakers</i>-->
-
-                <div *ngIf="submitted && nom_speakers.errors" class="alert alert-danger alert-dismissible fade show">
-                    <div *ngIf="nom_speakers.errors.required">Ce champ est obligatoire</div>
-                    <div *ngIf="nom_speakers.errors.pattern">Ce champ est obligatoire</div>
-                </div>
-            </mat-form-field>
-
-
-
-
-        </div>
-
-
-
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Prenom speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="prenom_speaker" [(ngModel)]="speakerModel.prenom_speakers">
-        </div>
-
-
-
-        <div class="mt-4 input-group">
-            <div class="input-group-prepend">
-                <span class="input-group-text"> Profil speaker</span>
-            </div>
-            <input required minlength="2" type="text" class="form-control" name="profil_speaker" [(ngModel)]="speakerModel.profil_speakers">
-        </div>
-
-        <div class="mt-4 input-group">
+<!-- <div class="mt-4 input-group">
             <div class="input-group-prepend">
                 <span class="input-group-text"> Pays speaker </span>
             </div>
 
             <input required minlength="2" type="text" class="form-control" name="pays_speaker " [(ngModel)]="speakerModel.pays">
-        </div>
-        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid">
-      <i class="fa fa-floppy-o" aria-hidden="true"></i> Enregistrer
-     
-  </button>
-
-
-        <button type="button" (click)="resetForm()"> Annuler</button>
-
-
-
-
-
-
-    </form>
-</div>
+        </div>-->

@@ -36,6 +36,7 @@ import { DetailComponent } from '../../detail/detail.component';
 import { DetaicanditComponent } from '../../detaicandit/detaicandit.component';
 import { EnqueteComponent } from './enquete/enquete.component';
 import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
+import { AttestationComponent} from 'app/attestation/attestation.component'
 
 
 
@@ -105,6 +106,7 @@ import { CategorieComponent } from './categorie/categorie.component';
     AddlautComponent,
     DetaicanditComponent ,
     DetailsExpoComponent,
+    AttestationComponent,
 
     HtmlPipe
   ]

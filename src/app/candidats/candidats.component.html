@@ -65,11 +65,15 @@
                                                 Client/Fournisseur
                                             </th>-->
                                             <th>
+                                                Paiement
+                                            </th>
+                                            <th>
                                                 Dossier de candidature
                                             </th>
                                             <th>
                                                 Autre pieces
                                             </th>
+
 
 
                                             <th>
@@ -96,12 +100,36 @@
                                             </td>-->
                                             <td>
                                                 {{candit.email}}
-                                                <div>
-                                                    <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> Envoyer QR_code
-                                                    </button>
-                                                </div>
+
 
                                             </td>
+                                            <td>
+                                                <div>
+                                                    <input type="checkbox">
+                                                </div>
+                                                <div>
+
+                                                    <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> 
+                                                       
+                                                        Envoyer QR_code
+
+                                                       
+                                             
+
+                                                    </button>
+
+
+
+
+                                                </div>
+                                                <!-- <div class="checkbox">
+                                                    <label style="color:black"><input type="checkbox"  value="" (change)="EnoyerQr(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> Envoyer QR_code</label>
+                                                </div>-->
+
+
+
+                                            </td>
+
                                             <!--- <td>
                                                 {{candit.adresse}}
                                             </td>
@@ -123,14 +151,15 @@
                                             </td>-->
                                             <td>
 
-                                                <a download href="{{base_url}}/{{candit.dossier_candidature}}"> Cliquer ici pour télècharger le dossier</a>
+                                                <a download href="{{base_url}}/{{candit.dossier_candidature}}"> télècharger le fichier</a>
 
                                             </td>
                                             <td>
 
-                                                <a download href="{{base_url}}/{{candit.autre_pieces}}"> Cliquer ici pour télècharger le dossier</a>
+                                                <a download href="{{base_url}}/{{candit.autre_pieces}}">  télècharger le fichier</a>
 
                                             </td>
+
                                             <td>
 
 

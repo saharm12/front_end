@@ -5,7 +5,7 @@
         <div class="card-header" class="card-header card-header-danger        ">
 
             <h4 class="card-title mt-0"> Liste des candidats disponibles
-                <button mat-button (click)="onClose()" style="left: 60%;"> 
+                <button mat-button (click)="onClose()" style="left: 40%;"> 
                 <i class="material-icons">close</i>
                 </button> </h4>
 
@@ -28,7 +28,8 @@
 
                     </div>
                     <div>
-                        <select class="custom-select my-1 mr-sm-2" formControlName="categorie" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.categorie.errors}">
+                        <select formControlName="categorie" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.categorie.errors}">
+                            
             <option disabled>Choisir catégorie</option>
             <option> Best web site </option>
             <option> Best  mobile app/advergame </option>
@@ -39,15 +40,20 @@
             <option> Best   SEO/SEA of the year </option>
             <option> Jury awards </option>
            <!-- <option *ngFor="let categorie of listecategorie ">{{categorie}}</option>-->
-
+             
         </select>
-                        <div *ngIf="submitted && myForm.categorie.errors" class="invalid-feedback">
-                            <div *ngIf="myForm.categorie.errors.required">Title is required</div>
-                        </div>
                     </div>
+                    <div *ngIf="categorie.touched && categorie.invalid">
+                        <small *ngIf="categorie.errors.required" class="text-danger"> Champ categorie  est vide</small>
+
+
+                    </div>
+
                     <!--<div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
             <div *ngIf="f.categorie.errors.required ">Name is required.</div>
         </div>-->
+
+
                     <div class="form-group ">
                         <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
                     </div>

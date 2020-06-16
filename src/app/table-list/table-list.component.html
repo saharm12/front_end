@@ -39,6 +39,12 @@
                                     <th>
                                         Nombre de place réserver
                                     </th>
+                                    <th>
+                                        Paiement
+                                    </th>
+                                    <th>
+                                        Attestaion
+                                    </th>
                                     <!-- <th>
                                         adresse
                                     </th>
@@ -72,11 +78,9 @@
                                         </td>
                                         <td>
                                             {{part.email_participant}}
-                                            <div>
-                                                <button type="button" color="danger" (click)="Enoyer_QRcode(part.id_participant,part.nom_participant,part.prenom_participant,part.email_participant)"> Envoyer QR_code
-                                                </button>
-                                            </div>
+
                                         </td>
+
                                         <!-- <td>
                                             {{part.adresse}}
                                         </td>
@@ -96,6 +100,19 @@
 
                                         <td>
                                             {{part.nbr_place_reserver}}
+                                        </td>
+                                        <td>
+                                            {{part.paiement}}
+                                            <div>
+                                                <button type="button" color="danger" (click)="Enoyer_QRcode(part.id_participant,part.nom_participant,part.prenom_participant,part.email_participant)">
+                                                    <i class="fa fa-qrcode" aria-hidden="true"></i> Envoyer QR_code
+                                                </button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button type="submit" (click)="Openaddmail()">
+                                                   Envoyer_Attestaion
+                                            </button>
                                         </td>
 
                                         <td>

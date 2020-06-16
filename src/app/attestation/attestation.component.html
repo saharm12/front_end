@@ -1,0 +1,65 @@
+<!--<button mat-button (click)="onClose()"> 
+      <i class="material-icons">close</i>
+  </button>
+<div class="container">
+    <div class="col-md-5">
+        <div class="form-area">
+            <form role="form">
+                <br style="clear:both">
+                <h3 style="margin-bottom: 25px; text-align: center;"> Envoyer Attestation de présence</h3>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+                </div>
+
+
+
+                <div class="form-group">
+                    <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" [(ngModel)]="message" maxlength="140" rows="7"></textarea>
+                </div>
+                <button type="button" id="submit" name="submit" class="btn btn-primary pull-right" (click)="save(name, email, mobile, subject, message)">Submit Form</button>
+            </form>
+        </div>
+    </div>
+</div>-->
+
+<section class="cmspage mtb-40">
+    <div class="container">
+        <div class="page-desc" [hidden]="submitted">
+            <div class="row justify-content-center">
+
+                <div class="col-md-8">
+                    <div class="d-flex justify-content-between">
+                        <h4> Attestation de présence</h4>
+                        <button mat-button (click)="onClose()"> 
+                  <i class="material-icons">close</i>
+                </button>
+                    </div>
+
+                    <form>
+
+                        <label class="col-sm-2 col-form-label">Fichier</label>
+                        <div>
+                            <input name="fichier" (change)="fileChange($event)" type="file">
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="text" name="email" id="email" [(ngModel)]="email" class="form-control" placeholder="E-Mail">
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <button class="btn btn-success">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</section>

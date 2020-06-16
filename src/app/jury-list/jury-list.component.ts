@@ -4,13 +4,11 @@ import { JuryService  } from 'app/services/jury.service';
 import { HttpClient } from '@angular/common/http';
 import { NgForm } from '@angular/forms';
 import { Jury} from './jury-list.model'
-import Swal from 'sweetalert2';
-
+import {ToastrService} from 'ngx-toastr'
 import {MatSnackBar} from'@angular/material';
 import {  ViewChild} from '@angular/core';
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
-import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-jury-list',
@@ -22,7 +20,7 @@ export class JuryListComponent implements OnInit {
   jurys=[];
   public uploader:FileUploader ;
 imageURL="";
-  constructor( private http:HttpClient ,private snackBar : MatSnackBar,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
+  constructor( private toastr: ToastrService,private http:HttpClient ,private snackBar : MatSnackBar,private juryService:JuryService ,public dialogbox: MatDialogRef<JuryListComponent> , fb: FormBuilder) 
 { this.juryModel = new Jury();
   const authHeader: Array<{
     name: string;
@@ -41,10 +39,10 @@ this.uploader.setOptions(uploadOptions);
 
  myForm = new FormGroup({  
   image: new FormControl('', [Validators.required]),
-  nom_jury: new FormControl('', [Validators.required]),
-  prenom_jury: new FormControl('', [Validators.required]),
-  profil_jury: new FormControl('', [Validators.required]),
-  pays_jury: new FormControl('', [Validators.required]),
+  nom_jury: new FormControl('', [Validators.required, Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+  prenom_jury: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+  profil_jury: new FormControl('', [Validators.required,Validators.pattern("https?://.+")]),
+  pays_jury: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
 
 
 
@@ -52,6 +50,24 @@ this.uploader.setOptions(uploadOptions);
 
 
  }); 
+ get  nom_jury(){
+  return this.myForm.get('nom_jury');
+  }
+  get prenom_jury(){
+    return  this.myForm.get('prenom_jury');
+  }
+  get profil_jury(){
+    return  this.myForm.get('profil_jury');
+  }
+  get   pays_jury(){
+    return  this.myForm.get('pays_jury');
+  }
+  
+  Annuler(){
+    this.dialogbox.close();
+  }
+  showSucess(){
+    this.toastr.success('Ajout effectué  avec succés')}
 @ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
@@ -89,7 +105,7 @@ this.uploader.setOptions(uploadOptions);
         let result :any = data; 
         if(result)
         { 
-         
+         this.showSucess();
           this.onClose();
           console.log("ok")
           

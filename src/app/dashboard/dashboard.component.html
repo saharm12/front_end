@@ -75,10 +75,7 @@
                                         </td>
                                         <td>
                                             {{expo.email_exposant}}
-                                            <div>
-                                                <button type="button" color="danger" (click)="Enoyer_QRcode(expo.id_exposant,expo.nom_exposant,expo.prenom_exposant,expo.email_exposant)"> Envoyer QR_code
-                                                </button>
-                                            </div>
+
                                         </td>
                                         <td>
                                             {{expo.telephone}}
@@ -106,6 +103,13 @@
                                         </td>-->
                                         <td>
                                             {{expo.paiement}}
+                                            <div>
+                                                <button type="button" color="danger" (click)="Enoyer_QRcode(expo.id_exposant,expo.nom_exposant,expo.prenom_exposant,expo.email_exposant)">
+                                                    <i class="fa fa-qrcode" aria-hidden="true"></i>
+                                                  Envoyer QR_code
+                                                    
+                                                 </button>
+                                            </div>
                                         </td>
                                         <!--  <td>
                                             {{expo.cheque}}

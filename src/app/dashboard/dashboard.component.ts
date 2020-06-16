@@ -6,7 +6,7 @@ import { ExposantService } from 'app/services/exposants.service';
 import { MatPaginator, MatTableDataSource ,MatDialogConfig} from '@angular/material';
 import { MatDialog } from '@angular/material/dialog';
 import {DetailsExpoComponent} from '../details-expo/details-expo.component';
-
+import {ToastrService} from 'ngx-toastr'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
     desc:string ; 
     date_debut:any ; 
     date_fin:any;
-  constructor( private dialog: MatDialog,private modalService: NgbModal , private htpp:HttpClient , private expoService:ExposantService) { }
+  constructor( private toastr: ToastrService, private dialog: MatDialog,private modalService: NgbModal , private htpp:HttpClient , private expoService:ExposantService) { }
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -198,12 +198,17 @@ Supprimer(id)
   })
 
 }
+
+showSucess()
+{this.toastr.success('QrCode a été envoyé avec succés')}
+
 Enoyer_QRcode(id_exposant,nom_exposant,prenom_exposant,email_exposant){
   this.htpp.post('http://localhost:3000/exposant/sendqr',{
     id:id_exposant, 
     Email:email_exposant, 
     info:id_exposant +'/'+nom_exposant+'/'+prenom_exposant+'/'+email_exposant
   }).subscribe(data=>{
+    this.showSucess();
  let result:any =data; 
     console.log(result);
  }) }

@@ -5,7 +5,9 @@ import { ParticipantService } from 'app/services/participants.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailComponent } from 'app/detail/detail.component';
 import Swal from 'sweetalert2';
-
+import {AttestationComponent} from 'app/attestation/attestation.component'
+import {ToastrService} from 'ngx-toastr'
+import{Attesation} from '../attestation/attestation.model'
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
@@ -18,7 +20,8 @@ export class TableListComponent implements OnInit {
 
   dataSource = new MatTableDataSource(this.participants);
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor( private http:HttpClient ,private dialog: MatDialog,private partService:ParticipantService) { }
+  constructor( private toastr: ToastrService,private http:HttpClient ,private dialog: MatDialog,private partService:ParticipantService) {
+   }
 
   ngOnInit() {
     this.getparticipant(); 
@@ -103,6 +106,7 @@ openlistpart(idparticipant){
      this.dialog.open(DetailComponent, dialogConfig);
   
    }
+   showSucess(){this.toastr.success('QrCode a été envoyé avec succés')}
 
    Enoyer_QRcode(id_participant,nom_participant,prenom_participant,email_participant){
     this.http.post('http://localhost:3000/participant/sendqr',{
@@ -110,12 +114,23 @@ openlistpart(idparticipant){
       email:email_participant, 
       info: nom_participant+'/'+prenom_participant+'/'+email_participant
     }).subscribe(data=>{
+      this.showSucess();
    let result:any =data; 
       console.log(result);
    }) 
    
   }
 
-  
+  Openaddmail(participant){
+   
+    const dialogConfig = new MatDialogConfig();
+       dialogConfig.disableClose =  true;
+       dialogConfig.autoFocus = true;
+       dialogConfig.width = "500px";
+       dialogConfig.height ="600px"
+
+       this.dialog.open(AttestationComponent, dialogConfig);
+    
+  }
   }
     

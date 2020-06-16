@@ -4,7 +4,7 @@ import {MatSnackBar} from'@angular/material';
 import { NgForm } from '@angular/forms'
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { HttpClient } from '@angular/common/http';
-import {  FormGroup ,FormControl, Validators} from "@angular/forms";
+import {ToastrService} from 'ngx-toastr';
 import { Speaker } from 'app/components/addspeaker/addspeaker.model';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {SpeakersService  } from 'app/services/speakers.service';
@@ -21,7 +21,7 @@ speake= [];
 public uploader:FileUploader ;
 imageURL="";
 uploadedFile:File ;
-constructor(@Inject(MAT_DIALOG_DATA) public data: any,private http:HttpClient, private snackBar : MatSnackBar,public dialogbox: MatDialogRef<EditSpeakerComponent>, private speakersservices:SpeakersService) 
+constructor(@Inject(MAT_DIALOG_DATA) public data: any,private toastr: ToastrService,private http:HttpClient, private snackBar : MatSnackBar,public dialogbox: MatDialogRef<EditSpeakerComponent>, private speakersservices:SpeakersService) 
 { }
 @ViewChild(NgForm) ngForm: NgForm;
 
@@ -55,10 +55,14 @@ getSpeak()
     })
 }
 } 
-
+showSucess(){
+  this.toastr.success('Modification correctement effectué')}
 fileChange(element) {
   this.uploadedFile = element.target.files[0];
 }
+
+
+  
 ModifierSpeak(){
   let data = new FormData();
 
@@ -86,7 +90,8 @@ console.log("image", this.imageURL)
   let result:any =data; 
     console.log(result);
     if(result)
-    { 
+    { this.showSucess();
+      this.onClose();
        
       console.log("ok")
       

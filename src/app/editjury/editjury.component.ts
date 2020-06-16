@@ -7,7 +7,7 @@ import {MatSnackBar} from'@angular/material';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
-
+import {ToastrService} from 'ngx-toastr';
 @Component({
   selector: 'app-editjury',
   templateUrl: './editjury.component.html',
@@ -22,7 +22,7 @@ export class EditjuryComponent implements OnInit {
 
   
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private snackBar : MatSnackBar,private http:HttpClient,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,private toastr: ToastrService,private snackBar : MatSnackBar,private http:HttpClient,private juryService:JuryService, public dialogbox: MatDialogRef<EditjuryComponent>  ) { 
     
   }
   @ViewChild(NgForm) ngForm: NgForm;
@@ -48,6 +48,8 @@ export class EditjuryComponent implements OnInit {
     //this.ngOnInit();
   
   }
+  showSucess(){
+    this.toastr.success('Modification correctement effectué')}
   getjury()
   { 
    {
@@ -101,7 +103,8 @@ export class EditjuryComponent implements OnInit {
          console.log(result);
          if(result)
          { 
-            
+            this.showSucess();
+            this.onClose();
            console.log("ok")
            
          }

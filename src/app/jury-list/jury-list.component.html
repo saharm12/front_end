@@ -1,4 +1,4 @@
-<div class="d-flex justify-content-between">
+<!--<div class="d-flex justify-content-between">
     <h4> Ajouter un nouveau jury</h4>
 
     <button mat-button (click)="onClose()"> 
@@ -6,7 +6,7 @@
   </button>
 </div>
 
-<!--<div style="overflow: auto; height: 450px;">
+<div style="overflow: auto; height: 450px;">
 <form #projectForm="ngForm" novalidate>
 
 
@@ -53,7 +53,7 @@
 
 
 
-</form>!-->
+</form>
 <div class="container">
     <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addjury()">
         <div>
@@ -65,12 +65,12 @@
         </div>
         <div>
 
-            <!-- <option *ngFor="let categorie of listecategorie ">{{categorie}}</option>-->
+          <option *ngFor="let categorie of listecategorie ">{{categorie}}</option>
 
         </div>
-        <!--  <div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
+        <div *ngIf="f.categorie.touched && f.categorie.invalid " class="alert alert-danger ">
             <div *ngIf="f.categorie.errors.required ">Name is required.</div>
-        </div>-->
+        </div>
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Nom :</label>
             <div class="col-sm-10">
@@ -108,4 +108,95 @@
             <button class="btn btn-primary " [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
         </div>
     </form>
+</div>-->
+<div class="d-flex justify-content-between">
+    <div class="card">
+        <div class="card-header" class="card-header card-header-danger        ">
+
+            <h4 class="card-title mt-0" style="text-align: center;"> Ajouter Jury
+                <button mat-button (click)="onClose()" style="left: 40%;"> 
+            <i class="material-icons">close</i>
+            </button> </h4>
+
+        </div>
+
+
+        <div class="card-body">
+            <form enctype="multipart/form-data" [formGroup]="myForm" (ngSubmit)=" addjury()">
+
+                <div>
+                    <label class="col-sm-2 col-form-label">Image</label>
+                    <div class="col-sm-10">
+                        <input name="image" formControlName="image" type="file" ng2FileSelect [uploader]="uploader">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="form-row">
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Nom</mat-label>
+                            <textarea matInput placeholder=" " matInput formControlName="nom_jury" required></textarea>
+                            <div *ngIf="nom_jury.touched && nom_jury.invalid">
+                                <small *ngIf="nom_jury.errors.required" class="text-danger"> Champ nom est vide</small>
+                                <small *ngIf="nom_jury.errors.pattern" class="text-danger"> Champs nom doit contenir seulement des caractéres</small>
+                                <small *ngIf="nom_jury.errors.minlength" class="text-danger"> Champs nom doit  être  de taille minimale 3 lettre</small>
+                            </div>
+
+                        </mat-form-field>
+
+                    </div>
+                    <div class="col">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Prénom</mat-label>
+                            <textarea matInput placeholder="" matInput formControlName="prenom_jury" required></textarea>
+                            <div *ngIf="prenom_jury.touched && prenom_jury.invalid">
+                                <small *ngIf="prenom_jury.errors.required" class="text-danger"> Champ prénom est vide</small>
+                                <small *ngIf="prenom_jury.errors.pattern" class="text-danger"> Champs prénom  doit contenir seulement des caractéres</small>
+                                <small *ngIf="prenom_jury.errors.minlength" class="text-danger"> Champs prénom  doit  être  de taille minimale 3 lettre</small>
+                            </div>
+                        </mat-form-field>
+
+                    </div>
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Lien Linkedin:</mat-label>
+                        <textarea matInput placeholder="" name="profil_jury" formControlName="profil_jury" type="url" required></textarea>
+                        <div *ngIf="profil_jury.touched && profil_jury.invalid">
+                            <small *ngIf="profil_jury.errors.required" class="text-danger"> Champ lien Linkedin est vide</small>
+                            <small *ngIf="profil_jury.errors.pattern" class="text-danger"> Champs lien Linkedin doit contenir un lien(https://..)</small>
+
+                        </div>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Pays</mat-label>
+                        <textarea matInput placeholder=" " name="pays_jury" formControlName="pays_jury" type="text" required></textarea>
+                        <div *ngIf="pays_jury.touched && pays_jury.invalid">
+                            <small *ngIf="pays_jury.errors.required" class="text-danger"> Champ pays est vide</small>
+                            <small *ngIf="pays_jury.pattern" class="text-danger"> Champs pays  doit contenir seulement des caractéres</small>
+                            <small *ngIf="pays_jury.errors.minlength" class="text-danger"> Champs pays  doit  être  de taille minimale 3 lettre</small>
+                        </div>
+                    </mat-form-field>
+
+                </div>
+
+
+                <div class="form-group ">
+                    <button class="btn btn-success" [disabled]="!uploader.getNotUploadedItems().length ">Ajouter</button>
+                    <button type="button" class="btn btn-dark" style="color:white; " (click)="Annuler()">Annuler</button>
+                </div>
+
+
+
+            </form>
+
+        </div>
+    </div>
 </div>

@@ -13,6 +13,7 @@ import {  EditprogComponent } from './editprog/editprog.component';
 import { DetaicanditComponent } from './detaicandit/detaicandit.component';
 import { DetailComponent } from './detail/detail.component';
 import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
+import { AttestationComponent} from 'app/attestation/attestation.component'
 
 @NgModule({
   imports: [
@@ -35,7 +36,7 @@ import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
    
   ],
   providers: [ MatDatepickerModule ],
-  entryComponents:[EditprogComponent, DetailComponent,DetaicanditComponent,DetailsExpoComponent,JuryListComponent,EditjuryComponent,DetailprogComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent, AddsposnsComponent]
+  entryComponents:[EditprogComponent, DetailComponent,DetaicanditComponent,DetailsExpoComponent,JuryListComponent,EditjuryComponent,DetailprogComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent, AttestationComponent,AddsposnsComponent]
 })
 
 export class MaterialModule {}

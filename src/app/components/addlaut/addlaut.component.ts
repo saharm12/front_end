@@ -53,6 +53,10 @@ this.uploader.setOptions(uploadOptions);
 
 
  });
+
+ get  categorie(){
+  return this.myForm.get('categorie');
+  }
   ngOnInit() { 
     this.uploader.onAfterAddingFile = (file) => {
       this.imageURL="/uploads/"+file.file.name;
