@@ -51,11 +51,14 @@ supprog(id) {
 
 putprog( prog: Programme  ){
 let token = localStorage.getItem('token'); 
-  return this.http.put(this.BASE_URL+'/updateprog/'+ prog.id_prog,prog);
+
+  return this.http.put(this.BASE_URL+'/updateprogramme/'+prog.id_programme,prog,{headers:{
+    'x-access-token':token 
+  }}); 
 
 }
 
-//}
+
 
 }
  

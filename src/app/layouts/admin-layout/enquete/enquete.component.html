@@ -33,18 +33,14 @@
                                                 Question
                                             </th>
                                             <th>
-                                                Reponse
+                                                Rèponse
                                             </th>
-                                            <th>
-                                                id user
-                                            </th>
-                                            <th>
-                                                Action
-                                            </th>
+
+
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let enq of enquetes ">
+                                        <tr *ngFor="let enq of enquetes | paginate: { itemsPerPage: 6, currentPage: p }">
 
                                             <td>
                                                 {{enq.id_enquete}}
@@ -59,10 +55,7 @@
                                                 {{enq.Rep}}
 
                                             </td>
-                                            <td>
-                                                {{enq.id_user}}
 
-                                            </td>
                                         </tr>
                                     </tbody>
 

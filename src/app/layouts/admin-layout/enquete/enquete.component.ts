@@ -10,8 +10,10 @@ import { MultiDataSet, Label } from 'ng2-charts';
   templateUrl: './enquete.component.html',
   styleUrls: ['./enquete.component.scss']
 })
+
 export class EnqueteComponent implements OnInit {
     question: any = [{id:1,text:' Avez-vous apprécié l évenement (date,lieu,animateur..)'},{id:2,text:' Avez-vous apprécié l organisation de l évenement par iceberg'}, {id:3,text:' Pensez-vous participer a une autre de nos événement a l avenir'},{id:4,text:' Recommanderiez-vous nos évenement a un ami'}]
+    p: number = 1;
 
 enquetes= [];
 enq:Enquete[]

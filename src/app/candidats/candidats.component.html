@@ -104,31 +104,37 @@
 
                                             </td>
                                             <td>
-                                                <div>
-                                                    <input type="checkbox">
-                                                </div>
-                                                <div>
 
-                                                    <button type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> 
+
+
+
+
+                                                <button *ngIf="isButton" type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> 
                                                        
                                                         Envoyer QR_code
+                                                        
+                                                  </button>
 
+
+
+
+
+                                                <button *ngIf="!isButton" type="button" color="success"> Qrcode Envoyé
                                                        
-                                             
+                                                    <i class="fa fa-check-circle" aria-hidden="true"></i>
+    
+                                                    
+                                                   </button>
 
-                                                    </button>
+                                            </td>
 
-
-
-
-                                                </div>
-                                                <!-- <div class="checkbox">
+                                            <!-- <div class="checkbox">
                                                     <label style="color:black"><input type="checkbox"  value="" (change)="EnoyerQr(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> Envoyer QR_code</label>
                                                 </div>-->
 
 
 
-                                            </td>
+
 
                                             <!--- <td>
                                                 {{candit.adresse}}
@@ -167,7 +173,9 @@
 
                                                 <button type="button" color="danger" class="" (click)="Supprimer(candit.id_candidat)">
                                                     <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
-                                                    </button>
+                                                   
+                                                </button>
+
 
 
 

@@ -11,7 +11,8 @@ import {HttpClient} from '@angular/common/http' ;
   styleUrls: ['./editprog.component.scss']
 })
 export class EditprogComponent implements OnInit {
-  progModel :any;
+  progrModel:Programme;
+  //progModel :any;
   name = 'ng2-ckeditor';
   ckeConfig: any;
   mycontent: string;
@@ -19,7 +20,7 @@ export class EditprogComponent implements OnInit {
   Id:number;
   res: any;  
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http:HttpClient,private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
-    
+    this.progrModel = new Programme();
     this.mycontent = `<p>My html content</p>`;
    }
    @ViewChild("myckeditor") ckeditor: any;
@@ -51,8 +52,8 @@ export class EditprogComponent implements OnInit {
     console.log(this.data)
     let user = this.data.info ;
     console.log(user);
-       this.progModel = user[0].details_programme; 
-    console.log("form ",this.progModel);
+       this.progrModel.detail = user[0].details_programme; 
+ //   console.log("form ",this.progModel);
    
 
   }
@@ -69,7 +70,7 @@ export class EditprogComponent implements OnInit {
   }
   updateprog(){
     
- this.progService.putprog(this.progModel).subscribe(data => {
+ this.progService.putprog(this.progrModel).subscribe(data => {
       let result : any = data; 
       if(result)
       {

@@ -18,13 +18,13 @@ export class CandidatsComponent implements OnInit {
   candidats= []; //local
   p: number = 1;
   base_url="http://localhost:3000"
-
-check:boolean;
+ // public text: string = 'envoyer_QRcode';
+isButton :boolean = true;
   constructor(private toastr: ToastrService, private http:HttpClient,private dialog: MatDialog ,private candiService:CandidatService ) { 
   
    
   }
-  
+  public showMe:boolean;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
@@ -32,6 +32,7 @@ check:boolean;
 
   
   }
+
  
   getcandidat()
   { 
@@ -118,16 +119,21 @@ openlistcan(idcandidat){
      this.dialog.open(DetaicanditComponent, dialogConfig);
 
 }
+
+
+
 showSucess(){
   this.toastr.success('QrCode a été envoyé avec succés')}
-
+  
 Enoyer_QRcode(id_candidat,email,nom_societe_agence,personne_responsable_candidature){
 
   this.http.post('http://localhost:3000/candidat/sendqr',{
    id:id_candidat, 
    candidatEmail:email, 
+   
     info: nom_societe_agence+'/'+personne_responsable_candidature+'/'+email
   }).subscribe(data=>{
+    this.isButton=false;
     this.showSucess();
  let result:any =data; 
     console.log(result);
@@ -136,7 +142,9 @@ Enoyer_QRcode(id_candidat,email,nom_societe_agence,personne_responsable_candidat
 }
 
 
+
 }
+
 //EnoyerQr( id_candidat,email,nom_societe_agence,personne_responsable_candidature){
   
 
