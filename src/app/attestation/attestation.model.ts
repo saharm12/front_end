@@ -1,4 +1,4 @@
 export class Attesation {
-    email:string;
+    id:number
     
 }

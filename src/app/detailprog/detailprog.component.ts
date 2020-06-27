@@ -52,11 +52,12 @@ Getcontent(id:number){
   })
 }
 update(programmes){
+ // localStorage.setItem("idProg",programme.id_programme)
   const dialogConfig = new MatDialogConfig();
    dialogConfig.disableClose =  true;
    dialogConfig.autoFocus = true;
    dialogConfig.width = "60%";
-   dialogConfig.data={info:programmes}
+  dialogConfig.data={info:programmes}
    this.dialog.open(EditprogComponent, dialogConfig)
   }
    

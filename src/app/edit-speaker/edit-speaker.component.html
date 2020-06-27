@@ -25,7 +25,7 @@
 
                             <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="15" [ngClass]="{ 'is-invalid':  nom_speakers.invalid }" placeholder="nom" #nom_speakers="ngModel" required [(ngModel)]="speakerModel.nom_speakers" name="nom_speakers">
 
-                            <div *ngIf="nom_speakers.touched && !nom_speakers.valid">
+                            <div *ngIf="nom_speakers.touched && !nom_speakers.valid && submitted">
 
                                 <small class="text-danger" *ngIf="nom_speakers.errors.required">le champ nom est vide </small>
                                 <small *ngIf="nom_speakers.errors.pattern" class="text-danger"> Champs nom  doit contenir seulement des caractéres</small>
@@ -47,7 +47,7 @@
 
                             <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="15" [ngClass]="{ 'is-invalid':  prenom_speakers.invalid }" placeholder="prenom" #prenom_speakers="ngModel" required [(ngModel)]="speakerModel.prenom_speakers" name="prenom_speakers">
 
-                            <div *ngIf="prenom_speakers.touched && !prenom_speakers.valid">
+                            <div *ngIf="prenom_speakers.touched && !prenom_speakers.valid && submitted">
 
                                 <small class="text-danger" *ngIf="prenom_speakers.errors.required">le champ prenomnom est vide </small>
                                 <small *ngIf="prenom_speakers.errors.pattern" class="text-danger"> Champs prenom  doit contenir seulement des caractéres</small>
@@ -69,7 +69,7 @@
 
                             <input matInput [ngClass]="{ 'is-invalid':  profil_speakers.invalid }" placeholder="Linkedin" #profil_speakers="ngModel" required [(ngModel)]="speakerModel.profil_speakers" name="profil_speakers">
 
-                            <div *ngIf="profil_speakers.touched && !profil_speakers.valid">
+                            <div *ngIf="profil_speakers.touched && !profil_speakers.valid && submitted">
 
                                 <small class="text-danger" *ngIf="profil_speakers.errors.required">le champ profil est vide </small>
 
@@ -89,7 +89,7 @@
 
                             <input type="text" minlength="3" matInput pattern="([a-z.'-]+)" [ngClass]="{ 'is-invalid':  pays_speakers.invalid }" placeholder="pays" #pays_speakers="ngModel" required [(ngModel)]="speakerModel.pays" name="pays_speakers">
 
-                            <div *ngIf="pays_speakers.touched && !pays_speakers.valid">
+                            <div *ngIf="pays_speakers.touched && !pays_speakers.valid && submitted">
 
                                 <small class="text-danger" *ngIf="pays_speakers.errors.required">le champ profil est vide </small>
                                 <small class="text-danger" *ngIf="pays_speakers.errors.pattern"> Champs pays  doit contenir seulement des caractéres</small>

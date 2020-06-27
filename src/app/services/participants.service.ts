@@ -59,7 +59,13 @@ BASE_URL='http://localhost:3000/participant' ;
       'x-access-token':token 
     }}); 
   }
-  
+  Postpart( image)
+  { let token = localStorage.getItem('token'); 
+    return this.http.post(this.BASE_URL+'/AddAttestation/:id',{
+      'image':image,
+     
+    });  
+  }
 
   
 }

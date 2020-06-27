@@ -66,8 +66,22 @@ this.uploader.setOptions(uploadOptions);
   Annuler(){
     this.dialogbox.close();
   }
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      console.log(field);
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      }
+    });
+  }
   showSucess(){
     this.toastr.success('Ajout effectué  avec succés')}
+    showErr(){
+      this.toastr.error('Linkedin deja existant')}
+
 @ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
@@ -100,6 +114,19 @@ this.uploader.setOptions(uploadOptions);
       
     
     addjury(){
+      if (this.myForm.invalid){
+        this.validateAllFormFields(this.myForm);
+
+      }else{
+        this.juryService.checkLinkedInNotTaken(this.myForm.controls['profil_jury'].value  ).subscribe((res:any)=>{
+          console.log(res.linkedInNotTaken)
+        
+          if(!res.linkedInNotTaken)
+          { 
+           this.showErr();
+            
+          }
+       else {
       this.uploader.uploadAll();
       this.juryService.Postjury(this.imageURL,this.myForm.controls['nom_jury'].value , this.myForm.controls['prenom_jury'].value , this.myForm.controls['profil_jury'].value , this.myForm.controls['pays_jury'].value , ).subscribe(data=>{
         let result :any = data; 
@@ -111,8 +138,9 @@ this.uploader.setOptions(uploadOptions);
           
         }
       })
-      
-      
+    }
+    })  
+    }
      }
 
     

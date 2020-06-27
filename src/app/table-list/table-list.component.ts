@@ -123,6 +123,12 @@ openlistpart(idparticipant){
 
   Openaddmail(participant){
    
+    
+
+   // console.log(participant)
+    localStorage.setItem("idP",participant.id_participant)
+    localStorage.setItem("email",participant.email_participant)
+
     const dialogConfig = new MatDialogConfig();
        dialogConfig.disableClose =  true;
        dialogConfig.autoFocus = true;

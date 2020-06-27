@@ -62,8 +62,11 @@ fileChange(element) {
 }
 
 
-  
+submitted=false;
 ModifierSpeak(){
+
+ // this.submitted = true;
+
   let data = new FormData();
 
 data.append('nom_speakers',this.speakerModel.nom_speakers);

@@ -3,7 +3,7 @@
     <form role="form" #myForm="ngForm" (ngSubmit)="updateprog()">
 
         <div class="form-group has-feedback" [ngClass]="{ 'has-error': myckeditor.invalid && myckeditor.touched }">
-            <ckeditor [(ngModel)]="progrModel.detail" #myckeditor="ngModel" name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
+            <ckeditor [(ngModel)]="progrModel.detail" #myckeditor name="myckeditor" required [config]="ckeConfig" debounce="500" (change)="onChange($event)">
             </ckeditor>
             <div *ngIf="myckeditor.invalid && myckeditor.touched" class="help-block">Required field.
 

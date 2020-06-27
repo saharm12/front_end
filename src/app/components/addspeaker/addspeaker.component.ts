@@ -101,8 +101,26 @@ showSucess(){
       })
   }
 } 
-
+validateAllFormFields(formGroup: FormGroup) {
+  Object.keys(formGroup.controls).forEach(field => {
+    console.log(field);
+    const control = formGroup.get(field);
+    if (control instanceof FormControl) {
+      control.markAsTouched({ onlySelf: true });
+    } else if (control instanceof FormGroup) {
+      this.validateAllFormFields(control);
+    }
+  });
+}
+showError(){
+  this.toastr.error('Type de donnees invalide ')}
 addspeaker(){
+  if (this.myForm.invalid){
+    //this.showError()
+    this.validateAllFormFields(this.myForm);
+    
+  }/*  */
+  else{
   this.uploader.uploadAll();
   this.speakersservices.PostSpeaker(this.imageURL,this.myForm.controls['nom_speakers'].value,this.myForm.controls['prenom_speakers'].value,this.myForm.controls['profil_speakers'].value,this.myForm.controls['pays_speakers'].value ).subscribe(data=>{
     let result :any = data; 
@@ -114,7 +132,8 @@ addspeaker(){
       
       
     }
-  })
+   })
+}
  }
 resetForm(){
  this.ngForm.resetForm();

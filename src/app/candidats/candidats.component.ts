@@ -133,7 +133,7 @@ Enoyer_QRcode(id_candidat,email,nom_societe_agence,personne_responsable_candidat
    
     info: nom_societe_agence+'/'+personne_responsable_candidature+'/'+email
   }).subscribe(data=>{
-    this.isButton=false;
+   
     this.showSucess();
  let result:any =data; 
     console.log(result);

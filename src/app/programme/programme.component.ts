@@ -2,9 +2,7 @@ import { Component, OnInit , ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import { NgForm } from '@angular/forms';
 import { Programme} from './prog.model'
-
 import { ProgrammeService   } from 'app/services/programme.service';
-
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -26,7 +24,7 @@ export class ProgrammeComponent implements OnInit {
  programmes=[];  
 
   @ViewChild("myckeditor") ckeditor: any;
-  constructor(private progService:ProgrammeService ,private router: Router ) { 
+  constructor( private progService:ProgrammeService ,private router: Router ) { 
     this.mycontent = `<p>My html content</p>`;
     this.progModel = new Programme();
 
@@ -101,7 +99,6 @@ export class ProgrammeComponent implements OnInit {
 
 
   }  
-
 
 
 

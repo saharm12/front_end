@@ -39,6 +39,14 @@ export class JuryService {
       'pays': pays,
     }); 
   }
+  checkLinkedInNotTaken(profil_jury)
+  {
+    let token = localStorage.getItem('token'); 
+    return this.http.post(this.BASE_URL+'/checkLinkedInNotTaken',{
+      'profil_jury': profil_jury,
+     
+    }); 
+  }
   SuppJu(id) {
     let token = localStorage.getItem('token'); 
     return this.http.delete(this.BASE_URL+'/DeleteJuries/'+id,{headers:{

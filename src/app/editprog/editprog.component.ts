@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject,ViewChild } from '@angular/core';
+import { Component, OnInit,Inject,ViewChild, ElementRef } from '@angular/core';
 import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { MatDialogRef} from '@angular/material';
 import { Programme} from '../programme/prog.model';
@@ -23,7 +23,7 @@ export class EditprogComponent implements OnInit {
     this.progrModel = new Programme();
     this.mycontent = `<p>My html content</p>`;
    }
-   @ViewChild("myckeditor") ckeditor: any;
+   @ViewChild("myckeditor") ckeditor: ElementRef;
   ngOnInit() {
     this.ckeConfig = {
       allowedContent: false,
@@ -52,8 +52,10 @@ export class EditprogComponent implements OnInit {
     console.log(this.data)
     let user = this.data.info ;
     console.log(user);
+
        this.progrModel.detail = user[0].details_programme; 
- //   console.log("form ",this.progModel);
+       this.progrModel.id_programme = user[0].id_programme;
+ 
    
 
   }
@@ -70,6 +72,7 @@ export class EditprogComponent implements OnInit {
   }
   updateprog(){
     
+    console.log("ckeditor",this.progrModel)
  this.progService.putprog(this.progrModel).subscribe(data => {
       let result : any = data; 
       if(result)
@@ -78,4 +81,15 @@ export class EditprogComponent implements OnInit {
       }
     })
   }
-    }
+
+  mupdateprog(){
+   
+
+    this.http.post('http://localhost:3000/programme/updateprogramme/'+this.progrModel.id_programme,this.progrModel).subscribe(data=>{
+      let result:any =data; 
+       console.log(result);
+      })
+
+ }
+}
+    
