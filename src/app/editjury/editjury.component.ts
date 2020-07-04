@@ -64,18 +64,16 @@ export class EditjuryComponent implements OnInit {
   this.uploadedFile = element.target.files[0];
 }
 
+showErr(){
+  this.toastr.error('Linkedin deja existant')}
+
+
+
   Update(){
-    //console.log('modified jury',this.juryModel)
-    //this.juryService.ModifJury(this.juryModel).subscribe(data => {
-      //  let result : any = data; 
-        //if(result)
-        //{ 
-         // this.snackBar.open("Modification bien enregistrer",'OK', {
-           // duration: 7000,
-           // panelClass: ['green-snackbar']
-         // }); 
-       // }
-     // })
+    
+    
+      
+ 
      let data = new FormData();
 
      data.append('nom_jury',this.juryModel.nom_jury);
@@ -84,6 +82,18 @@ export class EditjuryComponent implements OnInit {
      data.append('pays',this.juryModel.pays);
      console.log("file name",this.uploadedFile)
      
+     this.http.post('http://localhost:3000/jurie/CheckputLinkedInNotTaken/'+this.juryModel.id_jury,{
+      'profil_jury': this.juryModel.profil_jury,
+       })
+     .subscribe((res:any)=>{
+      console.log(res.linkedInNotTaken)
+    
+      if(!res.linkedInNotTaken)
+      { 
+       this.showErr();
+      }else{
+
+    
      if (this.uploadedFile){
        console.log("file")
        data.append('userfile',this.uploadedFile);
@@ -109,8 +119,9 @@ export class EditjuryComponent implements OnInit {
            
          }
        })
-
-       
+      
+      }
+    }) 
      
   }
-}
+  }

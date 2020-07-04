@@ -87,6 +87,13 @@ this.getEnquete();
         )
         console.log(" ttttt",this.satisfait)
       })
+
+
+
+      
+
+
+      
       
      
       

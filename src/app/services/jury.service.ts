@@ -47,6 +47,9 @@ export class JuryService {
      
     }); 
   }
+ 
+
+
   SuppJu(id) {
     let token = localStorage.getItem('token'); 
     return this.http.delete(this.BASE_URL+'/DeleteJuries/'+id,{headers:{
