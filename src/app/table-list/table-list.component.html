@@ -109,11 +109,18 @@
                                             {{part.paiement}}
                                         </td>
                                         <td>
-                                            <div>
+                                            <div *ngIf="part.qrcode == 0 ; else other_content1">
+
                                                 <button type="button" color="danger" (click)="Enoyer_QRcode(part.id_participant,part.nom_participant,part.prenom_participant,part.email_participant)">
                                                     <i class="fa fa-qrcode" aria-hidden="true"></i> Envoyer QR_code
                                                 </button>
                                             </div>
+                                            <ng-template #other_content1>
+                                                Qrcode Envoyer <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
+
+                                                <!-- <p>{{part.attestation}}
+                                                </p>-->
+                                            </ng-template>
 
                                         </td>
 
@@ -123,12 +130,13 @@
 
                                         <td>
                                             <!-- <div *ngIf="part.attestation ==='' ; else other_content">-->
-                                            <div *ngIf="part.attestation ==='' ; else other_content">
+                                            <div *ngIf="part.attestation == null ; else other_content">
 
                                                 <button type="submit" (click)="Openaddmail(part)">
                                                     Envoyer_Attestaion
                                              </button>
                                             </div>
+
                                             <ng-template #other_content>
                                                 Attestation Envoyer <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
 

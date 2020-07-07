@@ -1,23 +1,23 @@
 <div class="main-content">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <!---- <button class="btn btn-primary float-right" style="margin-bottom: 100px" (click)="open(content)">ajouter un evenement</button>-->
+
                 <div class="card card-plain">
+
+
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0"> Liste des Enquetes
+                        <h4 class="card-title mt-0"> Liste des Partenaires disponibles
 
-
+                            <button mat-raised-button (click)="OpenNewSponsors()" style="left: 75%; ">
+                          Ajouter
+                          <i class="fa fa-plus" aria-hidden="true"></i> 
+                             </button>
                         </h4>
-
                     </div>
-
-
                     <div class="example-container mat-elevation-z8">
                         <div class="table-responsive">
-
-
-
 
                             <div class="table-responsive-xl">
 
@@ -25,46 +25,38 @@
                                     <thead class="">
                                         <tr>
                                             <th>
-                                                Id
-                                            </th>
-
-
-                                            <th>
-                                                Question
+                                                #
                                             </th>
                                             <th>
-                                                Rèponse
+                                                Logo
                                             </th>
-
+                                            <th>
+                                                Action
+                                            </th>
 
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let enq of enquetes | paginate: { itemsPerPage: 6, currentPage: p }">
+                                        <tr *ngFor="let spons of sponsors ">
+                                            <td>
+                                                {{spons.id_sponsors}}
+                                            </td>
+
 
                                             <td>
-                                                {{enq.id_enquete}}
-
+                                                <img *ngIf="spons.image!=null" src="{{base_url}}{{spons.image}}" style="width: 150px;height: 150px;">
                                             </td>
 
                                             <td>
-                                                {{enq.numQuestion}}
-
-                                            </td>
-                                            <td>
-                                                {{enq.Rep}}
+                                                <button type="button" color="danger" class="" (click)="Supprimer(spons.id_sponsors)">
+                                              <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
+                                              </button>
 
                                             </td>
 
                                         </tr>
                                     </tbody>
-
-
-
-
-
                                 </table>
-                                <pagination-controls (pageChange)="p = $event"></pagination-controls>
                             </div>
                         </div>
                     </div>
@@ -73,20 +65,4 @@
 
         </div>
     </div>
-
-    <div class="form-group" class="form-group col-9">
-        <label for="question">Consulter Liste des Questions:</label>
-        <select id="question" name="question" class="form-control" [(ngModel)]="questionStat" (click)="changeQuestion(questionStat)">
-        <option *ngFor="let quest of question" [value]="quest.id" >{{quest.text}}</option>
-    </select>
-    </div>
-    <div id="chart">
-        <canvas id="myChart"></canvas>
-
-    </div>
-    <div id="chart">
-        <canvas style="margin-top: 10%;" id="myChart1"></canvas>
-
-    </div>
-
 </div>

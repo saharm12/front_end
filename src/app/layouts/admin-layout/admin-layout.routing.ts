@@ -18,6 +18,7 @@ import {DetailprogComponent} from '../../detailprog/detailprog.component';
 import { DocumentComponent } from './document/document.component';
 import { EnqueteComponent } from './enquete/enquete.component';
 import { CategorieComponent } from './categorie/categorie.component';
+import { PartenaireComponent} from '../../partenaire/partenaire.component'
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -80,6 +81,8 @@ export const AdminLayoutRoutes: Routes = [
     {path:'Document', component:DocumentComponent},
     {path:'enquete' , component:EnqueteComponent},
     {path:'categorie',component:CategorieComponent},
+    {path:'partenaires',component:PartenaireComponent},
+
    
 
 ];

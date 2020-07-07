@@ -14,10 +14,12 @@ export const ROUTES: RouteInfo[] = [
     {path: '/jury', title: 'Jurys', icon:'group' , class:''},
     {path: '/speaker', title: 'Speakers', icon:'record_voice_over' , class:''},
    {path: '/laureat', title: 'Lauréats', icon:'grade' , class:''},
-   { path: '/programme', title: 'Programme',  icon:'grade', class: '' },
-   {path: '/Document', title: 'document',  icon:'grade', class: '' },
-   {path: '/enquete', title: 'enquete',  icon:'grade', class: '' },
-      {path: '/categorie', title: 'Sponsors',  icon:'grade', class: '' },
+   { path: '/programme', title: 'Programme',  icon:'event_note', class: '' },
+   {path: '/Document', title: 'document',  icon:'cloud_upload', class: '' },
+   {path: '/enquete', title: 'enquete',  icon:'done_all', class: '' },
+      {path: '/categorie', title: 'Sponsors',  icon:'person', class: '' },
+      {path: '/partenaires', title: 'partenaires',  icon:'person', class: '' },
+
 
     //{ path: '/user-profile', title: 'Mon Compte',  icon:'person', class: '' },
 
