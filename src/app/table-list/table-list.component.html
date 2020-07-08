@@ -48,6 +48,9 @@
                                     <th>
                                         Attestaion
                                     </th>
+                                    <th>
+                                        Envoyer document
+                                    </th>
                                     <!-- <th>
                                         adresse
                                     </th>
@@ -106,10 +109,11 @@
                                             {{part.nbr_place_reserver}}
                                         </td>
                                         <td>
+
                                             {{part.paiement}}
                                         </td>
                                         <td>
-                                            <div *ngIf="part.qrcode == 0 ; else other_content1">
+                                            <div *ngIf="part.qrcode == 0 ; else other_content1  ">
 
                                                 <button type="button" color="danger" (click)="Enoyer_QRcode(part.id_participant,part.nom_participant,part.prenom_participant,part.email_participant)">
                                                     <i class="fa fa-qrcode" aria-hidden="true"></i> Envoyer QR_code
@@ -123,6 +127,7 @@
                                             </ng-template>
 
                                         </td>
+
 
 
 
@@ -144,7 +149,22 @@
                                                 </p>-->
                                             </ng-template>
                                         </td>
+                                        <td>
+                                            <!--  <*ngIf="part.fichier_conference == null ; else other_content">-->
+                                            <div *ngIf="part.fichier_conference == null ; else other_content2">
 
+                                                <button type="submit" (click)="Opendoc(part)">
+                                                    Envoyer document
+                                             </button>
+                                            </div>
+
+                                            <ng-template #other_content2>
+                                                Document Envoyer <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
+
+                                                <!-- <p>{{part.attestation}}
+                                                </p>-->
+                                            </ng-template>
+                                        </td>
                                         <td>
 
                                             <!-- Button trigger modal -->

@@ -65,7 +65,7 @@
                                                 Client/Fournisseur
                                             </th>-->
                                             <th>
-                                                Paiement
+                                                QrCode
                                             </th>
                                             <th>
                                                 Dossier de candidature
@@ -108,12 +108,19 @@
 
 
 
-
-                                                <button *ngIf="isButton" type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> 
+                                                <div *ngIf="candit.qrcode == 0 ; else other_content1">
+                                                    <button *ngIf="isButton" type="button" color="danger" (click)="Enoyer_QRcode(candit.id_candidat,candit.email,candit.nom_societe_agence,candit.personne_responsable_candidature)"> 
                                                        
                                                         Envoyer QR_code
                                                         
                                                   </button>
+                                                </div>
+                                                <ng-template #other_content1>
+                                                    Qrcode Envoyer <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
+
+                                                    <!-- <p>{{part.attestation}}
+                                                    </p>-->
+                                                </ng-template>
 
 
 

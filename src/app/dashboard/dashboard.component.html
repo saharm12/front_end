@@ -51,6 +51,9 @@
                                         code_TVA
                                     </th>-->
                                     <th>
+                                        QrCode
+                                    </th>
+                                    <th>
                                         paiement
                                     </th>
                                     <!--  <th>
@@ -102,14 +105,24 @@
                                             {{expo.code_TVA}}
                                         </td>-->
                                         <td>
-                                            {{expo.paiement}}
-                                            <div>
+
+                                            <div *ngIf="expo.qrcode == 0 ; else other_content1">
                                                 <button type="button" color="danger" (click)="Enoyer_QRcode(expo.id_exposant,expo.nom_exposant,expo.prenom_exposant,expo.email_exposant)">
                                                     <i class="fa fa-qrcode" aria-hidden="true"></i>
                                                   Envoyer QR_code
                                                     
                                                  </button>
                                             </div>
+                                            <ng-template #other_content1>
+                                                Qrcode Envoyer <i style="color: green;" class="fa fa-check" aria-hidden="true"></i>
+
+                                                <!-- <p>{{part.attestation}}
+                                                </p>-->
+                                            </ng-template>
+                                        </td>
+                                        <td>
+                                            {{expo.paiement}}
+
                                         </td>
                                         <!--  <td>
                                             {{expo.cheque}}

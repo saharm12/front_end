@@ -36,6 +36,7 @@ import { ParticipantService } from './services/participants.service';
 import {ConfirmationPopoverModule} from 'angular-confirmation-popover';
 import {LaureatService} from './services/laureat.service';
 import { ToastrModule } from 'ngx-toastr';
+
 @NgModule({
   imports: [
    ConfirmationPopoverModule.forRoot({

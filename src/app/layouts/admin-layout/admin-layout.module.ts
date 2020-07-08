@@ -37,7 +37,9 @@ import { DetaicanditComponent } from '../../detaicandit/detaicandit.component';
 import { EnqueteComponent } from './enquete/enquete.component';
 import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
 import { AttestationComponent} from 'app/attestation/attestation.component'
-import{ PartenaireComponent} from '../../partenaire/partenaire.component'
+import{ PartenaireComponent} from '../../partenaire/partenaire.component';
+import { EnvoyerdocComponent } from '../../envoyerdoc/envoyerdoc.component';
+import { AddpartenaireComponent } from '../../addpartenaire/addpartenaire.component';
 
 
 
@@ -105,6 +107,8 @@ import { CategorieComponent } from './categorie/categorie.component';
     EditSpeakerComponent,
     AddlaureatComponent,
     AddlautComponent,
+    AddpartenaireComponent,
+    EnvoyerdocComponent,
     DetaicanditComponent ,
     DetailsExpoComponent,
     AttestationComponent,

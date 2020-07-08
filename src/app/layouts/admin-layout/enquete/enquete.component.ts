@@ -53,10 +53,10 @@ export class EnqueteComponent implements OnInit {
       );
 
       this.satisfait = this.enquetes.filter(
-        (c) => c.Rep == "A" && c.numQuestion == 1
+        (c) => c.Rep == "A"   && c.numQuestion == 1
       ).length;
       this.moyennementSatisfait = this.enquetes.filter(
-        (c) => c.Rep == "B" && c.numQuestion == 1
+        (c) => c.Rep == "" && c.numQuestion == 1
       ).length;
       this.faiblementSatisfait = this.enquetes.filter(
         (c) => c.Rep == "C" && c.numQuestion == 1
@@ -119,17 +119,17 @@ export class EnqueteComponent implements OnInit {
         this.enquetes = result;
     
         this.satisfait = this.enquetes.filter(
-          (c) => c.Rep == "A" && c.numQuestion == 1
+          (c) => c.Rep == "A"   && c.numQuestion == 1 && c.numQuestion == 2 && c.numQuestion == 3
         ).length;
         this.moyennementSatisfait = this.enquetes.filter(
-          (c) => c.Rep == "B" && c.numQuestion == 1
+          (c) => c.Rep == "B"   && c.numQuestion == 1 && c.numQuestion == 2 && c.numQuestion == 3
         ).length;
         this.faiblementSatisfait = this.enquetes.filter(
-          (c) => c.Rep == "C" && c.numQuestion == 1
+          (c) => c.Rep == "c"  && c.numQuestion == 1 && c.numQuestion == 2 && c.numQuestion == 3
         ).length;
         this.myChart.push(
           new Chart("myChart1", {
-            type: "doughnut",
+            type: "polarArea",
             data: {
               labels: [
                 "Satisfait",
@@ -154,11 +154,11 @@ export class EnqueteComponent implements OnInit {
                     "rgba(54, 162, 235, 1)",
                     "rgba(255, 206, 86, 1)",
                   ],
-                  borderWidth: 1,
+                 borderWidth: 1,
                 },
               ],
             },
-            options: {
+           options: {
               scales: {
                 yAxes: [
                   {
@@ -170,12 +170,16 @@ export class EnqueteComponent implements OnInit {
                     },
                   },
                 ],
-              },
+             },
             },
-          })
+         })
         );
         console.log(" ttttt", this.satisfait);
+    
+    
       });
+
+      
   }
 
   changeQuestion(idQuestion) {

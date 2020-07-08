@@ -37,18 +37,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr *ngFor="let spons of sponsors ">
+                                        <tr *ngFor="let parte of part ">
                                             <td>
-                                                {{spons.id_sponsors}}
+                                                {{parte.id_partenaires}}
                                             </td>
 
 
                                             <td>
-                                                <img *ngIf="spons.image!=null" src="{{base_url}}{{spons.image}}" style="width: 150px;height: 150px;">
+                                                <img *ngIf="parte.image!=null" src="{{base_url}}{{parte.image}}" style="width: 150px;height: 150px;">
                                             </td>
 
                                             <td>
-                                                <button type="button" color="danger" class="" (click)="Supprimer(spons.id_sponsors)">
+                                                <button type="button" color="danger" class="" (click)="Supprimer(parte.id_partenaires)">
                                               <i class="fa fa-trash-o" aria-hidden="true" color="danger"></i>
                                               </button>
 

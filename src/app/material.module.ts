@@ -14,6 +14,8 @@ import { DetaicanditComponent } from './detaicandit/detaicandit.component';
 import { DetailComponent } from './detail/detail.component';
 import { AddsposnsComponent} from 'app/addsposns/addsposns.component'
 import { AttestationComponent} from 'app/attestation/attestation.component'
+import{ EnvoyerdocComponent} from 'app/envoyerdoc/envoyerdoc.component'
+import { AddpartenaireComponent } from 'app/addpartenaire/addpartenaire.component';
 
 @NgModule({
   imports: [
@@ -36,7 +38,7 @@ import { AttestationComponent} from 'app/attestation/attestation.component'
    
   ],
   providers: [ MatDatepickerModule ],
-  entryComponents:[EditprogComponent, DetailComponent,DetaicanditComponent,DetailsExpoComponent,JuryListComponent,EditjuryComponent,DetailprogComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent, AttestationComponent,AddsposnsComponent]
+  entryComponents:[EditprogComponent, DetailComponent,DetaicanditComponent,AddpartenaireComponent,DetailsExpoComponent,JuryListComponent,EditjuryComponent,DetailprogComponent,AddspeakerComponent,EditSpeakerComponent,AddlautComponent, AttestationComponent,AddsposnsComponent,EnvoyerdocComponent]
 })
 
 export class MaterialModule {}

@@ -8,6 +8,7 @@ import Swal from 'sweetalert2';
 import {AttestationComponent} from 'app/attestation/attestation.component'
 import {ToastrService} from 'ngx-toastr'
 import{Attesation} from '../attestation/attestation.model'
+import { EnvoyerdocComponent } from 'app/envoyerdoc/envoyerdoc.component';
 @Component({
   selector: 'app-table-list',
   templateUrl: './table-list.component.html',
@@ -133,10 +134,28 @@ openlistpart(idparticipant){
        dialogConfig.disableClose =  true;
        dialogConfig.autoFocus = true;
        dialogConfig.width = "500px";
-       dialogConfig.height ="600px"
+       dialogConfig.height ="300px"
 
        this.dialog.open(AttestationComponent, dialogConfig);
     
   }
+
+  Opendoc(participant){
+   
+    
+
+    // console.log(participant)
+     localStorage.setItem("idP",participant.id_participant)
+     localStorage.setItem("email",participant.email_participant)
+ 
+     const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose =  true;
+        dialogConfig.autoFocus = true;
+        dialogConfig.width = "500px";
+        dialogConfig.height ="300px"
+ 
+        this.dialog.open(EnvoyerdocComponent, dialogConfig);
+     
+   }
   }
     
