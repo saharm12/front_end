@@ -121,6 +121,18 @@ addspeaker(){
     
   }/*  */
   else{
+    this.speakersservices.checkLinkedInNotTaken(this.myForm.controls['profil_speakers'].value  ).subscribe((res:any)=>{
+      console.log(res.linkedInNotTaken)
+    
+      if(!res.linkedInNotTaken)
+      { 
+       this.showErr();
+        
+      } else {
+
+
+
+
   this.uploader.uploadAll();
   this.speakersservices.PostSpeaker(this.imageURL,this.myForm.controls['nom_speakers'].value,this.myForm.controls['prenom_speakers'].value,this.myForm.controls['profil_speakers'].value,this.myForm.controls['pays_speakers'].value ).subscribe(data=>{
     let result :any = data; 
@@ -134,10 +146,13 @@ addspeaker(){
     }
    })
 }
+    })
+  }
  }
 resetForm(){
  this.ngForm.resetForm();
  
 }
-
+showErr(){
+  this.toastr.error('Linkedin deja existant')}
 }

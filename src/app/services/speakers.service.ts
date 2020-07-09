@@ -48,5 +48,13 @@ export class SpeakersService {
   
   }
 
-  
+  checkLinkedInNotTaken(profil_speakers)
+  {
+    let token = localStorage.getItem('token'); 
+    return this.http.post(this.BASE_URL+'/checkLinkedInNotTaken',{
+      'profil_speakers': profil_speakers,
+     
+    }); 
+  }
+ 
 }

@@ -55,6 +55,9 @@ getSpeak()
     })
 }
 } 
+showErr(){
+  this.toastr.error('Linkedin deja existant')}
+
 showSucess(){
   this.toastr.success('Modification correctement effectué')}
 fileChange(element) {
@@ -74,19 +77,32 @@ data.append('prenom_speakers',this.speakerModel.prenom_speakers);
 data.append('profil_speakers',this.speakerModel.profil_speakers);
 data.append('pays',this.speakerModel.pays);
 console.log("file name",this.uploadedFile)
+this.http.post('http://localhost:3000/speaker/CheckputLinkedInNotTaken/'+this.speakerModel.id_speakers,{
+  'profil_speakers': this.speakerModel.profil_speakers,
+   })
+ .subscribe((res:any)=>{
+  console.log(res.linkedInNotTaken)
 
-if (this.uploadedFile){
+  if(!res.linkedInNotTaken)
+  { 
+   this.showErr();
+  }else{
+
+
+
+
+ if (this.uploadedFile){
   console.log("file")
   data.append('userfile',this.uploadedFile);
   this.imageURL=this.uploadedFile.name;
   data.append('imageURL',"/uploads/"+this.imageURL);
 
-}else{
+ }else{
   console.log("no file",this.speakerModel)
   this.imageURL=this.speakerModel.image;
   data.append('imageURL',this.imageURL);
-}
-console.log("image", this.imageURL)
+ }
+ console.log("image", this.imageURL)
 
 
   this.http.put('http://localhost:3000/speaker/modifiers/'+this.speakerModel.id_speakers,data ).subscribe(data=>{
@@ -100,6 +116,10 @@ console.log("image", this.imageURL)
       
     }
   })
+}
+})
+}
+}
 
   //this.uploader.uploadAll();
 
@@ -113,8 +133,3 @@ console.log("image", this.imageURL)
         //  panelClass: ['green-snackbar']
         //});    
       //}
-   // })
-}
- 
-
-}
