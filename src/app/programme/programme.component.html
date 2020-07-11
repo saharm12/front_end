@@ -35,12 +35,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let prog of programmes">
+                    <tr *ngFor="let prog of programmes  | paginate: { itemsPerPage: 1, currentPage: p }">
                         <th scope="row">{{prog.id_programme}}</th>
 
 
+                        <td [innerHTML]="prog.details_programme"></td>
 
-                        <td>{{prog.details_programme}}</td>
+                        <!--<td>{{prog.details_programme}}</td>-->
 
                         <td> <button (click)="GetcontentById(prog.id_programme)" type="submit" class="btn btn-info">Détails</button></td>
 
@@ -51,6 +52,8 @@
                     </tr>
                 </tbody>
             </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
         </div>
     </div>
 </div>

@@ -3,6 +3,7 @@ import { MatDialogRef} from '@angular/material';
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import {CategorieSerService} from 'app/services/categorie-ser.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-addsposns',
@@ -12,7 +13,7 @@ import {CategorieSerService} from 'app/services/categorie-ser.service';
 export class AddsposnsComponent implements OnInit {
   public uploader:FileUploader ;
   imageURL="";
-  constructor( public dialogbox: MatDialogRef<AddsposnsComponent> , private service: CategorieSerService) {
+  constructor( private toastr: ToastrService ,public dialogbox: MatDialogRef<AddsposnsComponent> , private service: CategorieSerService) {
     const authHeader: Array<{
       name: string;
       value: string;
@@ -56,7 +57,12 @@ export class AddsposnsComponent implements OnInit {
   onClose(){
     this.dialogbox.close();
   }
+  showerror()
+  {this.toastr.error('no file selected')}
   addsponsors(){
+    if(this.imageURL.length == 0){
+this.showerror();
+    }else{
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
    this.uploader.uploadAll();
@@ -69,5 +75,5 @@ export class AddsposnsComponent implements OnInit {
         
       }
     })
-   }
+   }}
 }

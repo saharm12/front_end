@@ -4,6 +4,7 @@ import { MatDialogRef} from '@angular/material';
 import { Programme} from '../programme/prog.model';
 import { ProgrammeService   } from 'app/services/programme.service';
 import {HttpClient} from '@angular/common/http' ;
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-editprog',
@@ -19,7 +20,9 @@ export class EditprogComponent implements OnInit {
   log: string = '';
   Id:number;
   res: any;  
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private http:HttpClient,private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
+  programmes=[];  
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, private toastr: ToastrService,private http:HttpClient,private progService:ProgrammeService,public dialogbox: MatDialogRef<EditprogComponent> ) {
     this.progrModel = new Programme();
     this.mycontent = `<p>My html content</p>`;
    }
@@ -70,18 +73,32 @@ export class EditprogComponent implements OnInit {
     //this.ngOnInit();
   
   }
+  showSucess(){
+    this.toastr.success('Modification correctement effectué')}
   updateprog(){
     
     console.log("ckeditor",this.progrModel)
  this.progService.putprog(this.progrModel).subscribe(data => {
       let result : any = data; 
       if(result)
+      
       {
+        this.onClose();
+        this.showSucess();
+        this.Getcontent();
+        
         console.log("ok");
       }
     })
   }
 
+  Getcontent(){
+    this.progService.Getcontent().subscribe(data=>{
+      let result:any = data; 
+      console.log(result.programme); 
+      this.programmes= result.programme; 
+    })
+  }
   mupdateprog(){
    
 

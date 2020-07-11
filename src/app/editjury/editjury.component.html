@@ -22,15 +22,15 @@
                     <div class="form-group">
                         <mat-form-field class="example-full-width">
 
-                            <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="20" [ngClass]="{ 'is-invalid':  nom_jury.invalid }" placeholder="nom" #nom_jury="ngModel" required [(ngModel)]="juryModel.nom_jury" name="nom_jury">
+                            <input matInput pattern="[a-zA-Z ]*" minlength="3" maxlength="20" [ngClass]="{ 'is-invalid':  nom_jury.invalid }" placeholder="nom" #nom_jury="ngModel" required [(ngModel)]="juryModel.nom_jury" name="nom_jury">
 
                             <div *ngIf="nom_jury.touched && !nom_jury.valid">
 
-                                <small class="text-danger" *ngIf="nom_jury.errors.required">le champ nom est vide </small>
-                                <small *ngIf="nom_jury.errors.pattern" class="text-danger"> Champs nom  doit contenir seulement des caractéres</small>
-                                <small class="text-danger" *ngIf="nom_jury.errors.minlength">First Name is minimum {{nom_jury.errors.minlength.requiredLength }} character.</small>
+                                <small class="text-danger" *ngIf="nom_jury.errors.required"> champ nom est vide </small>
+                                <small *ngIf="nom_jury.errors.pattern" class="text-danger"> Champ nom  doit contenir seulement des caractéres</small>
+                                <small class="text-danger" *ngIf="nom_jury.errors.minlength">champ nom  doit contenir au minimum {{nom_jury.errors.minlength.requiredLength }} caractéres.</small>
 
-                                <small class="text-danger" *ngIf="nom_jury.errors.maxlength">First Name is maximum {{nom_jury.errors.maxlength.requiredLength }}  character.</small>
+                                <small class="text-danger" *ngIf="nom_jury.errors.maxlength">champ nom  doit contenir au maximum {{nom_jury.errors.maxlength.requiredLength }}  caractéres.</small>
 
                             </div>
                         </mat-form-field>
@@ -39,15 +39,15 @@
                     <div class="form-group">
                         <mat-form-field class="example-full-width">
 
-                            <input matInput pattern="([a-z.'-]+)" minlength="3" maxlength="20" [ngClass]="{ 'is-invalid':  prenom_jury.invalid }" placeholder="prenom" #prenom_jury="ngModel" required [(ngModel)]="juryModel.prenom_jury" name="prenom_jury">
+                            <input matInput pattern="[a-zA-Z ]*" minlength="3" maxlength="20" [ngClass]="{ 'is-invalid':  prenom_jury.invalid }" placeholder="prenom" #prenom_jury="ngModel" required [(ngModel)]="juryModel.prenom_jury" name="prenom_jury">
 
                             <div *ngIf="prenom_jury.touched && !prenom_jury.valid">
 
-                                <small class="text-danger" *ngIf="prenom_jury.errors.required">le champ nom est vide </small>
-                                <small *ngIf="prenom_jury.errors.pattern" class="text-danger"> Champs nom  doit contenir seulement des caractéres</small>
-                                <small class="text-danger" *ngIf="prenom_jury.errors.minlength">First Name is minimum {{prenom_jury.errors.minlength.requiredLength }} character.</small>
+                                <small class="text-danger" *ngIf="prenom_jury.errors.required"> champ prenom est vide </small>
+                                <small *ngIf="prenom_jury.errors.pattern" class="text-danger"> Champs prenomnom  doit contenir seulement des caractéres</small>
+                                <small class="text-danger" *ngIf="prenom_jury.errors.minlength">champ prenom  doit contenir au minimum  {{prenom_jury.errors.minlength.requiredLength }} caractéres.</small>
 
-                                <small class="text-danger" *ngIf="prenom_jury.errors.maxlength">First Name is maximum {{prenom_jury.errors.maxlength.requiredLength }} 20  character.</small>
+                                <small class="text-danger" *ngIf="prenom_jury.errors.maxlength">champ prenom  doit contenir au maximum  {{prenom_jury.errors.maxlength.requiredLength }} 20  caractéres.</small>
 
                             </div>
                         </mat-form-field>
@@ -73,13 +73,13 @@
                     <div class="form-group">
                         <mat-form-field class="example-full-width">
 
-                            <input type="text" minlength="3" matInput pattern="([a-z.'-]+)" [ngClass]="{ 'is-invalid':  pays.invalid }" placeholder="pays" #pays="ngModel" required [(ngModel)]="juryModel.pays" name="pays">
+                            <input type="text" minlength="3" matInput pattern="[a-zA-Z ]*" [ngClass]="{ 'is-invalid':  pays.invalid }" placeholder="pays" #pays="ngModel" required [(ngModel)]="juryModel.pays" name="pays">
 
                             <div *ngIf="pays.touched && !pays.valid">
 
-                                <small class="text-danger" *ngIf="pays.errors.required">le champ profil est vide </small>
+                                <small class="text-danger" *ngIf="pays.errors.required"> champ pays est vide </small>
                                 <small class="text-danger" *ngIf="pays.errors.pattern"> Champs pays  doit contenir seulement des caractéres</small>
-                                <small class="text-danger" *ngIf="pays.errors.minlength"> pays is minimum {{pays_speakers.errors.minlength.requiredLength }} character.</small>
+                                <small class="text-danger" *ngIf="pays.errors.minlength"> champ pays doit contenir au minimum {{pays_speakers.errors.minlength.requiredLength }} caractéres.</small>
 
                             </div>
                         </mat-form-field>

@@ -39,10 +39,10 @@ this.uploader.setOptions(uploadOptions);
 
  myForm = new FormGroup({  
   image: new FormControl('', [Validators.required]),
-  nom_jury: new FormControl('', [Validators.required, Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
-  prenom_jury: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+  nom_jury: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
+  prenom_jury: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
   profil_jury: new FormControl('', [Validators.required,Validators.pattern("https?://.+")]),
-  pays_jury: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+  pays_jury: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
 
 
 
@@ -81,7 +81,9 @@ this.uploader.setOptions(uploadOptions);
     this.toastr.success('Ajout effectué  avec succés')}
     showErr(){
       this.toastr.error('Linkedin deja existant')}
-
+      showerr(){
+        this.toastr.error('no file selected')}
+  
 @ViewChild(NgForm) ngForm: NgForm;
 
   ngOnInit() {
@@ -114,6 +116,9 @@ this.uploader.setOptions(uploadOptions);
       
     
     addjury(){
+      if(this.imageURL.length == 0){
+    this.showerr();
+      }else{
       if (this.myForm.invalid){
         this.validateAllFormFields(this.myForm);
 
@@ -140,7 +145,7 @@ this.uploader.setOptions(uploadOptions);
       })
     }
     })  
-    }
+    }}
      }
 
     

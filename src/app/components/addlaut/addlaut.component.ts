@@ -6,6 +6,8 @@ import { HttpEvent, HttpEventType } from '@angular/common/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import{Laureat} from 'app/laureat/laureat.model';
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
+import {ToastrService} from 'ngx-toastr';
+
 @Component({
   selector: 'app-addlaut',
   templateUrl: './addlaut.component.html',
@@ -30,7 +32,7 @@ imageURL="";
 submit(){
   console.log(this.form.value);
 }
-constructor(private laureatservice:LaureatService
+constructor(private toastr: ToastrService,private laureatservice:LaureatService
 ,public dialogbox: MatDialogRef<AddlautComponent>, public fb: FormBuilder,) {
   const authHeader: Array<{
     name: string;
@@ -70,6 +72,10 @@ this.uploader.setOptions(uploadOptions);
   submitUser() {
     
   }
+  showSuccess()
+  {this.toastr.success('laureats a été ajouté avec succés')}
+  showerror()
+  {this.toastr.error('no file selected')}
 
   uploadFile(event) {
     if (event.target.files.length > 0) {
@@ -90,19 +96,37 @@ this.uploader.setOptions(uploadOptions);
     this.dialogbox.close();
    
   }
+  validateAllFormFields(formGroup: FormGroup) {
+  Object.keys(formGroup.controls).forEach(field => {
+    console.log(field);
+    const control = formGroup.get(field);
+    if (control instanceof FormControl) {
+      control.markAsTouched({ onlySelf: true });
+    } else if (control instanceof FormGroup) {
+      this.validateAllFormFields(control);
+    }
+  });
+}
   addLaureat(){
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
+   if(this.imageURL.length == 0){
+    this.showerror();
+   }else{
+     if(this.myForm.invalid){
+          this.validateAllFormFields(this.myForm);
+     }else{
+   
    this.uploader.uploadAll();
     this.laureatservice.PostLaureat(this.imageURL, this.myForm.controls['categorie'].value ).subscribe(data=>{
       let result :any = data; 
       if(result)
-      { 
+      { this.showSuccess();
         this.onClose();
         console.log("ok")
         
       }
     })
    }
-   
+  }}
 }

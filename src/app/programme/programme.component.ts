@@ -5,6 +5,7 @@ import { Programme} from './prog.model'
 import { ProgrammeService   } from 'app/services/programme.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import {ToastrService} from 'ngx-toastr'
 
 
 
@@ -22,14 +23,15 @@ export class ProgrammeComponent implements OnInit {
   value : any;
  progModel :Programme;
  programmes=[];  
-
+p:number;
   @ViewChild("myckeditor") ckeditor: any;
-  constructor( private progService:ProgrammeService ,private router: Router ) { 
+  constructor( private toastr: ToastrService,private progService:ProgrammeService ,private router: Router ) { 
     this.mycontent = `<p>My html content</p>`;
     this.progModel = new Programme();
 
   }
-  
+  showSucess()
+{this.toastr.success('programme a été enregistrer avec succés')}
   ngOnInit() {
     this.Getcontent(),
 
@@ -65,16 +67,31 @@ export class ProgrammeComponent implements OnInit {
   Ajouter(){
     //console.log('myckeditor:' + myForm.controls['myckeditor'].value);
    // console.log('date:' + myForm.controls['date'].value);
-  
+   Swal.fire({
+    title:'Enregistrer',
+    text:'Voulez vous vraiment enregistrer  ?', 
+    confirmButtonText:'Oui',
+    cancelButtonText:'Non',
+    showCancelButton:true, 
+    type:'warning'
+  }).then(result=>{
+    if(result.value)
    this.progService.Ajouterprog( this.progModel.detail  ).subscribe(data=>{
-    let result :any = data; 
+    let result :any = data;
+    console.log(result); 
+
     if(result)
-    { 
+
+    { this.showSucess(); 
        this.Getcontent();
       console.log("ok")
       
     }
-  })}
+  })
+
+})
+  }
+
   Getcontent(){
     this.progService.Getcontent().subscribe(data=>{
       let result:any = data; 

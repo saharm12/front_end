@@ -58,7 +58,7 @@ Supp(id)
 {
   Swal.fire({
     title:'Supprimer',
-    text:'Voulez vous supprimer cet exposant ?', 
+    text:'Voulez vous supprimer cet lauréats ?', 
     confirmButtonText:'Oui',
     cancelButtonText:'Non',
     showCancelButton:true, 
@@ -72,11 +72,7 @@ Supp(id)
     let result :any = data; 
     console.log(result); 
 
-    Swal.fire(
-      'Supprimé!',
-      'Candidat a été supprimé avec succée',
-      'success'
-    )
+    
     if(result)
     {
      this.getLaureat(); 

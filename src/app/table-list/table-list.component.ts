@@ -61,11 +61,7 @@ Supprimer(id)
     let result :any = data; 
     console.log(result); 
 
-    Swal.fire(
-      'Supprimé!',
-      'Particiapnt a été supprimé avec succée',
-      'success'
-    )
+    
     if(result)
     {
      this.getparticipant(); 

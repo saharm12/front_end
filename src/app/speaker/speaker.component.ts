@@ -66,11 +66,7 @@ Supp(id)
     let result :any = data; 
     console.log(result); 
 
-    Swal.fire(
-      'Supprimé!',
-      'Speakers  a été supprimé avec succée',
-      'success'
-    )
+  
     if(result)
     {
      this.getSpeak(); 

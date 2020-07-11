@@ -3,6 +3,7 @@ import { MatDialogRef} from '@angular/material';
 import {  FileUploader ,FileUploaderOptions } from 'ng2-file-upload';
 import { FormBuilder, FormGroup ,FormControl, Validators} from "@angular/forms";
 import {partenaireService} from 'app/services/partenaire.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-addpartenaire',
@@ -12,7 +13,7 @@ import {partenaireService} from 'app/services/partenaire.service';
 export class AddpartenaireComponent implements OnInit {
   public uploader:FileUploader ;
   imageURL="";
-  constructor(public dialogbox: MatDialogRef<AddpartenaireComponent> , private service: partenaireService) { 
+  constructor(private toastr: ToastrService ,public dialogbox: MatDialogRef<AddpartenaireComponent> , private service: partenaireService) { 
     const authHeader: Array<{
       name: string;
       value: string;
@@ -38,7 +39,8 @@ export class AddpartenaireComponent implements OnInit {
       file.withCredentials = false; 
      };
   }
-
+  showerror()
+  {this.toastr.error('no file selected')}
   uploadFile(event) {
     if (event.target.files.length > 0) {
 
@@ -58,6 +60,9 @@ export class AddpartenaireComponent implements OnInit {
   addpartenaire(){
     //const formData = new FormData();
    // formData.append('avatar', this.myForm.get('image').value);
+   if (this.imageURL.length == 0){
+    this.showerror();
+   }else{
    this.uploader.uploadAll();
     this.service.Postpartenaire(this.imageURL).subscribe(data=>{
       let result :any = data; 
@@ -69,6 +74,8 @@ export class AddpartenaireComponent implements OnInit {
       }
     })
    }
+
+  }
 
 
 

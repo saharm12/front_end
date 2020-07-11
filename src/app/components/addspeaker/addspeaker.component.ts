@@ -38,10 +38,10 @@ this.uploader.setOptions(uploadOptions);
  }
 myForm = new FormGroup({  
    image: new FormControl('', [Validators.required]),
-    nom_speakers: new FormControl('', [Validators.required, Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
-    prenom_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+    nom_speakers: new FormControl('', [Validators.required, Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
+    prenom_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
     profil_speakers: new FormControl('', [Validators.required,Validators.pattern("https?://.+")]),
-    pays_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-z.'-]+"),Validators.minLength(3)]),
+    pays_speakers: new FormControl('', [Validators.required,Validators.pattern("[a-zA-Z ]*"),Validators.minLength(3)]),
   
   
  
@@ -114,13 +114,21 @@ validateAllFormFields(formGroup: FormGroup) {
 }
 showError(){
   this.toastr.error('Type de donnees invalide ')}
-addspeaker(){
+
+showerr(){
+  this.toastr.error('no file selected');
+}
+  addspeaker(){
+    if(this.imageURL.length == 0){
+this.showerr();
+    }else{
   if (this.myForm.invalid){
     //this.showError()
     this.validateAllFormFields(this.myForm);
     
   }/*  */
   else{
+    
     this.speakersservices.checkLinkedInNotTaken(this.myForm.controls['profil_speakers'].value  ).subscribe((res:any)=>{
       console.log(res.linkedInNotTaken)
     
@@ -148,6 +156,8 @@ addspeaker(){
 }
     })
   }
+  }
+
  }
 resetForm(){
  this.ngForm.resetForm();
