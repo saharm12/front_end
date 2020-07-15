@@ -27,6 +27,8 @@ export class AttestationComponent implements OnInit {
     this.dialogbox.close();
    
   }
+  showerror()
+  {this.toastr.error('no file selected')}
   showSucess()
 {this.toastr.success('Attesation a été envoyé avec succés')}
 
@@ -39,15 +41,19 @@ export class AttestationComponent implements OnInit {
     console.log(this.uploadedFile)
     console.log(localStorage.getItem("idP"))
     data.append('image',this.uploadedFile); 
-
+    if(this.uploadedFile == null){
+      this.showerror()
+  
+    }else{
     this.http.post('http://localhost:3000/participant/AddAttestation/'+localStorage.getItem("idP")+"/"+localStorage.getItem("email"),data).subscribe(data=>{
       let result:any =data; 
         console.log(result);
         this.showSucess();
 
       })
-
+    }
   }
+
 }
 //SendAttestation(){
  // let data = new FormData();

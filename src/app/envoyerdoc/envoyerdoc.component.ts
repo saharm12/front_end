@@ -30,13 +30,18 @@ export class EnvoyerdocComponent implements OnInit {
   fileChange(element) {
     this.uploadedFile = element.target.files[0];
  } 
+ showerror()
+  {this.toastr.error('no file selected')}
   Senddocument(id:number){
     let data = new FormData(); 
 
     console.log(this.uploadedFile)
     console.log(localStorage.getItem("idP"))
     data.append('image',this.uploadedFile); 
-
+    if(this.uploadedFile == null){
+      this.showerror()
+  
+    }else{
     this.http.post('http://localhost:3000/participant/Adddoc/'+localStorage.getItem("idP")+"/"+localStorage.getItem("email"),data).subscribe(data=>{
       let result:any =data; 
         console.log(result);
@@ -44,7 +49,7 @@ export class EnvoyerdocComponent implements OnInit {
 
       })
 
-  }
+  }}
 }
 
  
